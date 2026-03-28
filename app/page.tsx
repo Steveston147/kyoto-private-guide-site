@@ -42,7 +42,7 @@ const guideItems = [
     text: "Born and raised in Kyoto, Don is a licensed guide known for his calm and reliable approach. He personally handles tours whenever available and is the first point of contact for bookings.\n\nHe spent over 20 years in Vancouver, where he also worked as a guide, building strong international experience.\n\nAs a father of two daughters, he understands the importance of flexibility, comfort, and thoughtful pacing for families and senior travellers.",
   },
   {
-    name: "Mai",
+    name: "May",
     role: "Guide by enquiry",
     text: "Kyoto-born and educated at a well-known university in Kyoto. She has rich international experience and strong university teaching experience, and works fluently in both American English and Japanese.\n\nShe may be arranged by enquiry, especially when Don is unavailable. She can also support interviews for TV, magazines, and other media.",
   },
