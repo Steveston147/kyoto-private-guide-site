@@ -184,7 +184,7 @@ const faqItems = [
   },
   {
     q: "How do we get around?",
-    a: "We can walk, use taxis, or use public transport depending on your comfort, budget, and destination.",
+    a: "We mainly use public transport. Please prepare an ICOCA or SUICA card or app. If you do not have one, we can buy one at the station on the day.",
   },
   {
     q: "Can you help with lunch?",
@@ -212,11 +212,15 @@ const faqItems = [
   },
   {
     q: "How much walking is involved?",
-    a: "That depends on the route, but I can reduce walking, add taxi use, and plan more breaks if needed.",
+    a: "That depends on the route, but I can reduce walking, add taxi use when needed, and plan more breaks if needed.",
   },
   {
     q: "Can children join?",
     a: "Yes. I can make the day easier for children with more flexible timing and a lighter pace.",
+  },
+  {
+    q: "Does the price change by group size?",
+    a: "No. The rate is per guide, not per person. The guide fee is the same whether you are 1 guest or 10 guests.",
   },
   {
     q: "How should I contact you?",
@@ -737,23 +741,33 @@ export default function Page() {
         <div className="pricing-grid">
           <article className="price-card">
             <h3>Half Day</h3>
-            <div className="price">¥20,000</div>
-            <p>Approx. US$135</p>
+            <div className="price">¥30,000</div>
+            <p>Approx. US$200</p>
           </article>
 
           <article className="price-card featured">
             <div className="price-badge">Most requested</div>
             <h3>Full Day</h3>
-            <div className="price">¥40,000</div>
-            <p>Approx. US$270</p>
+            <div className="price">¥60,000</div>
+            <p>Approx. US$400</p>
           </article>
 
           <article className="price-card">
             <h3>Extra Hour</h3>
-            <div className="price">¥5,000</div>
-            <p>Approx. US$35</p>
+            <div className="price">¥7,500</div>
+            <p>Approx. US$50</p>
           </article>
         </div>
+
+        <p className="pricing-note">
+          Rates are per guide, not per person. The guide fee stays the same whether your group is 1
+          guest or 10 guests.
+        </p>
+
+        <p className="pricing-note">
+          We mainly use public transport. Please prepare an ICOCA or SUICA card or app. If you do
+          not have one, we can buy one at the station on the day.
+        </p>
 
         <p className="pricing-note">
           Transport, meals, entrance fees, and personal expenses are not included unless agreed in
