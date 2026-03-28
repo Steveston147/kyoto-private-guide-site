@@ -196,7 +196,7 @@ const faqItems = [
   },
   {
     q: "Who will guide us?",
-    a: "Don is the main guide. If Don is not available, Mai may be arranged by enquiry depending on the date and type of visit.",
+    a: "Don is the main guide. If Don is not available, May may be arranged by enquiry depending on the date and type of visit.",
   },
   {
     q: "Are weekdays available?",
