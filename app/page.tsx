@@ -37,7 +37,7 @@ const whoItems = [
 
 const guideItems = [
   {
-    name: "Don Tanaka",
+    name: "Don",
     role: "Main guide",
     text: "Born and raised in Kyoto, Don is a licensed guide known for his calm and reliable approach. He personally handles tours whenever available and is the first point of contact for bookings.\n\nHe spent over 20 years in Vancouver, where he also worked as a guide, building strong international experience.\n\nAs a father of two daughters, he understands the importance of flexibility, comfort, and thoughtful pacing for families and senior travellers.",
   },
