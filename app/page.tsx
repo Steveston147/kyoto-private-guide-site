@@ -42,7 +42,7 @@ const guideItems = [
     text: "Born and raised in Kyoto, Don is a licensed guide known for his calm and reliable approach. He personally handles tours whenever available and is the first point of contact for bookings.\n\nHe spent over 20 years in Vancouver, where he also worked as a guide, building strong international experience.\n\nAs a father of two daughters, he understands the importance of flexibility, comfort, and thoughtful pacing for families and senior travellers.",
   },
   {
-    name: "May",
+    name: "Mai",
     role: "Guide by enquiry",
     text: "Kyoto-born and educated at a well-known university in Kyoto. She has rich international experience and strong university teaching experience, and works fluently in both American English and Japanese.\n\nShe may be arranged by enquiry, especially when Don is unavailable. She can also support interviews for TV, magazines, and other media.",
   },
@@ -50,28 +50,22 @@ const guideItems = [
 
 const guestItems = [
   {
-    img: "/guests/guest01.jpg",
-    text: "Don was kind, knowledgeable, and very easy to talk to.",
+    text: "Don was kind, knowledgeable, and very easy to talk to. He explained Kyoto in a clear and friendly way, and our day never felt rushed. We could enjoy the temples, streets, and small local details with a relaxed pace.",
   },
   {
-    img: "/guests/guest02.jpg",
-    text: "We felt relaxed and well looked after throughout the day.",
+    text: "We felt relaxed and well looked after throughout the day. Don helped us understand where to go, how to move around, and when to take breaks. It made our Kyoto visit much easier and much more enjoyable.",
   },
   {
-    img: "/guests/guest03.jpg",
-    text: "He made Kyoto easy to enjoy, even for first-time visitors.",
+    text: "He made Kyoto easy to enjoy, even for first-time visitors. The route was simple to follow, the explanations were helpful, and we felt comfortable asking questions at any time during the tour.",
   },
   {
-    img: "/guests/guest04.jpg",
-    text: "Don was flexible, thoughtful, and very professional.",
+    text: "Don was flexible, thoughtful, and very professional. He adjusted the plan based on our interests and energy level, and he always explained the next steps clearly so we could enjoy the day without stress.",
   },
   {
-    img: "/guests/guest05.jpg",
-    text: "Our family had a wonderful and comfortable day.",
+    text: "Our family had a wonderful and comfortable day. Don understood what we needed, including slower walking, practical transport, and time to rest. His calm style was a very good match for our group.",
   },
   {
-    img: "/guests/guest06.jpg",
-    text: "We would happily recommend Don to anyone visiting Kyoto.",
+    text: "We would happily recommend Don to anyone visiting Kyoto. He gave us a personal and meaningful experience, with good balance between famous places, quieter moments, and useful local advice.",
   },
 ];
 
@@ -196,7 +190,7 @@ const faqItems = [
   },
   {
     q: "Who will guide us?",
-    a: "Don is the main guide. If Don is not available, May may be arranged by enquiry depending on the date and type of visit.",
+    a: "Don is the main guide. If Don is not available, Mai may be arranged by enquiry depending on the date and type of visit.",
   },
   {
     q: "Are weekdays available?",
@@ -530,20 +524,12 @@ export default function Page() {
       <section className="content-section" id="guests">
         <div className="section-head">
           <p className="section-kicker">Guests</p>
-          <h2>Guest Photos & Kind Words</h2>
+          <h2>Kind Words from Guests</h2>
         </div>
 
         <div className="guest-grid">
           {guestItems.map((item, i) => (
             <article className="guest-card" key={i}>
-              <div className="guest-image-wrap">
-                <img
-                  src={item.img}
-                  alt="Guest experience in Kyoto"
-                  loading="lazy"
-                  decoding="async"
-                />
-              </div>
               <p className="guest-text">{item.text}</p>
             </article>
           ))}
