@@ -50,7 +50,7 @@ const guideItems = [
 
 const guestItems = [
   {
-    text: "Don was kind, knowledgeable, and very easy to talk to. He explained Kyoto in a clear and friendly way, and our day never felt rushed. We could enjoy the temples, streets, and small local details with a relaxed pace.",
+    text: "Don was kind, knowledgeable, and very easy to talk to. He explained Kyoto in a clear and friendly way, and our day never felt rushed. We could enjoy temples, local streets, and small cultural details at a relaxed pace.",
   },
   {
     text: "We felt relaxed and well looked after throughout the day. Don helped us understand where to go, how to move around, and when to take breaks. It made our Kyoto visit much easier and much more enjoyable.",
@@ -65,7 +65,7 @@ const guestItems = [
     text: "Our family had a wonderful and comfortable day. Don understood what we needed, including slower walking, practical transport, and time to rest. His calm style was a very good match for our group.",
   },
   {
-    text: "We would happily recommend Don to anyone visiting Kyoto. He gave us a personal and meaningful experience, with good balance between famous places, quieter moments, and useful local advice.",
+    text: "We would happily recommend Don to anyone visiting Kyoto. He gave us a personal and meaningful experience, with a good balance between famous places, quieter moments, and useful local advice.",
   },
 ];
 
@@ -132,15 +132,15 @@ const tourItems = [
 const sampleCourses = [
   {
     title: "Kyoto Highlights Full Day",
-    text: "A balanced full-day route for first-time visitors who want the essential Kyoto experience.",
+    text: "A balanced full-day route for first-time visitors who want temples, traditional streets, and a clear overview of Kyoto.",
   },
   {
     title: "Arashiyama Nature and Culture Day",
-    text: "A day with bamboo grove areas, riverside views, temples, and a slower rhythm.",
+    text: "A slower day with bamboo grove areas, riverside scenery, temples, and time to enjoy Kyoto’s softer side.",
   },
   {
     title: "Family or Senior-Friendly Kyoto Day",
-    text: "A gentle plan with shorter walks, more breaks, and flexible transport.",
+    text: "A gentle plan with shorter walks, more breaks, simple transport, and a route adjusted to your group’s comfort.",
   },
 ];
 
@@ -170,23 +170,35 @@ const processItems = [
 const faqItems = [
   {
     q: "Can you customise the tour?",
-    a: "Yes. I can adjust the route based on your interests, pace, age group, and travel style.",
+    a: "Yes. I can adjust the route based on your interests, pace, age group, walking comfort, and travel style.",
   },
   {
     q: "Are your tours good for families or senior travellers?",
-    a: "Yes. I often plan tours with slower walking, more breaks, and easy transport options.",
+    a: "Yes. I often plan tours with slower walking, more breaks, simple transport, and flexible timing.",
+  },
+  {
+    q: "How long is a half-day or full-day tour?",
+    a: "A half-day tour is usually up to 4 hours. A full-day tour is usually up to 8 hours. The exact timing can be adjusted when we plan your day.",
   },
   {
     q: "How do we get around?",
     a: "We mainly use public transport. Please prepare an ICOCA or SUICA card or app. If you do not have one, we can buy one at the station on the day.",
   },
   {
+    q: "Can we use taxis?",
+    a: "Yes. Taxis can be used when they are helpful, especially for senior travellers, families, rainy days, or routes with long walking distances. Taxi fares are not included in the guide fee.",
+  },
+  {
+    q: "Can you meet us at our hotel?",
+    a: "In many cases, yes. The meeting point depends on your hotel location, station access, and the tour route. I will suggest a simple and practical meeting point.",
+  },
+  {
     q: "Can you help with lunch?",
-    a: "Yes. I can suggest simple local options and help choose a place that fits your preferences.",
+    a: "Yes. I can suggest simple local options and help choose a place that fits your preferences. Meal costs are not included in the guide fee.",
   },
   {
     q: "Do you guide outside Kyoto?",
-    a: "Yes. I can also arrange guiding for nearby areas such as Osaka or Nara depending on the plan.",
+    a: "Yes. I can also arrange guiding for nearby areas such as Osaka or Nara depending on the plan and schedule.",
   },
   {
     q: "Who will guide us?",
@@ -197,28 +209,32 @@ const faqItems = [
     a: "Weekends and Japanese public holidays are easier to accept. For weekdays, please send an enquiry first.",
   },
   {
-    q: "Where do we meet?",
-    a: "This depends on your hotel, station access, and the route. I usually suggest a simple and practical meeting point.",
-  },
-  {
     q: "What happens if it rains?",
-    a: "Kyoto can still be enjoyable in light rain. I can adjust the plan, transport, or indoor balance if needed.",
+    a: "Kyoto can still be enjoyable in light rain. I can adjust the route, transport, walking distance, or indoor balance if needed.",
   },
   {
     q: "How much walking is involved?",
-    a: "That depends on the route, but I can reduce walking, add taxi use when needed, and plan more breaks if needed.",
+    a: "That depends on the route, but I can reduce walking, add taxi use when needed, and plan more breaks if your group prefers a slower pace.",
   },
   {
     q: "Can children join?",
-    a: "Yes. I can make the day easier for children with more flexible timing and a lighter pace.",
+    a: "Yes. I can make the day easier for children with more flexible timing, lighter walking, and a relaxed plan.",
   },
   {
     q: "Does the price change by group size?",
     a: "No. The rate is per guide, not per person. The guide fee is the same whether you are 1 guest or 10 guests.",
   },
   {
+    q: "What is not included in the guide fee?",
+    a: "Transport, meals, entrance fees, taxi fares, and personal expenses are not included unless agreed in advance.",
+  },
+  {
+    q: "Can we pay in Japanese yen or US dollars?",
+    a: "Japanese yen is easiest. US dollars may also be possible by agreement. Please ask in advance so we can confirm the amount and method clearly.",
+  },
+  {
     q: "How should I contact you?",
-    a: "You can use the contact form or email me directly. Please tell me your date, group size, and what kind of day you want.",
+    a: "You can use the contact form or email me directly. Please tell me your date, group size, hotel area if known, and what kind of day you want.",
   },
 ];
 
@@ -728,20 +744,20 @@ export default function Page() {
           <article className="price-card">
             <h3>Half Day</h3>
             <div className="price">¥30,000</div>
-            <p>Approx. US$200</p>
+            <p>Up to 4 hours / Approx. US$200</p>
           </article>
 
           <article className="price-card featured">
             <div className="price-badge">Most requested</div>
             <h3>Full Day</h3>
             <div className="price">¥60,000</div>
-            <p>Approx. US$400</p>
+            <p>Up to 8 hours / Approx. US$400</p>
           </article>
 
           <article className="price-card">
             <h3>Extra Hour</h3>
             <div className="price">¥7,500</div>
-            <p>Approx. US$50</p>
+            <p>Per additional hour / Approx. US$50</p>
           </article>
         </div>
 
@@ -751,13 +767,18 @@ export default function Page() {
         </p>
 
         <p className="pricing-note">
+          Transport, meals, entrance fees, taxi fares, and personal expenses are not included unless
+          agreed in advance.
+        </p>
+
+        <p className="pricing-note">
           We mainly use public transport. Please prepare an ICOCA or SUICA card or app. If you do
           not have one, we can buy one at the station on the day.
         </p>
 
         <p className="pricing-note">
-          Transport, meals, entrance fees, and personal expenses are not included unless agreed in
-          advance.
+          Japanese yen is easiest for payment. US dollars may also be possible by agreement. The US
+          dollar amounts above are approximate and may change depending on the exchange rate.
         </p>
       </section>
 
@@ -785,16 +806,18 @@ export default function Page() {
 
         <div className="contact-card">
           <p>
-            Please send me a short message with your travel date, group size, and what kind of
-            tour you are hoping for.
+            Please send me a short message with your travel date, group size, hotel area if known,
+            and what kind of tour you are hoping for. A rough idea is enough. I can suggest a simple
+            plan from there.
           </p>
 
           <div className="contact-points">
             <span>Date</span>
             <span>Group size</span>
+            <span>Hotel or meeting area</span>
             <span>Kyoto only or beyond Kyoto</span>
             <span>Family or senior-friendly needs</span>
-            <span>Weekend/holiday or weekday</span>
+            <span>Walking pace</span>
           </div>
 
           <form action={formAction} method="POST" className="contact-form">
