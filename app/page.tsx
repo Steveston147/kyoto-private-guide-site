@@ -38,13 +38,8 @@ const whoItems = [
 const guideItems = [
   {
     name: "Don",
-    role: "Main guide",
-    text: "Born and raised in Kyoto, Don is a licensed guide known for his calm and reliable approach. He personally handles tours whenever available and is the first point of contact for bookings.\n\nHe spent over 20 years in Vancouver, where he also worked as a guide, building strong international experience.\n\nAs a father of two daughters, he understands the importance of flexibility, comfort, and thoughtful pacing for families and senior travellers.",
-  },
-  {
-    name: "Mai",
-    role: "Guide by enquiry",
-    text: "Kyoto-born and educated at a well-known university in Kyoto. She has rich international experience and strong university teaching experience, and works fluently in both American English and Japanese.\n\nShe may be arranged by enquiry, especially when Don is unavailable. She can also support interviews for TV, magazines, and other media.",
+    role: "Private guide",
+    text: "Born and raised in Kyoto, Don is a licensed guide known for his calm and reliable approach. He personally handles enquiries and tours.\n\nHe spent over 20 years in Vancouver, where he also worked as a guide, building strong international experience.\n\nAs a father of two daughters, he understands the importance of flexibility, comfort, and thoughtful pacing for families and senior travellers.",
   },
 ];
 
@@ -202,7 +197,7 @@ const faqItems = [
   },
   {
     q: "Who will guide us?",
-    a: "Don is the main guide. If Don is not available, Mai may be arranged by enquiry depending on the date and type of visit.",
+    a: "Don will guide you. If Don is not available on your preferred date, I may suggest another possible date.",
   },
   {
     q: "Are weekdays available?",
@@ -383,7 +378,7 @@ export default function Page() {
 
         <nav className="site-nav" aria-label="Primary">
           <a href="#about">About</a>
-          <a href="#guides">Guides</a>
+          <a href="#guides">Guide</a>
           <a href="#guests">Guests</a>
           <a href="#availability">Availability</a>
           <a href="#tours">Tours</a>
@@ -517,8 +512,8 @@ export default function Page() {
 
       <section className="content-section" id="guides">
         <div className="section-head">
-          <p className="section-kicker">Guides</p>
-          <h2>Don first, with Mai available by enquiry</h2>
+          <p className="section-kicker">Guide</p>
+          <h2>Your private guide: Don Tanaka</h2>
         </div>
 
         <div className="card-grid two">
@@ -532,8 +527,8 @@ export default function Page() {
         </div>
 
         <p className="section-note">
-          Don is the main guide for bookings. If Don is not available, Mai may be arranged
-          depending on the date and your needs.
+          Don is the guide for bookings. Availability depends on the date, group size, and type of
+          visit.
         </p>
       </section>
 
@@ -570,8 +565,7 @@ export default function Page() {
               </span>
             </div>
             <p className="availability-note">
-              Final availability depends on the date, group type, and guide schedule. Mai is
-              arranged on an enquiry basis.
+              Final availability depends on the date, group type, and Don&apos;s schedule.
             </p>
           </div>
 
@@ -743,27 +737,27 @@ export default function Page() {
         <div className="pricing-grid">
           <article className="price-card">
             <h3>Half Day</h3>
-            <div className="price">¥30,000</div>
-            <p>Up to 4 hours / Approx. US$200</p>
+            <div className="price">¥40,000</div>
+            <p>Up to 4 hours / Approx. US$270</p>
           </article>
 
           <article className="price-card featured">
             <div className="price-badge">Most requested</div>
             <h3>Full Day</h3>
-            <div className="price">¥60,000</div>
-            <p>Up to 8 hours / Approx. US$400</p>
+            <div className="price">¥80,000</div>
+            <p>Up to 8 hours / Approx. US$535</p>
           </article>
 
           <article className="price-card">
             <h3>Extra Hour</h3>
-            <div className="price">¥7,500</div>
-            <p>Per additional hour / Approx. US$50</p>
+            <div className="price">¥10,000</div>
+            <p>Per additional hour / Approx. US$70</p>
           </article>
         </div>
 
         <p className="pricing-note">
-          Rates are per guide, not per person. The guide fee stays the same whether your group is 1
-          guest or 10 guests.
+          Don&apos;s guide rate is ¥10,000 per hour. Rates are per guide, not per person. The guide
+          fee stays the same whether your group is 1 guest or 10 guests.
         </p>
 
         <p className="pricing-note">
