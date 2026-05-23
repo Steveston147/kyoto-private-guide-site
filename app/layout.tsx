@@ -7,35 +7,52 @@ import { Inter } from 'next/font/google';
 
 const inter = Inter({ subsets: ['latin'] });
 
+const siteUrl = 'https://www.umaacademia.com';
+const siteName = 'Kyoto Private Guide';
+const title = 'Private Kyoto Guide | Don Tanaka, Licensed Guide Interpreter';
+const description =
+  'Private Kyoto tours by Don Tanaka, a Kyoto-born National Government Licensed Guide Interpreter. Calm, flexible, family-friendly and senior-friendly guiding in Kyoto, Osaka and Nara.';
+
 export const metadata: Metadata = {
-  metadataBase: new URL('https://www.umaacademia.com'),
+  metadataBase: new URL(siteUrl),
+  applicationName: siteName,
   title: {
-    default: 'Kyoto Private Guide | Don Tanaka',
-    template: '%s | Kyoto Private Guide',
+    default: title,
+    template: `%s | ${siteName}`,
   },
-  description:
-    'Private guide service in Kyoto by Don Tanaka, a Kyoto-born licensed guide. Calm, flexible, family-friendly and senior-friendly tours in Kyoto, Osaka and Nara.',
+  description,
   keywords: [
     'Kyoto private guide',
-    'Kyoto licensed guide',
-    'Kyoto tour guide',
+    'private Kyoto guide',
+    'licensed Kyoto guide',
+    'Kyoto licensed guide interpreter',
+    'National Government Licensed Guide Interpreter Kyoto',
+    'Kyoto-born guide',
+    'Kyoto private tour',
+    'private Kyoto tour',
+    'Kyoto walking tour',
     'family friendly Kyoto tour',
     'senior friendly Kyoto guide',
-    'private Kyoto tour',
-    'Kyoto guide service',
-    'Osaka private guide',
+    'Gion private tour',
+    'Fushimi Inari private guide',
+    'Arashiyama private tour',
     'Nara private guide',
+    'Osaka private guide',
     'Don Tanaka',
   ],
-  authors: [{ name: 'Don Tanaka' }],
+  authors: [{ name: 'Don Tanaka', url: siteUrl }],
   creator: 'Don Tanaka',
-  publisher: 'Kyoto Private Guide',
+  publisher: siteName,
+  category: 'travel',
+  alternates: {
+    canonical: siteUrl,
+  },
   openGraph: {
-    title: 'Kyoto Private Guide | Don Tanaka',
+    title,
     description:
-      'A calm and flexible private guide service in Kyoto for families, senior travellers, students and visitors who want a personal Kyoto day.',
-    url: 'https://www.umaacademia.com',
-    siteName: 'Kyoto Private Guide',
+      'A calm and flexible private guide service in Kyoto by Don Tanaka, a Kyoto-born licensed guide. Good for families, senior travellers, students and visitors who want a personal Kyoto day.',
+    url: siteUrl,
+    siteName,
     images: [
       {
         url: '/kyoto-hero.jpg',
@@ -49,13 +66,21 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Kyoto Private Guide | Don Tanaka',
+    title,
     description:
-      'Private Kyoto guide service by Don Tanaka. Calm, flexible, family-friendly and senior-friendly tours.',
+      'Private Kyoto tours by Don Tanaka, a Kyoto-born licensed guide. Calm, flexible, family-friendly and senior-friendly.',
     images: ['/kyoto-hero.jpg'],
   },
-  alternates: {
-    canonical: 'https://www.umaacademia.com',
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+      'max-video-preview': -1,
+    },
   },
 };
 
