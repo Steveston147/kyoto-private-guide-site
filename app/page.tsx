@@ -182,7 +182,7 @@ const modelRoutes = [
     isNightOut: false,
   },
   {
-    title: "Kyoto Night Out: Izakaya & Karaoke",
+    title: "Kyoto Night Out: Izakaya, Karaoke & Local Fun",
     time: "About 3 to 4 hours in the evening",
     bestFor: "Adults who want a fun, casual, local-style night in Kyoto.",
     route:
@@ -804,10 +804,10 @@ export default function Page() {
                     textTransform: "uppercase",
                   }}
                 >
-                  Evening fun route
+                  Kanpai night route
                 </div>
               ) : null}
-              <h3>{item.isNightOut ? `$D83C$DF76 ${item.title} $D83C$DFA4` : item.title}</h3>
+              <h3>{item.title}</h3>
 
               <div
                 aria-label={`${item.title} simple route flow`}
