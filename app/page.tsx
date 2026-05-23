@@ -132,17 +132,19 @@ const modelRoutes = [
     bestFor: "First-time visitors who want classic Kyoto without feeling rushed.",
     route:
       "Kiyomizu-dera area → Sannenzaka and Ninenzaka → Yasaka Shrine → Gion or Kennin-ji area",
+    stops: ["Kiyomizu-dera", "Sannenzaka", "Ninenzaka", "Yasaka Shrine", "Gion"],
     notes:
-      "This route gives a clear first impression of Kyoto: temple views, old streets, local atmosphere, and a calm walk through the Higashiyama and Gion area. It can be adjusted for morning or afternoon timing.",
+      "A classic first Kyoto route with temple views, old streets, and Gion atmosphere. Good for a morning or afternoon tour.",
   },
   {
     title: "Senior-Friendly Kyoto One-Day Route",
     time: "About 6 to 7 hours",
     bestFor: "Senior travellers, couples, or families who prefer a slower and easier pace.",
     route:
-      "Nijo Castle or Kinkaku-ji → simple lunch break → Arashiyama riverside area → optional short temple visit",
+      "Nijo Castle or Kinkaku-ji → lunch break → Arashiyama riverside area → optional short temple visit",
+    stops: ["Nijo Castle", "Lunch", "Arashiyama", "Riverside Walk", "Optional Temple"],
     notes:
-      "This plan keeps the day comfortable, with fewer steep streets, more rest time, and taxi use when helpful. The goal is not to visit too many places, but to enjoy Kyoto with confidence and less stress.",
+      "A slower route with fewer steep streets, more rest time, and taxi use when helpful. The focus is comfort, not rushing.",
   },
   {
     title: "Family-Friendly Kyoto Route",
@@ -150,8 +152,9 @@ const modelRoutes = [
     bestFor: "Families with children or teenagers who want variety, photos, food, and culture.",
     route:
       "Fushimi Inari → Nishiki Market or simple local lunch → Yasaka Shrine and Gion area → optional sweets or matcha stop",
+    stops: ["Fushimi Inari", "Lunch or Nishiki", "Yasaka Shrine", "Gion", "Sweets or Matcha"],
     notes:
-      "This route mixes famous sights, light walking, food, photo opportunities, and flexible breaks. It works well for mixed-age families because the pace and stops can be changed during the day.",
+      "A flexible family route with famous sights, food, photo stops, and easy breaks. The pace can be changed during the day.",
   },
 ];
 
@@ -731,6 +734,68 @@ export default function Page() {
           {modelRoutes.map((item) => (
             <article className="info-card" key={item.title}>
               <h3>{item.title}</h3>
+
+              <div
+                aria-label={`${item.title} simple route map`}
+                style={{
+                  margin: "14px 0 16px",
+                  padding: "14px",
+                  borderRadius: "16px",
+                  border: "1px solid #eadfce",
+                  background: "#fffaf4",
+                }}
+              >
+                <div
+                  style={{
+                    display: "flex",
+                    flexWrap: "wrap",
+                    alignItems: "center",
+                    gap: "8px",
+                  }}
+                >
+                  {item.stops.map((stop, index) => (
+                    <span
+                      key={stop}
+                      style={{
+                        display: "inline-flex",
+                        alignItems: "center",
+                        gap: "8px",
+                      }}
+                    >
+                      <span
+                        style={{
+                          display: "inline-flex",
+                          alignItems: "center",
+                          justifyContent: "center",
+                          minHeight: "34px",
+                          padding: "7px 10px",
+                          borderRadius: "999px",
+                          background: "#f3e4cf",
+                          border: "1px solid #e1cfb8",
+                          color: "#5b5045",
+                          fontSize: "0.88rem",
+                          fontWeight: 700,
+                          lineHeight: 1.25,
+                        }}
+                      >
+                        {index + 1}. {stop}
+                      </span>
+                      {index < item.stops.length - 1 ? (
+                        <span
+                          aria-hidden="true"
+                          style={{
+                            color: "#9f7342",
+                            fontWeight: 800,
+                          }}
+                        >
+                          →
+                        </span>
+                      ) : null}
+                    </span>
+                  ))}
+                </div>
+              </div>
+
               <p>
                 <strong>Time:</strong> {item.time}
               </p>
@@ -748,8 +813,8 @@ export default function Page() {
         </div>
 
         <p className="section-note">
-          These free model routes are sample ideas only. I can adjust the route for your hotel
-          area, season, walking pace, group size, weather, and interests.
+          These are simple sample route maps, not exact walking maps. I can adjust the route for
+          your hotel area, season, walking pace, group size, weather, and interests.
         </p>
 
         <div className="hero-actions">
