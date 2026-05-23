@@ -1079,8 +1079,8 @@ export default function Page() {
         <div className="contact-card">
           <p>
             Please send me a short message with your travel date, group size, hotel area if known,
-            and what kind of tour you are hoping for. A rough idea is enough. I can suggest a simple
-            plan from there.
+            and what kind of tour you are hoping for. You can also choose one of the model routes
+            above. A rough idea is enough, and I can suggest a simple plan from there.
           </p>
 
           <div className="contact-points">
@@ -1088,6 +1088,7 @@ export default function Page() {
             <span>Group size</span>
             <span>Hotel or meeting area</span>
             <span>Kyoto only or beyond Kyoto</span>
+            <span>Preferred model route</span>
             <span>Family or senior-friendly needs</span>
             <span>Walking pace</span>
           </div>
@@ -1114,6 +1115,44 @@ export default function Page() {
               <div className="form-field">
                 <label htmlFor="group-size">Group size</label>
                 <input id="group-size" name="group_size" type="text" />
+              </div>
+
+              <div className="form-field">
+                <label htmlFor="route-interest">Which route are you interested in?</label>
+                <select
+                  id="route-interest"
+                  name="route_interest"
+                  defaultValue=""
+                  style={{
+                    width: "100%",
+                    border: "1px solid #ddcfbc",
+                    borderRadius: "16px",
+                    background: "rgba(255, 255, 255, 0.9)",
+                    padding: "14px 15px",
+                    color: "#2f2a24",
+                  }}
+                >
+                  <option value="" disabled>
+                    Please choose one if you know
+                  </option>
+                  <option value="First-Time Kyoto Half-Day Route">
+                    First-Time Kyoto Half-Day Route
+                  </option>
+                  <option value="Senior-Friendly Kyoto One-Day Route">
+                    Senior-Friendly Kyoto One-Day Route
+                  </option>
+                  <option value="Family-Friendly Kyoto Route">Family-Friendly Kyoto Route</option>
+                  <option value="Nijo Castle & Kyoto History Route">
+                    Nijo Castle & Kyoto History Route
+                  </option>
+                  <option value="Quiet Kyoto Garden & Tea Route">
+                    Quiet Kyoto Garden & Tea Route
+                  </option>
+                  <option value="Kyoto Night Out: Izakaya, Karaoke & Local Fun">
+                    Kyoto Night Out: Izakaya, Karaoke & Local Fun
+                  </option>
+                  <option value="Not sure yet">Not sure yet</option>
+                </select>
               </div>
 
               <div className="form-field">
