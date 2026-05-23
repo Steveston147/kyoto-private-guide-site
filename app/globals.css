@@ -870,7 +870,7 @@ textarea {
 }
 
 .faq-item[open] .faq-question::after {
-  content: "$2212";
+  content: "-";
 }
 
 .faq-answer {
