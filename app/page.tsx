@@ -789,6 +789,26 @@ export default function Page() {
           Japanese yen is easiest for payment. US dollars may also be possible by agreement. The US
           dollar amounts above are approximate and may change depending on the exchange rate.
         </p>
+
+        <div className="pricing-cta-card">
+          <div className="pricing-cta-copy">
+            <p className="pricing-cta-kicker">Ready to check a date?</p>
+            <h3>Send a short enquiry and I will suggest a simple plan.</h3>
+            <p>
+              Please tell me your preferred date, group size, hotel area if known, and what kind of
+              Kyoto day you are hoping for. A rough idea is enough.
+            </p>
+          </div>
+
+          <div className="pricing-cta-actions">
+            <a className="btn btn-primary" href="#contact">
+              Send an enquiry
+            </a>
+            <a className="btn btn-secondary" href={mailto}>
+              Email directly
+            </a>
+          </div>
+        </div>
       </section>
 
       <section className="content-section" id="faq">
@@ -799,10 +819,10 @@ export default function Page() {
 
         <div className="faq-list">
           {faqItems.map((item) => (
-            <article className="faq-item" key={item.q}>
-              <h3>{item.q}</h3>
-              <p>{item.a}</p>
-            </article>
+            <details className="faq-item" key={item.q}>
+              <summary className="faq-question">{item.q}</summary>
+              <p className="faq-answer">{item.a}</p>
+            </details>
           ))}
         </div>
       </section>
