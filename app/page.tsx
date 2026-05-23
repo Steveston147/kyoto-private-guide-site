@@ -736,7 +736,7 @@ export default function Page() {
               <h3>{item.title}</h3>
 
               <div
-                aria-label={`${item.title} simple route map`}
+                aria-label={`${item.title} simple route flow`}
                 style={{
                   margin: "14px 0 16px",
                   padding: "14px",
@@ -747,51 +747,67 @@ export default function Page() {
               >
                 <div
                   style={{
-                    display: "flex",
-                    flexWrap: "wrap",
-                    alignItems: "center",
-                    gap: "8px",
+                    display: "grid",
+                    gap: "7px",
                   }}
                 >
                   {item.stops.map((stop, index) => (
-                    <span
-                      key={stop}
-                      style={{
-                        display: "inline-flex",
-                        alignItems: "center",
-                        gap: "8px",
-                      }}
-                    >
-                      <span
+                    <div key={stop}>
+                      <div
                         style={{
-                          display: "inline-flex",
+                          display: "flex",
                           alignItems: "center",
-                          justifyContent: "center",
-                          minHeight: "34px",
-                          padding: "7px 10px",
-                          borderRadius: "999px",
-                          background: "#f3e4cf",
-                          border: "1px solid #e1cfb8",
-                          color: "#5b5045",
-                          fontSize: "0.88rem",
-                          fontWeight: 700,
-                          lineHeight: 1.25,
+                          gap: "10px",
                         }}
                       >
-                        {index + 1}. {stop}
-                      </span>
-                      {index < item.stops.length - 1 ? (
                         <span
-                          aria-hidden="true"
                           style={{
-                            color: "#9f7342",
+                            display: "inline-flex",
+                            alignItems: "center",
+                            justifyContent: "center",
+                            width: "28px",
+                            height: "28px",
+                            flex: "0 0 28px",
+                            borderRadius: "999px",
+                            background: "#9f7342",
+                            color: "#ffffff",
+                            fontSize: "0.82rem",
                             fontWeight: 800,
+                            lineHeight: 1,
                           }}
                         >
-                          →
+                          {index + 1}
                         </span>
+                        <span
+                          style={{
+                            display: "inline-flex",
+                            alignItems: "center",
+                            minHeight: "34px",
+                            padding: "7px 11px",
+                            borderRadius: "999px",
+                            background: "#f3e4cf",
+                            border: "1px solid #e1cfb8",
+                            color: "#5b5045",
+                            fontSize: "0.9rem",
+                            fontWeight: 700,
+                            lineHeight: 1.25,
+                          }}
+                        >
+                          {stop}
+                        </span>
+                      </div>
+
+                      {index < item.stops.length - 1 ? (
+                        <div
+                          aria-hidden="true"
+                          style={{
+                            marginLeft: "13px",
+                            height: "18px",
+                            borderLeft: "2px solid #d8c3a7",
+                          }}
+                        />
                       ) : null}
-                    </span>
+                    </div>
                   ))}
                 </div>
               </div>
@@ -813,7 +829,7 @@ export default function Page() {
         </div>
 
         <p className="section-note">
-          These are simple sample route maps, not exact walking maps. I can adjust the route for
+          These are simple route-flow ideas, not exact walking maps. I can adjust the route for
           your hotel area, season, walking pace, group size, weather, and interests.
         </p>
 
