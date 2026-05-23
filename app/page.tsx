@@ -420,6 +420,7 @@ function buildCalendarWindow(baseYear: number, baseMonth: number, windowOffset: 
 export default function Page() {
   const [today, setToday] = useState<Date | null>(null);
   const [windowOffset, setWindowOffset] = useState(0);
+  const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(null);
 
   useEffect(() => {
     setToday(new Date());
@@ -437,11 +438,6 @@ export default function Page() {
 
   return (
     <main className="page-shell">
-      <style>{`
-        .faq-item[open] .faq-question::after {
-          content: "-" !important;
-        }
-      `}</style>
       <header className="site-header">
         <a href="#top" className="brand" aria-label="Don Tanaka home">
           <div className="brand-title">Kyoto Guide Service</div>
@@ -1019,12 +1015,58 @@ export default function Page() {
         </div>
 
         <div className="faq-list">
-          {faqItems.map((item) => (
-            <details className="faq-item" key={item.q}>
-              <summary className="faq-question">{item.q}</summary>
-              <p className="faq-answer">{item.a}</p>
-            </details>
-          ))}
+          {faqItems.map((item, index) => {
+            const isOpen = openFaqIndex === index;
+
+            return (
+              <article className="faq-item" key={item.q}>
+                <button
+                  type="button"
+                  onClick={() => setOpenFaqIndex(isOpen ? null : index)}
+                  aria-expanded={isOpen}
+                  style={{
+                    width: "100%",
+                    border: "none",
+                    background: "transparent",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "space-between",
+                    gap: "16px",
+                    padding: "20px 20px",
+                    color: "#2f2a24",
+                    fontSize: "1.02rem",
+                    fontWeight: 700,
+                    lineHeight: 1.45,
+                    textAlign: "left",
+                    cursor: "pointer",
+                  }}
+                >
+                  <span>{item.q}</span>
+                  <span
+                    aria-hidden="true"
+                    style={{
+                      display: "inline-flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      width: "28px",
+                      height: "28px",
+                      flex: "0 0 28px",
+                      borderRadius: "999px",
+                      background: "#f3e4cf",
+                      color: "#7b5730",
+                      fontSize: "1.1rem",
+                      fontWeight: 800,
+                      lineHeight: 1,
+                    }}
+                  >
+                    {isOpen ? "-" : "+"}
+                  </span>
+                </button>
+
+                {isOpen ? <p className="faq-answer">{item.a}</p> : null}
+              </article>
+            );
+          })}
         </div>
       </section>
 
