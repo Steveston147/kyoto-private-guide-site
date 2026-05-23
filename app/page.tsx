@@ -437,6 +437,11 @@ export default function Page() {
 
   return (
     <main className="page-shell">
+      <style>{`
+        .faq-item[open] .faq-question::after {
+          content: "-" !important;
+        }
+      `}</style>
       <header className="site-header">
         <a href="#top" className="brand" aria-label="Don Tanaka home">
           <div className="brand-title">Kyoto Guide Service</div>
