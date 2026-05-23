@@ -11,56 +11,56 @@ const formAction = "https://formspree.io/f/mykdbwbl";
 
 const whyItems = [
   {
-    title: "Licensed and reliable",
-    text: "I am a licensed guide in Japan, and I value clear communication, punctuality, and a calm, professional approach.",
+    title: "Licensed private guide in Kyoto",
+    text: "I am a National Government Licensed Guide Interpreter. I value clear communication, punctuality, and a calm, professional guiding style.",
   },
   {
-    title: "Deep Kyoto knowledge",
-    text: "I was born and raised in Kyoto. I can guide you through famous places and also quieter areas with local meaning.",
+    title: "Kyoto-born local insight",
+    text: "I was born and raised in Kyoto. I can introduce famous sights, quiet corners, local manners, and the small details that make Kyoto easier to understand.",
   },
   {
-    title: "University and international experience",
-    text: "I have long experience in international education and cross-cultural support, so I understand practical needs as well as sightseeing.",
+    title: "International background",
+    text: "I have long experience supporting overseas guests, students, faculty members, and international visitors. I understand both sightseeing needs and practical travel concerns.",
   },
   {
-    title: "Flexible support",
-    text: "We can adjust the pace, route, transport, and rest breaks for families, senior travellers, academic visitors, and media needs.",
+    title: "Comfortable and flexible pace",
+    text: "Tours can be adjusted for families, senior travellers, first-time visitors, academic guests, corporate visitors, and guests who prefer a slower and more personal day.",
   },
 ];
 
 const whoItems = [
   "First-time visitors to Kyoto",
-  "Families with children",
-  "Senior travellers who prefer a slower pace",
-  "Guests who want a calm and personal day",
+  "Families and senior travellers",
+  "Guests looking for a calm private Kyoto tour",
+  "University, corporate, and cultural visitors",
 ];
 
 const guideItems = [
   {
-    name: "Don",
-    role: "Private guide",
-    text: "Born and raised in Kyoto, Don is a licensed guide known for his calm and reliable approach. He personally handles enquiries and tours.\n\nHe spent over 20 years in Vancouver, where he also worked as a guide, building strong international experience.\n\nAs a father of two daughters, he understands the importance of flexibility, comfort, and thoughtful pacing for families and senior travellers.",
+    name: "Don Tanaka",
+    role: "Kyoto-born licensed private guide",
+    text: "Don is a Kyoto-born guide with strong international experience and a calm, practical style. He personally handles enquiries and guides the tours. His background includes guiding, cross-cultural support, university-related international work, and many years of Canada-related experience. His goal is to make your Kyoto day easy to enjoy, not rushed, and meaningful.",
   },
 ];
 
 const guestItems = [
   {
-    text: "Don was kind, knowledgeable, and very easy to talk to. He explained Kyoto in a clear and friendly way, and our day never felt rushed. We could enjoy temples, local streets, and small cultural details at a relaxed pace.",
+    text: "Clear explanations without too much information at once.",
   },
   {
-    text: "We felt relaxed and well looked after throughout the day. Don helped us understand where to go, how to move around, and when to take breaks. It made our Kyoto visit much easier and much more enjoyable.",
+    text: "A comfortable walking pace with practical breaks when needed.",
   },
   {
-    text: "He made Kyoto easy to enjoy, even for first-time visitors. The route was simple to follow, the explanations were helpful, and we felt comfortable asking questions at any time during the tour.",
+    text: "Simple route planning that reduces stress for first-time visitors.",
   },
   {
-    text: "Don was flexible, thoughtful, and very professional. He adjusted the plan based on our interests and energy level, and he always explained the next steps clearly so we could enjoy the day without stress.",
+    text: "Flexible support for families, senior travellers, and mixed-age groups.",
   },
   {
-    text: "Our family had a wonderful and comfortable day. Don understood what we needed, including slower walking, practical transport, and time to rest. His calm style was a very good match for our group.",
+    text: "Local Kyoto insight beyond guidebook-level information.",
   },
   {
-    text: "We would happily recommend Don to anyone visiting Kyoto. He gave us a personal and meaningful experience, with a good balance between famous places, quieter moments, and useful local advice.",
+    text: "Calm communication before and during the tour.",
   },
 ];
 
@@ -88,7 +88,7 @@ const scenicItems = [
   {
     img: "/kyoto/gion-yasaka.jpg",
     title: "Gion & Yasaka Area",
-    text: "Traditional Kyoto streets, quieter corners, and easy cultural atmosphere.",
+    text: "Traditional streets, quiet corners, and an easy introduction to Kyoto culture.",
   },
   {
     img: "/kyoto/nijo-castle.jpg",
@@ -99,39 +99,39 @@ const scenicItems = [
 
 const tourItems = [
   {
-    title: "Kyoto highlights",
-    text: "A classic day covering major Kyoto sights at a comfortable pace.",
+    title: "Private Kyoto highlights",
+    text: "A classic Kyoto walking tour for first-time visitors, including temples, traditional streets, local culture, and easy-to-understand background.",
   },
   {
-    title: "Beyond Kyoto",
-    text: "Day trips or custom routes in nearby areas such as Osaka or Nara.",
+    title: "Gion, Higashiyama, and old Kyoto",
+    text: "A calm route through traditional streets, shrines, temples, and quiet corners with a strong Kyoto atmosphere.",
   },
   {
-    title: "Families",
-    text: "Easy-going tours with flexible timing, breaks, and child-friendly planning.",
+    title: "Fushimi Inari and southern Kyoto",
+    text: "A flexible visit to the famous torii gates, with timing and walking distance adjusted to your group.",
   },
   {
-    title: "Senior travellers",
-    text: "Slow-paced guiding with more rest stops and simple transport choices.",
+    title: "Arashiyama nature and culture",
+    text: "A slower-paced route with riverside scenery, bamboo grove areas, temples, and seasonal beauty.",
   },
   {
-    title: "Students and academic groups",
-    text: "Support for educational visits, cultural learning, and university-related travel.",
+    title: "Family and senior-friendly Kyoto",
+    text: "Shorter walks, more breaks, simple transport, and a route designed around comfort and confidence.",
   },
   {
-    title: "Media and special visits",
-    text: "Support for interviews, filming-related visits, and guests who need bilingual communication.",
+    title: "Educational, corporate, and special visits",
+    text: "Support for university groups, cultural learning, administrative visits, company visits, media-related visits, and bilingual communication needs.",
   },
 ];
 
 const sampleCourses = [
   {
     title: "Kyoto Highlights Full Day",
-    text: "A balanced full-day route for first-time visitors who want temples, traditional streets, and a clear overview of Kyoto.",
+    text: "A balanced full-day route for first-time visitors who want temples, traditional streets, local culture, and a clear overview of Kyoto.",
   },
   {
-    title: "Arashiyama Nature and Culture Day",
-    text: "A slower day with bamboo grove areas, riverside scenery, temples, and time to enjoy Kyoto’s softer side.",
+    title: "Old Kyoto Half Day",
+    text: "A compact route around Higashiyama, Gion, Yasaka, and nearby traditional streets. Good for guests with limited time.",
   },
   {
     title: "Family or Senior-Friendly Kyoto Day",
@@ -143,26 +143,34 @@ const processItems = [
   {
     step: "1",
     title: "Send me a message",
-    text: "Tell me your date, group size, and what kind of day you hope to have.",
+    text: "Tell me your date, group size, hotel area if known, and what kind of day you hope to have.",
   },
   {
     step: "2",
     title: "I suggest a simple plan",
-    text: "I will reply with an idea that matches your pace, interests, and practical needs.",
+    text: "I will reply with a route idea that matches your pace, interests, and practical needs.",
   },
   {
     step: "3",
     title: "We adjust together",
-    text: "We can fine-tune the route, transport, breaks, and lunch plan before the day.",
+    text: "We can fine-tune the route, transport, walking distance, breaks, and lunch plan before the day.",
   },
   {
     step: "4",
     title: "Enjoy Kyoto with confidence",
-    text: "On the day, I guide calmly and clearly so you can focus on enjoying the experience.",
+    text: "On the day, I guide calmly and clearly so you can focus on enjoying Kyoto.",
   },
 ];
 
 const faqItems = [
+  {
+    q: "Are you a licensed guide?",
+    a: "Yes. I am a National Government Licensed Guide Interpreter in Japan.",
+  },
+  {
+    q: "Is this a private tour?",
+    a: "Yes. My tours are private. I guide your group only, so the route and pace can be adjusted more easily.",
+  },
   {
     q: "Can you customise the tour?",
     a: "Yes. I can adjust the route based on your interests, pace, age group, walking comfort, and travel style.",
@@ -174,6 +182,10 @@ const faqItems = [
   {
     q: "How long is a half-day or full-day tour?",
     a: "A half-day tour is usually up to 4 hours. A full-day tour is usually up to 8 hours. The exact timing can be adjusted when we plan your day.",
+  },
+  {
+    q: "How many people can join?",
+    a: "Small private groups are best. Groups of 1 to 6 are usually comfortable. Larger groups may also be possible depending on the route and purpose.",
   },
   {
     q: "How do we get around?",
@@ -196,8 +208,12 @@ const faqItems = [
     a: "Yes. I can also arrange guiding for nearby areas such as Osaka or Nara depending on the plan and schedule.",
   },
   {
+    q: "Do you support educational or corporate visits?",
+    a: "Yes. I can support university-related visits, cultural learning, administrative visits, company visits, and bilingual communication needs. Please share the purpose in your enquiry.",
+  },
+  {
     q: "Who will guide us?",
-    a: "Don will guide you. If Don is not available on your preferred date, I may suggest another possible date.",
+    a: "Don Tanaka will guide you. If I am not available on your preferred date, I may suggest another possible date.",
   },
   {
     q: "Are weekdays available?",
@@ -209,15 +225,7 @@ const faqItems = [
   },
   {
     q: "How much walking is involved?",
-    a: "That depends on the route, but I can reduce walking, add taxi use when needed, and plan more breaks if your group prefers a slower pace.",
-  },
-  {
-    q: "Can children join?",
-    a: "Yes. I can make the day easier for children with more flexible timing, lighter walking, and a relaxed plan.",
-  },
-  {
-    q: "Does the price change by group size?",
-    a: "No. The rate is per guide, not per person. The guide fee is the same whether you are 1 guest or 10 guests.",
+    a: "That depends on the route. I can reduce walking, add taxi use when needed, and plan more breaks if your group prefers a slower pace.",
   },
   {
     q: "What is not included in the guide fee?",
@@ -229,7 +237,7 @@ const faqItems = [
   },
   {
     q: "How should I contact you?",
-    a: "You can use the contact form or email me directly. Please tell me your date, group size, hotel area if known, and what kind of day you want.",
+    a: "You can use the contact form or email me directly. Please tell me your date, group size, hotel area if known, walking pace, and what kind of day you want.",
   },
 ];
 
@@ -373,13 +381,13 @@ export default function Page() {
       <header className="site-header">
         <a href="#top" className="brand" aria-label="Don Tanaka home">
           <div className="brand-title">Kyoto Guide Service</div>
-          <div className="brand-subtitle">Kyoto Private Guide</div>
+          <div className="brand-subtitle">Private Kyoto Guide</div>
         </a>
 
         <nav className="site-nav" aria-label="Primary">
           <a href="#about">About</a>
           <a href="#guides">Guide</a>
-          <a href="#guests">Guests</a>
+          <a href="#guests">Style</a>
           <a href="#availability">Availability</a>
           <a href="#tours">Tours</a>
           <a href="#kyoto-scenes">Kyoto</a>
@@ -391,18 +399,18 @@ export default function Page() {
 
       <section className="hero-section" id="top">
         <div className="hero-copy">
-          <p className="eyebrow">Kyoto-born and Kyoto-raised</p>
+          <p className="eyebrow">Kyoto-born licensed private guide</p>
           <h1>
-            Not rushed.
+            Private Kyoto tours,
             <br />
-            Not confusing.
+            calmly guided by
             <br />
-            Just a calm Kyoto day with a guide you can trust.
+            a local you can trust.
           </h1>
           <p className="hero-text">
-            I guide families, senior travellers, students, and visitors who want a relaxed and
-            meaningful day in Kyoto. My style is simple: clear communication, a comfortable pace,
-            and a plan that feels personal.
+            I guide families, senior travellers, first-time visitors, and international guests who
+            want a relaxed and meaningful Kyoto experience. The plan is private, flexible, and easy
+            to understand from the first message to the tour day.
           </p>
 
           <div className="hero-actions">
@@ -424,10 +432,10 @@ export default function Page() {
           </div>
 
           <div className="badge-row">
+            <span>National Government Licensed Guide Interpreter</span>
             <span>Kyoto-born and Kyoto-raised</span>
-            <span>10+ years of guiding in Japan</span>
-            <span>Canada-related experience</span>
-            <span>Senior-friendly and family-friendly</span>
+            <span>Family and senior-friendly</span>
+            <span>Kyoto / Osaka / Nara</span>
           </div>
         </div>
 
@@ -456,7 +464,7 @@ export default function Page() {
 
       <section className="content-section">
         <div className="section-head">
-          <p className="section-kicker">Why guide with us</p>
+          <p className="section-kicker">Why guide with me</p>
           <h2>Clear, calm, and personal support</h2>
         </div>
 
@@ -480,7 +488,7 @@ export default function Page() {
           <div className="about-photo-card">
             <img
               src="/don.jpg"
-              alt="Don Tanaka in traditional Japanese clothing"
+              alt="Don Tanaka, private guide in Kyoto"
               className="about-photo"
               loading="eager"
               decoding="async"
@@ -493,18 +501,19 @@ export default function Page() {
               years.
             </p>
             <p>
-              I also have many years of Canada-related experience, and I have worked in
-              international education at a university. Because of that background, I am used to
-              supporting guests from overseas in a practical and thoughtful way.
+              I am a National Government Licensed Guide Interpreter. I also have many years of
+              Canada-related experience and international education work at a university, where I
+              have supported overseas students, faculty members, and visitors from many countries.
             </p>
             <p>
-              I am a father of two daughters, and I also have an elderly mother. This has made me
-              especially aware of how important pace, rest, and comfort can be for family groups
-              and senior travellers.
+              This background helps me guide not only sightseeing guests, but also families, senior
+              travellers, academic groups, corporate visitors, and people who need clear bilingual
+              support.
             </p>
             <p>
-              My goal is simple: to help you enjoy Kyoto with confidence, without stress, and in a
-              way that feels personal.
+              My style is calm and practical. I do not try to rush you through too many places. I
+              prefer to make the day comfortable, clear, and meaningful, with enough time to enjoy
+              Kyoto properly.
             </p>
           </div>
         </div>
@@ -527,15 +536,15 @@ export default function Page() {
         </div>
 
         <p className="section-note">
-          Don is the guide for bookings. Availability depends on the date, group size, and type of
-          visit.
+          Don personally handles enquiries and guides the tours. Availability depends on the date,
+          group size, and type of visit.
         </p>
       </section>
 
       <section className="content-section" id="guests">
         <div className="section-head">
-          <p className="section-kicker">Guests</p>
-          <h2>Kind Words from Guests</h2>
+          <p className="section-kicker">Guiding style</p>
+          <h2>What guests often appreciate</h2>
         </div>
 
         <div className="guest-grid">
@@ -565,7 +574,7 @@ export default function Page() {
               </span>
             </div>
             <p className="availability-note">
-              Final availability depends on the date, group type, and Don&apos;s schedule.
+              Final availability depends on the date, group type, route, and Don&apos;s schedule.
             </p>
           </div>
 
@@ -654,8 +663,8 @@ export default function Page() {
 
       <section className="content-section" id="tours">
         <div className="section-head">
-          <p className="section-kicker">Tours and Areas</p>
-          <h2>Flexible guiding for different travellers</h2>
+          <p className="section-kicker">Tours and areas</p>
+          <h2>Flexible private guiding for different travellers</h2>
         </div>
 
         <div className="card-grid three">
@@ -697,8 +706,8 @@ export default function Page() {
 
       <section className="content-section">
         <div className="section-head">
-          <p className="section-kicker">Sample Courses</p>
-          <h2>Simple ideas for your day</h2>
+          <p className="section-kicker">Sample courses</p>
+          <h2>Simple ideas for your Kyoto day</h2>
         </div>
 
         <div className="card-grid three">
@@ -709,6 +718,11 @@ export default function Page() {
             </article>
           ))}
         </div>
+
+        <p className="section-note">
+          These are only examples. I can suggest a route after I know your date, hotel area, group
+          size, walking pace, and main interests.
+        </p>
       </section>
 
       <section className="content-section">
@@ -756,8 +770,8 @@ export default function Page() {
         </div>
 
         <p className="pricing-note">
-          Don&apos;s guide rate is ¥10,000 per hour. Rates are per guide, not per person. The guide
-          fee stays the same whether your group is 1 guest or 10 guests.
+          Don&apos;s guide rate is ¥10,000 per hour. Rates are per guide, not per person. For small
+          private groups, the guide fee stays the same regardless of the number of guests.
         </p>
 
         <p className="pricing-note">
@@ -837,11 +851,42 @@ export default function Page() {
                 <label htmlFor="group-size">Group size</label>
                 <input id="group-size" name="group_size" type="text" />
               </div>
+
+              <div className="form-field">
+                <label htmlFor="hotel-area">Hotel or meeting area</label>
+                <input id="hotel-area" name="hotel_or_meeting_area" type="text" />
+              </div>
+
+              <div className="form-field">
+                <label htmlFor="walking-pace">Preferred walking pace</label>
+                <input
+                  id="walking-pace"
+                  name="walking_pace"
+                  type="text"
+                  placeholder="Normal, slow, many breaks, etc."
+                />
+              </div>
+            </div>
+
+            <div className="form-field form-field-full">
+              <label htmlFor="interests">Places or interests</label>
+              <input
+                id="interests"
+                name="places_or_interests"
+                type="text"
+                placeholder="Gion, Fushimi Inari, temples, food, family trip, etc."
+              />
             </div>
 
             <div className="form-field form-field-full">
               <label htmlFor="message">Message</label>
-              <textarea id="message" name="message" rows={6} required />
+              <textarea
+                id="message"
+                name="message"
+                rows={6}
+                required
+                placeholder="Please tell me your rough plan, questions, or any special needs."
+              />
             </div>
 
             <div className="contact-actions contact-actions-form">
@@ -870,7 +915,7 @@ export default function Page() {
 
       <footer className="site-footer">
         <p>Don Tanaka | Kyoto Private Guide</p>
-        <p>Personal guiding in Kyoto with a calm and flexible approach.</p>
+        <p>Private Kyoto tours with a calm, flexible, and local approach.</p>
       </footer>
     </main>
   );
