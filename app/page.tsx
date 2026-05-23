@@ -135,6 +135,7 @@ const modelRoutes = [
     stops: ["Kiyomizu-dera", "Sannenzaka", "Ninenzaka", "Yasaka Shrine", "Gion"],
     notes:
       "A classic first Kyoto route with temple views, old streets, and Gion atmosphere. Good for a morning or afternoon tour.",
+    isNightOut: false,
   },
   {
     title: "Senior-Friendly Kyoto One-Day Route",
@@ -145,6 +146,7 @@ const modelRoutes = [
     stops: ["Nijo Castle", "Lunch", "Arashiyama", "Riverside Walk", "Optional Temple"],
     notes:
       "A slower route with fewer steep streets, more rest time, and taxi use when helpful. The focus is comfort, not rushing.",
+    isNightOut: false,
   },
   {
     title: "Family-Friendly Kyoto Route",
@@ -155,6 +157,40 @@ const modelRoutes = [
     stops: ["Fushimi Inari", "Lunch or Nishiki", "Yasaka Shrine", "Gion", "Sweets or Matcha"],
     notes:
       "A flexible family route with famous sights, food, photo stops, and easy breaks. The pace can be changed during the day.",
+    isNightOut: false,
+  },
+  {
+    title: "Nijo Castle & Kyoto History Route",
+    time: "About 4 to 5 hours",
+    bestFor: "Guests who enjoy history, architecture, gardens, and a calm cultural pace.",
+    route:
+      "Nijo Castle → Kyoto Gyoen National Garden → local lunch or tea break → Nishiki Market area",
+    stops: ["Nijo Castle", "Kyoto Gyoen", "Tea Break", "Nishiki Area"],
+    notes:
+      "This route is good for guests who want Kyoto history without too much walking. Nijo Castle gives a strong introduction to samurai-era architecture and political history.",
+    isNightOut: false,
+  },
+  {
+    title: "Quiet Kyoto Garden & Tea Route",
+    time: "About 4 to 6 hours",
+    bestFor: "Repeat visitors, couples, or guests who prefer quieter places and slower travel.",
+    route:
+      "Nanzen-ji area → Philosopher’s Path → quiet temple or garden → tea or coffee break",
+    stops: ["Nanzen-ji", "Philosopher’s Path", "Quiet Temple", "Tea or Coffee"],
+    notes:
+      "A gentle route for guests who want space, silence, gardens, and a slower Kyoto mood. Good for spring, autumn, or anyone who wants a break from crowded sightseeing.",
+    isNightOut: false,
+  },
+  {
+    title: "Kyoto Night Out: Izakaya & Karaoke",
+    time: "About 3 to 4 hours in the evening",
+    bestFor: "Adults who want a fun, casual, local-style night in Kyoto.",
+    route:
+      "Casual izakaya → local drinks and small dishes → karaoke → optional late-night ramen or snack",
+    stops: ["Izakaya", "Drinks & Small Dishes", "Karaoke", "Late Snack"],
+    notes:
+      "A cheerful night route for adults: casual food, a few drinks, easy conversation, and karaoke if you feel brave. We keep it friendly, budget-conscious, and relaxed. Alcohol is optional, and the plan can be adjusted for non-drinkers too.",
+    isNightOut: true,
   },
 ];
 
@@ -253,6 +289,10 @@ const faqItems = [
   {
     q: "Can we pay in Japanese yen or US dollars?",
     a: "Japanese yen is easiest. US dollars may also be possible by agreement. Please ask in advance so we can confirm the amount and method clearly.",
+  },
+  {
+    q: "Can you arrange an evening izakaya or karaoke route?",
+    a: "Yes. I can suggest a casual adult evening route with an izakaya, light drinks, karaoke, or late-night food. Alcohol is optional, and all food, drinks, karaoke, taxi, and personal costs are separate from the guide fee.",
   },
   {
     q: "How should I contact you?",
@@ -727,13 +767,47 @@ export default function Page() {
       <section className="content-section" id="model-routes">
         <div className="section-head">
           <p className="section-kicker">Free model routes</p>
-          <h2>Three calm Kyoto route ideas you can start from</h2>
+          <h2>Six calm Kyoto route ideas you can start from</h2>
         </div>
 
         <div className="card-grid three">
           {modelRoutes.map((item) => (
-            <article className="info-card" key={item.title}>
-              <h3>{item.title}</h3>
+            <article
+              className="info-card"
+              key={item.title}
+              style={
+                item.isNightOut
+                  ? {
+                      borderColor: "rgba(159, 115, 66, 0.62)",
+                      background:
+                        "linear-gradient(180deg, rgba(255, 250, 244, 0.96), rgba(246, 234, 216, 0.92))",
+                      boxShadow: "0 18px 44px rgba(107, 71, 29, 0.12)",
+                    }
+                  : undefined
+              }
+            >
+              {item.isNightOut ? (
+                <div
+                  style={{
+                    display: "inline-flex",
+                    alignItems: "center",
+                    gap: "6px",
+                    minHeight: "28px",
+                    padding: "6px 10px",
+                    marginBottom: "12px",
+                    borderRadius: "999px",
+                    background: "#9f7342",
+                    color: "#ffffff",
+                    fontSize: "0.78rem",
+                    fontWeight: 800,
+                    letterSpacing: "0.04em",
+                    textTransform: "uppercase",
+                  }}
+                >
+                  Evening fun route
+                </div>
+              ) : null}
+              <h3>{item.isNightOut ? `$D83C$DF76 ${item.title} $D83C$DFA4` : item.title}</h3>
 
               <div
                 aria-label={`${item.title} simple route flow`}
@@ -831,6 +905,11 @@ export default function Page() {
         <p className="section-note">
           These are simple route-flow ideas, not exact walking maps. I can adjust the route for
           your hotel area, season, walking pace, group size, weather, and interests.
+        </p>
+
+        <p className="section-note">
+          The night-out route is for adults. Alcohol is optional, and food, drinks, karaoke, taxi,
+          and other personal expenses are not included in the guide fee.
         </p>
 
         <div className="hero-actions">
