@@ -125,18 +125,33 @@ const tourItems = [
   },
 ];
 
-const sampleCourses = [
+const modelRoutes = [
   {
-    title: "Kyoto Highlights Full Day",
-    text: "A balanced full-day route for first-time visitors who want temples, traditional streets, local culture, and a clear overview of Kyoto.",
+    title: "First-Time Kyoto Half-Day Route",
+    time: "About 4 hours",
+    bestFor: "First-time visitors who want classic Kyoto without feeling rushed.",
+    route:
+      "Kiyomizu-dera area → Sannenzaka and Ninenzaka → Yasaka Shrine → Gion or Kennin-ji area",
+    notes:
+      "This route gives a clear first impression of Kyoto: temple views, old streets, local atmosphere, and a calm walk through the Higashiyama and Gion area. It can be adjusted for morning or afternoon timing.",
   },
   {
-    title: "Old Kyoto Half Day",
-    text: "A compact route around Higashiyama, Gion, Yasaka, and nearby traditional streets. Good for guests with limited time.",
+    title: "Senior-Friendly Kyoto One-Day Route",
+    time: "About 6 to 7 hours",
+    bestFor: "Senior travellers, couples, or families who prefer a slower and easier pace.",
+    route:
+      "Nijo Castle or Kinkaku-ji → simple lunch break → Arashiyama riverside area → optional short temple visit",
+    notes:
+      "This plan keeps the day comfortable, with fewer steep streets, more rest time, and taxi use when helpful. The goal is not to visit too many places, but to enjoy Kyoto with confidence and less stress.",
   },
   {
-    title: "Family or Senior-Friendly Kyoto Day",
-    text: "A gentle plan with shorter walks, more breaks, simple transport, and a route adjusted to your group’s comfort.",
+    title: "Family-Friendly Kyoto Route",
+    time: "About 5 to 7 hours",
+    bestFor: "Families with children or teenagers who want variety, photos, food, and culture.",
+    route:
+      "Fushimi Inari → Nishiki Market or simple local lunch → Yasaka Shrine and Gion area → optional sweets or matcha stop",
+    notes:
+      "This route mixes famous sights, light walking, food, photo opportunities, and flexible breaks. It works well for mixed-age families because the pace and stops can be changed during the day.",
   },
 ];
 
@@ -391,6 +406,7 @@ export default function Page() {
           <a href="#guests">Style</a>
           <a href="#availability">Availability</a>
           <a href="#tours">Tours</a>
+          <a href="#model-routes">Routes</a>
           <a href="#kyoto-scenes">Kyoto</a>
           <a href="#pricing">Pricing</a>
           <a href="#faq">FAQ</a>
@@ -705,25 +721,45 @@ export default function Page() {
         </div>
       </section>
 
-      <section className="content-section">
+      <section className="content-section" id="model-routes">
         <div className="section-head">
-          <p className="section-kicker">Sample courses</p>
-          <h2>Simple ideas for your Kyoto day</h2>
+          <p className="section-kicker">Free model routes</p>
+          <h2>Three calm Kyoto route ideas you can start from</h2>
         </div>
 
         <div className="card-grid three">
-          {sampleCourses.map((item) => (
+          {modelRoutes.map((item) => (
             <article className="info-card" key={item.title}>
               <h3>{item.title}</h3>
-              <p>{item.text}</p>
+              <p>
+                <strong>Time:</strong> {item.time}
+              </p>
+              <p>
+                <strong>Best for:</strong> {item.bestFor}
+              </p>
+              <p>
+                <strong>Route idea:</strong> {item.route}
+              </p>
+              <p>
+                <strong>Why this works:</strong> {item.notes}
+              </p>
             </article>
           ))}
         </div>
 
         <p className="section-note">
-          These are only examples. I can suggest a route after I know your date, hotel area, group
-          size, walking pace, and main interests.
+          These free model routes are sample ideas only. I can adjust the route for your hotel
+          area, season, walking pace, group size, weather, and interests.
         </p>
+
+        <div className="hero-actions">
+          <a className="btn btn-primary" href="#contact">
+            Ask me to adjust a route
+          </a>
+          <a className="btn btn-secondary" href={mailto}>
+            Email your travel date
+          </a>
+        </div>
       </section>
 
       <section className="content-section">
