@@ -570,7 +570,7 @@ export default function Page() {
                 <strong>◎</strong> Weekends and Japanese public holidays
               </span>
               <span className="legend-item">
-                <strong>△</strong> Weekdays — please enquire first
+                <strong>△</strong> Weekdays $2014 please enquire first
               </span>
             </div>
             <p className="availability-note">
@@ -751,26 +751,26 @@ export default function Page() {
         <div className="pricing-grid">
           <article className="price-card">
             <h3>Half Day</h3>
-            <div className="price">¥40,000</div>
+            <div className="price">$00A540,000</div>
             <p>Up to 4 hours / Approx. US$270</p>
           </article>
 
           <article className="price-card featured">
             <div className="price-badge">Most requested</div>
             <h3>Full Day</h3>
-            <div className="price">¥80,000</div>
+            <div className="price">$00A580,000</div>
             <p>Up to 8 hours / Approx. US$535</p>
           </article>
 
           <article className="price-card">
             <h3>Extra Hour</h3>
-            <div className="price">¥10,000</div>
+            <div className="price">$00A510,000</div>
             <p>Per additional hour / Approx. US$70</p>
           </article>
         </div>
 
         <p className="pricing-note">
-          Don&apos;s guide rate is ¥10,000 per hour. Rates are per guide, not per person. For small
+          Don&apos;s guide rate is $00A510,000 per hour. Rates are per guide, not per person. For small
           private groups, the guide fee stays the same regardless of the number of guests.
         </p>
 
