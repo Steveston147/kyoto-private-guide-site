@@ -3,6 +3,7 @@
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 96px;
 }
 
 body {
@@ -50,8 +51,9 @@ textarea {
   gap: 20px;
   padding: 14px 0 18px;
   margin-bottom: 6px;
-  backdrop-filter: blur(12px);
-  background: rgba(251, 248, 243, 0.76);
+  backdrop-filter: blur(14px);
+  background: rgba(251, 248, 243, 0.94);
+  border-bottom: 1px solid rgba(221, 207, 188, 0.55);
 }
 
 .brand {
