@@ -300,6 +300,179 @@ const faqItems = [
   },
 ];
 
+
+
+type RouteForm = {
+  places: string[];
+  tourLength: string;
+  startingPoint: string;
+  startingPointNote: string;
+  guests: string;
+  travellerTypes: string[];
+  walkingPace: string;
+  interests: string[];
+  season: string;
+  travelDate: string;
+  foodPreferences: string[];
+  transportation: string;
+  avoidItems: string[];
+  otherRequests: string;
+};
+
+type MultiSelectKey = "places" | "travellerTypes" | "interests" | "foodPreferences" | "avoidItems";
+
+type RouteStep = {
+  time: string;
+  place: string;
+  notes: string;
+};
+
+type GeneratedRoute = {
+  title: string;
+  routeStyle: string;
+  summary: string[];
+  itinerary: RouteStep[];
+  why: string[];
+  travelNotes: string[];
+};
+
+const initialRouteForm: RouteForm = {
+  places: [],
+  tourLength: "Half day / 4 hours",
+  startingPoint: "Kyoto Station",
+  startingPointNote: "",
+  guests: "2",
+  travellerTypes: [],
+  walkingPace: "Standard walking",
+  interests: [],
+  season: "Not decided yet",
+  travelDate: "",
+  foodPreferences: [],
+  transportation: "Public transportation, with taxi when useful",
+  avoidItems: [],
+  otherRequests: "",
+};
+
+const placeOptions = [
+  "Kiyomizu-dera / Higashiyama",
+  "Fushimi Inari Shrine",
+  "Arashiyama",
+  "Kinkakuji",
+  "Gion / Yasaka Shrine",
+  "Nijo Castle",
+  "Nishiki Market",
+  "Nara",
+  "Osaka",
+  "Quiet local areas",
+  "Izakaya / evening food",
+  "Not sure / Please suggest",
+];
+
+const tourLengthOptions = [
+  "3 hours",
+  "Half day / 4 hours",
+  "5–6 hours",
+  "Full day / 8 hours",
+  "2 days",
+  "Not sure yet",
+];
+
+const startingPointOptions = [
+  "Kyoto Station",
+  "Hotel in Kyoto City",
+  "Osaka",
+  "Nara",
+  "Cruise port / Airport",
+  "Not decided yet",
+];
+
+const guestOptions = ["1", "2", "3–4", "5–6", "7 or more"];
+
+const travellerTypeOptions = [
+  "Solo traveller",
+  "Couple",
+  "Family with children",
+  "Senior travellers",
+  "Multi-generation family",
+  "Students",
+  "Business / university visitors",
+  "First-time visitors to Japan",
+  "Repeat visitors to Japan",
+];
+
+const walkingPaceOptions = [
+  "Relaxed pace / less walking",
+  "Standard walking",
+  "Active / I do not mind walking a lot",
+  "Need many breaks",
+  "Avoid stairs and steep slopes if possible",
+];
+
+const interestOptions = [
+  "Temples and shrines",
+  "Traditional streets",
+  "Gardens",
+  "History and culture",
+  "Samurai / castles",
+  "Food and markets",
+  "Tea / matcha",
+  "Sake",
+  "Anime / pop culture",
+  "Shopping",
+  "Photography spots",
+  "Quiet local places",
+  "Seasonal flowers / autumn leaves",
+  "University / academic visit",
+  "Business / company visit",
+  "Family-friendly activities",
+];
+
+const seasonOptions = [
+  "Spring / cherry blossom season",
+  "Early summer",
+  "Summer",
+  "Autumn leaves season",
+  "Winter",
+  "Rainy season",
+  "Not decided yet",
+];
+
+const foodOptions = [
+  "Japanese lunch",
+  "Sushi",
+  "Ramen",
+  "Udon / soba",
+  "Kaiseki / traditional meal",
+  "Casual local food",
+  "Nishiki Market food walk",
+  "Matcha sweets",
+  "Vegetarian",
+  "Vegan",
+  "Halal-friendly",
+  "No meal needed",
+];
+
+const transportationOptions = [
+  "Public transportation",
+  "Public transportation, with taxi when useful",
+  "Taxi when needed",
+  "Mostly walking",
+  "Private car / van",
+  "Not sure / Please suggest",
+];
+
+const avoidOptions = [
+  "Very crowded places",
+  "Too many stairs",
+  "Long bus rides",
+  "Too much walking",
+  "Shopping",
+  "Touristy souvenir shops",
+  "Early morning",
+  "Late evening",
+  "Expensive restaurants",
+];
+
 const monthNames = [
   "January",
   "February",
@@ -417,10 +590,425 @@ function buildCalendarWindow(baseYear: number, baseMonth: number, windowOffset: 
   });
 }
 
+
+
+function toggleArrayValue(list: string[], value: string) {
+  return list.includes(value) ? list.filter((item) => item !== value) : [...list, value];
+}
+
+function joinOrFallback(items: string[], fallback: string) {
+  return items.length ? items.join(", ") : fallback;
+}
+
+function hasAny(items: string[], words: string[]) {
+  return items.some((item) => words.some((word) => item.toLowerCase().includes(word.toLowerCase())));
+}
+
+function buildRouteFromForm(form: RouteForm): GeneratedRoute {
+  const combined = [...form.places, ...form.travellerTypes, ...form.interests, ...form.avoidItems];
+  const isSeniorFriendly =
+    hasAny(form.travellerTypes, ["Senior", "Multi-generation"]) ||
+    form.walkingPace.includes("Relaxed") ||
+    form.walkingPace.includes("many breaks") ||
+    form.walkingPace.includes("Avoid stairs") ||
+    hasAny(form.avoidItems, ["stairs", "walking"]);
+  const isFamily = hasAny(form.travellerTypes, ["Family", "children"]) || hasAny(form.interests, ["Family"]);
+  const isEducational = hasAny(form.travellerTypes, ["Business", "university", "Students"]) || hasAny(form.interests, ["University", "Business", "academic", "company"]);
+  const wantsQuiet = hasAny(combined, ["Quiet", "Gardens"]);
+  const wantsFood = hasAny([...form.interests, ...form.foodPreferences, ...form.places], ["Food", "Market", "lunch", "Ramen", "Sushi", "Matcha", "Izakaya"]);
+  const wantsNara = hasAny(form.places, ["Nara"]);
+  const wantsArashiyama = hasAny(form.places, ["Arashiyama"]);
+  const wantsFushimi = hasAny(form.places, ["Fushimi"]);
+  const wantsEvening = hasAny(form.places, ["Izakaya", "evening"]);
+  const wantsHistory = hasAny(form.interests, ["History", "Samurai", "castles"]) || hasAny(form.places, ["Nijo"]);
+
+  let title = "Your Sample Kyoto Private Tour Route";
+  let routeStyle = "Classic Kyoto highlights";
+  let itinerary: RouteStep[] = [
+    {
+      time: "9:00",
+      place: "Meet at Kyoto Station or your hotel area",
+      notes: "Short orientation and a quick check of walking pace and transport for the day.",
+    },
+    {
+      time: "9:30",
+      place: "Kiyomizu-dera / Higashiyama",
+      notes: "Temple views, old streets, and a classic first impression of Kyoto.",
+    },
+    {
+      time: "11:30",
+      place: "Yasaka Shrine and Gion area",
+      notes: "Traditional streets and a gentle walk through one of Kyoto’s most atmospheric areas.",
+    },
+    {
+      time: "13:00",
+      place: "Lunch or tea break",
+      notes: "A simple local lunch, matcha sweets, or a short rest depending on your preference.",
+    },
+    {
+      time: "14:30",
+      place: "Nishiki Market or optional extra stop",
+      notes: "A flexible finish with food, shopping, or a quiet temple depending on your interests.",
+    },
+    {
+      time: "16:00",
+      place: "End of tour",
+      notes: "The ending point can be adjusted to your hotel, dinner area, or next destination.",
+    },
+  ];
+
+  if (wantsEvening) {
+    title = "Your Sample Kyoto Evening Food Route";
+    routeStyle = "Casual adult evening route";
+    itinerary = [
+      {
+        time: "18:00",
+        place: "Meet near your hotel or a central Kyoto station",
+        notes: "A short orientation and check of food, drink, and walking preferences.",
+      },
+      {
+        time: "18:30",
+        place: "Casual izakaya",
+        notes: "Small dishes, local atmosphere, and easy conversation. Alcohol is optional.",
+      },
+      {
+        time: "20:00",
+        place: "Short walk through Pontocho, Gion, or Kawaramachi area",
+        notes: "A relaxed evening walk with local atmosphere and photo opportunities.",
+      },
+      {
+        time: "21:00",
+        place: "Karaoke or late-night snack",
+        notes: "Optional karaoke, ramen, or a simple dessert stop depending on your mood.",
+      },
+      {
+        time: "22:00",
+        place: "End near a convenient station or taxi point",
+        notes: "The finish can be adjusted for safe and simple return to your accommodation.",
+      },
+    ];
+  } else if (isEducational) {
+    title = "Your Sample Kyoto Educational / Professional Visit Route";
+    routeStyle = "Culture, context, and practical bilingual support";
+    itinerary = [
+      {
+        time: "9:30",
+        place: "Meet at Kyoto Station or your hotel area",
+        notes: "Confirm the purpose of the visit, timing, and communication needs.",
+      },
+      {
+        time: "10:15",
+        place: "Nijo Castle or Kyoto cultural site",
+        notes: "A clear introduction to Kyoto history, governance, architecture, and cultural background.",
+      },
+      {
+        time: "12:00",
+        place: "Lunch and discussion time",
+        notes: "A calm break with time to discuss questions from academic, corporate, or cultural visitors.",
+      },
+      {
+        time: "13:30",
+        place: "University, company, or cultural visit by arrangement",
+        notes: "This part requires advance coordination. I can support bilingual communication and smooth movement.",
+      },
+      {
+        time: "15:30",
+        place: "Gion / traditional Kyoto area",
+        notes: "A softer cultural finish after the formal visit or meeting.",
+      },
+      {
+        time: "17:00",
+        place: "End of tour",
+        notes: "Return to your hotel, station, or dinner area.",
+      },
+    ];
+  } else if (isSeniorFriendly) {
+    title = "Your Sample Senior-Friendly Kyoto Route";
+    routeStyle = "Relaxed pace, fewer stairs, more rest time";
+    itinerary = [
+      {
+        time: "9:30",
+        place: "Meet at hotel lobby or Kyoto Station",
+        notes: "Start slowly and confirm the day’s walking comfort before moving.",
+      },
+      {
+        time: "10:15",
+        place: "Nijo Castle or Kinkakuji",
+        notes: "A strong Kyoto highlight with a manageable visit and clear cultural explanation.",
+      },
+      {
+        time: "11:45",
+        place: "Taxi or easy public transport transfer",
+        notes: "Use taxi when it meaningfully reduces walking or complicated transfers.",
+      },
+      {
+        time: "12:15",
+        place: "Lunch break",
+        notes: "A relaxed lunch with enough time to sit, talk, and rest.",
+      },
+      {
+        time: "13:45",
+        place: "Arashiyama riverside or quiet garden area",
+        notes: "A scenic area with flexible walking distance and several places to pause.",
+      },
+      {
+        time: "15:30",
+        place: "Tea or coffee break",
+        notes: "A final rest before returning to your hotel or station.",
+      },
+    ];
+  } else if (isFamily) {
+    title = "Your Sample Family-Friendly Kyoto Route";
+    routeStyle = "Flexible, photogenic, and easy to adjust";
+    itinerary = [
+      {
+        time: "9:00",
+        place: "Meet at Kyoto Station or your hotel area",
+        notes: "Confirm children’s energy level, food needs, and bathroom break timing.",
+      },
+      {
+        time: "9:45",
+        place: "Fushimi Inari Shrine",
+        notes: "A short torii gate walk. We do not need to climb all the way up the mountain.",
+      },
+      {
+        time: "11:30",
+        place: "Nishiki Market or casual local lunch",
+        notes: "Food, snacks, and an easy change of rhythm after the shrine visit.",
+      },
+      {
+        time: "13:30",
+        place: "Yasaka Shrine and Gion area",
+        notes: "A simple cultural walk with good photo stops and flexible breaks.",
+      },
+      {
+        time: "15:00",
+        place: "Matcha sweets or optional short temple stop",
+        notes: "Choose a calm finish depending on weather and energy level.",
+      },
+    ];
+  } else if (wantsNara) {
+    title = "Your Sample Nara Day Route";
+    routeStyle = "Kyoto-based day trip to Nara";
+    itinerary = [
+      {
+        time: "9:00",
+        place: "Meet at Kyoto Station",
+        notes: "Travel to Nara by train and review the day’s walking plan.",
+      },
+      {
+        time: "10:15",
+        place: "Todaiji Temple and Nara Park",
+        notes: "A classic Nara visit with history, deer, and large temple architecture.",
+      },
+      {
+        time: "12:30",
+        place: "Lunch in Nara",
+        notes: "Simple lunch near the main sightseeing area.",
+      },
+      {
+        time: "14:00",
+        place: "Kasuga Taisha or quiet old town area",
+        notes: "Choose a shrine, garden, or calmer neighbourhood depending on your pace.",
+      },
+      {
+        time: "16:00",
+        place: "Return toward Kyoto or end in Nara",
+        notes: "The ending can be adjusted based on your hotel and evening plans.",
+      },
+    ];
+  } else if (wantsQuiet) {
+    title = "Your Sample Quiet Kyoto Garden Route";
+    routeStyle = "Slower Kyoto with gardens, tea, and local atmosphere";
+    itinerary = [
+      {
+        time: "9:30",
+        place: "Meet at your hotel area or a convenient station",
+        notes: "Start calmly and avoid unnecessary rushing.",
+      },
+      {
+        time: "10:15",
+        place: "Nanzen-ji area",
+        notes: "Temple atmosphere, spacious grounds, and a quieter Kyoto mood.",
+      },
+      {
+        time: "11:30",
+        place: "Philosopher’s Path or nearby garden",
+        notes: "A gentle walk that works well in spring, autumn, and quieter seasons.",
+      },
+      {
+        time: "12:45",
+        place: "Tea, coffee, or light lunch",
+        notes: "A relaxed pause rather than a packed sightseeing schedule.",
+      },
+      {
+        time: "14:00",
+        place: "Quiet temple or local neighbourhood",
+        notes: "A flexible final stop chosen according to weather, crowds, and your interests.",
+      },
+    ];
+  } else if (wantsArashiyama) {
+    title = "Your Sample Arashiyama Nature and Culture Route";
+    routeStyle = "Scenery, seasonal beauty, and a softer pace";
+    itinerary = [
+      {
+        time: "9:00",
+        place: "Meet at Kyoto Station or your hotel area",
+        notes: "Move to Arashiyama by train or taxi depending on your starting point.",
+      },
+      {
+        time: "10:00",
+        place: "Arashiyama riverside area",
+        notes: "Open scenery and a relaxed introduction to the area.",
+      },
+      {
+        time: "10:45",
+        place: "Bamboo grove area or nearby temple",
+        notes: "A photogenic stop, adjusted to avoid the worst crowding when possible.",
+      },
+      {
+        time: "12:15",
+        place: "Lunch or tea break",
+        notes: "A practical break before deciding whether to continue or return toward central Kyoto.",
+      },
+      {
+        time: "13:45",
+        place: "Kinkakuji or quiet extra stop",
+        notes: "Add a second highlight if the group still has enough energy.",
+      },
+    ];
+  } else if (wantsFushimi || wantsFood) {
+    title = "Your Sample Fushimi Inari, Food and Gion Route";
+    routeStyle = "Famous sights with food and flexible breaks";
+    itinerary = [
+      {
+        time: "9:00",
+        place: "Meet at Kyoto Station or your hotel area",
+        notes: "Confirm walking pace and food preferences before starting.",
+      },
+      {
+        time: "9:30",
+        place: "Fushimi Inari Shrine",
+        notes: "Walk through the main torii gates. The walking distance can be shortened easily.",
+      },
+      {
+        time: "11:30",
+        place: "Nishiki Market or casual Japanese lunch",
+        notes: "Choose market food, ramen, sushi, soba, or a simple local meal depending on preference.",
+      },
+      {
+        time: "13:30",
+        place: "Yasaka Shrine and Gion area",
+        notes: "Traditional Kyoto atmosphere after lunch, with photo stops and flexible breaks.",
+      },
+      {
+        time: "15:00",
+        place: "Matcha sweets or quiet finish",
+        notes: "A soft ending that can be adjusted to the weather and crowd level.",
+      },
+    ];
+  } else if (wantsHistory) {
+    title = "Your Sample Kyoto History Route";
+    routeStyle = "History, architecture, and cultural background";
+    itinerary = [
+      {
+        time: "9:30",
+        place: "Meet at Kyoto Station or your hotel area",
+        notes: "Start with a short overview of Kyoto’s historical geography.",
+      },
+      {
+        time: "10:15",
+        place: "Nijo Castle",
+        notes: "A strong introduction to samurai-era architecture and political history.",
+      },
+      {
+        time: "12:00",
+        place: "Lunch or tea break",
+        notes: "A slower pause before moving to the next cultural area.",
+      },
+      {
+        time: "13:30",
+        place: "Kyoto Gyoen or Higashiyama area",
+        notes: "Choose imperial history, gardens, or classic Kyoto streets depending on interest.",
+      },
+      {
+        time: "15:30",
+        place: "Nishiki Market or Gion",
+        notes: "A lighter finish after the history-focused part of the day.",
+      },
+    ];
+  }
+
+  const summary = [
+    `Preferred length: ${form.tourLength || "Not decided yet"}`,
+    `Starting point: ${form.startingPointNote || form.startingPoint || "Not decided yet"}`,
+    `Guests: ${form.guests || "Not decided yet"}`,
+    `Travellers: ${joinOrFallback(form.travellerTypes, "Private Kyoto visitors")}`,
+    `Walking pace: ${form.walkingPace || "Standard walking"}`,
+    `Main interests: ${joinOrFallback(form.interests, "Kyoto highlights and local culture")}`,
+  ];
+
+  if (form.places.length) {
+    summary.push(`Requested places: ${form.places.join(", ")}`);
+  }
+
+  if (form.season || form.travelDate) {
+    summary.push(`Season or date: ${form.travelDate || form.season}`);
+  }
+
+  const why = [
+    isSeniorFriendly
+      ? "This route keeps the pace gentle, with fewer steep streets, more rest time, and taxi use when useful."
+      : "This route balances famous Kyoto sights with a manageable pace, so the day does not feel too rushed.",
+    wantsFood
+      ? "Food and break time are built into the plan, so lunch, snacks, or matcha can become part of the experience."
+      : "There is enough flexibility to add lunch, tea, or a short rest when the group needs it.",
+    form.transportation.includes("taxi") || form.transportation.includes("Taxi")
+      ? "Taxi use can be added where it makes the day easier, especially in rain, heat, or long-transfer sections."
+      : "Public transportation and walking are used in a practical way, with the route adjusted to the group’s comfort.",
+  ];
+
+  if (isEducational) {
+    why.push(
+      "The plan can also support academic, corporate, or cultural visitors who need clear bilingual communication and a more structured day."
+    );
+  }
+
+  if (isFamily) {
+    why.push("The route can be shortened or reshaped during the day if children become tired or the weather changes.");
+  }
+
+  if (form.otherRequests.trim()) {
+    why.push(`Your note has been considered: ${form.otherRequests.trim()}`);
+  }
+
+  const travelNotes = [
+    "This is a sample route, not a final reservation or exact walking map.",
+    "Opening hours, closing days, weather, traffic, and crowd levels should be checked before the actual tour.",
+    "Transport, meals, entrance fees, taxi fares, and personal expenses are not included in the guide fee.",
+    "Don can customise this route more realistically after receiving your hotel area, travel date, group details, and walking pace.",
+  ];
+
+  if (form.avoidItems.length) {
+    travelNotes.unshift(`Special care: try to avoid ${form.avoidItems.join(", ").toLowerCase()}.`);
+  }
+
+  return {
+    title,
+    routeStyle,
+    summary,
+    itinerary,
+    why,
+    travelNotes,
+  };
+}
+
 export default function Page() {
   const [today, setToday] = useState<Date | null>(null);
   const [windowOffset, setWindowOffset] = useState(0);
   const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(null);
+  const [routeForm, setRouteForm] = useState<RouteForm>(initialRouteForm);
+  const [generatedRoute, setGeneratedRoute] = useState<GeneratedRoute | null>(null);
 
   useEffect(() => {
     setToday(new Date());
@@ -435,6 +1023,51 @@ export default function Page() {
     if (!calendarMonths.length) return "";
     return `${calendarMonths[0].label} - ${calendarMonths[2].label}`;
   }, [calendarMonths]);
+
+  const updateRouteForm = (field: keyof RouteForm, value: string) => {
+    setRouteForm((prev) => ({ ...prev, [field]: value }));
+  };
+
+  const toggleRouteOption = (field: MultiSelectKey, value: string) => {
+    setRouteForm((prev) => ({ ...prev, [field]: toggleArrayValue(prev[field], value) }));
+  };
+
+  const handleGenerateRoute = () => {
+    const route = buildRouteFromForm(routeForm);
+    setGeneratedRoute(route);
+    window.setTimeout(() => {
+      document.getElementById("route-planner-result")?.scrollIntoView({ behavior: "smooth", block: "start" });
+    }, 80);
+  };
+
+  const handleResetPlanner = () => {
+    setRouteForm(initialRouteForm);
+    setGeneratedRoute(null);
+  };
+
+  const handlePrintRoute = () => {
+    if (!generatedRoute) return;
+    window.print();
+  };
+
+  const renderCheckboxGroup = (field: MultiSelectKey, options: string[]) => (
+    <div className="planner-options">
+      {options.map((option) => {
+        const checked = routeForm[field].includes(option);
+
+        return (
+          <label className={checked ? "planner-option is-selected" : "planner-option"} key={option}>
+            <input
+              type="checkbox"
+              checked={checked}
+              onChange={() => toggleRouteOption(field, option)}
+            />
+            <span>{option}</span>
+          </label>
+        );
+      })}
+    </div>
+  );
 
   return (
     <main className="page-shell">
@@ -451,6 +1084,7 @@ export default function Page() {
           <a href="#availability">Availability</a>
           <a href="#tours">Tours</a>
           <a href="#model-routes">Routes</a>
+          <a href="#route-planner">Planner</a>
           <a href="#kyoto-scenes">Kyoto</a>
           <a href="#pricing">Pricing</a>
           <a href="#faq">FAQ</a>
@@ -631,7 +1265,7 @@ export default function Page() {
                 <strong>◎</strong> Weekends and Japanese public holidays
               </span>
               <span className="legend-item">
-                <strong>△</strong> Weekdays $2014 please enquire first
+                <strong>△</strong> Weekdays — please enquire first
               </span>
             </div>
             <p className="availability-note">
@@ -923,6 +1557,278 @@ export default function Page() {
         </div>
       </section>
 
+      <section className="content-section" id="route-planner">
+        <div className="section-head">
+          <p className="section-kicker">Kyoto Route Planner</p>
+          <h2>Create your sample private Kyoto route</h2>
+        </div>
+
+        <div className="planner-card planner-form-card">
+          <div className="planner-intro-grid">
+            <div>
+              <p className="planner-lead">
+                Choose a few items below, and this planner will create a simple sample route you can
+                save as a PDF. It is not a fixed reservation, but it is a useful starting point for
+                a private Kyoto tour enquiry.
+              </p>
+            </div>
+            <div className="planner-mini-note">
+              <strong>Good for:</strong> first-time visitors, families, senior travellers, academic
+              guests, and people who want a calm route before contacting a guide.
+            </div>
+          </div>
+
+          <div className="planner-form-grid">
+            <div className="planner-field planner-field-wide">
+              <label>Places you would like to visit</label>
+              {renderCheckboxGroup("places", placeOptions)}
+            </div>
+
+            <div className="planner-field">
+              <label htmlFor="planner-tour-length">Preferred tour length</label>
+              <select
+                id="planner-tour-length"
+                className="planner-select"
+                value={routeForm.tourLength}
+                onChange={(event) => updateRouteForm("tourLength", event.target.value)}
+              >
+                {tourLengthOptions.map((option) => (
+                  <option value={option} key={option}>
+                    {option}
+                  </option>
+                ))}
+              </select>
+            </div>
+
+            <div className="planner-field">
+              <label htmlFor="planner-starting-point">Starting point</label>
+              <select
+                id="planner-starting-point"
+                className="planner-select"
+                value={routeForm.startingPoint}
+                onChange={(event) => updateRouteForm("startingPoint", event.target.value)}
+              >
+                {startingPointOptions.map((option) => (
+                  <option value={option} key={option}>
+                    {option}
+                  </option>
+                ))}
+              </select>
+            </div>
+
+            <div className="planner-field">
+              <label htmlFor="planner-starting-note">Hotel name or nearest station, if known</label>
+              <input
+                id="planner-starting-note"
+                className="planner-input"
+                type="text"
+                value={routeForm.startingPointNote}
+                onChange={(event) => updateRouteForm("startingPointNote", event.target.value)}
+                placeholder="Example: near Kyoto Station, Gion, Osaka hotel, etc."
+              />
+            </div>
+
+            <div className="planner-field">
+              <label htmlFor="planner-guests">Number of guests</label>
+              <select
+                id="planner-guests"
+                className="planner-select"
+                value={routeForm.guests}
+                onChange={(event) => updateRouteForm("guests", event.target.value)}
+              >
+                {guestOptions.map((option) => (
+                  <option value={option} key={option}>
+                    {option}
+                  </option>
+                ))}
+              </select>
+            </div>
+
+            <div className="planner-field planner-field-wide">
+              <label>Type of travellers</label>
+              {renderCheckboxGroup("travellerTypes", travellerTypeOptions)}
+            </div>
+
+            <div className="planner-field">
+              <label htmlFor="planner-walking-pace">Walking pace</label>
+              <select
+                id="planner-walking-pace"
+                className="planner-select"
+                value={routeForm.walkingPace}
+                onChange={(event) => updateRouteForm("walkingPace", event.target.value)}
+              >
+                {walkingPaceOptions.map((option) => (
+                  <option value={option} key={option}>
+                    {option}
+                  </option>
+                ))}
+              </select>
+            </div>
+
+            <div className="planner-field">
+              <label htmlFor="planner-season">Travel season</label>
+              <select
+                id="planner-season"
+                className="planner-select"
+                value={routeForm.season}
+                onChange={(event) => updateRouteForm("season", event.target.value)}
+              >
+                {seasonOptions.map((option) => (
+                  <option value={option} key={option}>
+                    {option}
+                  </option>
+                ))}
+              </select>
+            </div>
+
+            <div className="planner-field">
+              <label htmlFor="planner-travel-date">Travel date, if decided</label>
+              <input
+                id="planner-travel-date"
+                className="planner-input"
+                type="text"
+                value={routeForm.travelDate}
+                onChange={(event) => updateRouteForm("travelDate", event.target.value)}
+                placeholder="Example: October 12, 2026"
+              />
+            </div>
+
+            <div className="planner-field">
+              <label htmlFor="planner-transportation">Transportation preference</label>
+              <select
+                id="planner-transportation"
+                className="planner-select"
+                value={routeForm.transportation}
+                onChange={(event) => updateRouteForm("transportation", event.target.value)}
+              >
+                {transportationOptions.map((option) => (
+                  <option value={option} key={option}>
+                    {option}
+                  </option>
+                ))}
+              </select>
+            </div>
+
+            <div className="planner-field planner-field-wide">
+              <label>Interests</label>
+              {renderCheckboxGroup("interests", interestOptions)}
+            </div>
+
+            <div className="planner-field planner-field-wide">
+              <label>Food preferences</label>
+              {renderCheckboxGroup("foodPreferences", foodOptions)}
+            </div>
+
+            <div className="planner-field planner-field-wide">
+              <label>Things you would like to avoid</label>
+              {renderCheckboxGroup("avoidItems", avoidOptions)}
+            </div>
+
+            <div className="planner-field planner-field-wide">
+              <label htmlFor="planner-other-requests">Other requests</label>
+              <textarea
+                id="planner-other-requests"
+                className="planner-textarea"
+                value={routeForm.otherRequests}
+                onChange={(event) => updateRouteForm("otherRequests", event.target.value)}
+                placeholder="Example: My mother cannot walk too much. We like quiet places and matcha sweets."
+                rows={4}
+              />
+            </div>
+          </div>
+
+          <div className="planner-actions">
+            <button className="btn btn-primary" type="button" onClick={handleGenerateRoute}>
+              Create My Sample Route
+            </button>
+            <button className="btn btn-secondary" type="button" onClick={handleResetPlanner}>
+              Reset planner
+            </button>
+          </div>
+        </div>
+
+        {generatedRoute ? (
+          <div className="planner-result planner-print-area" id="route-planner-result">
+            <div className="planner-result-header">
+              <div>
+                <p className="section-kicker">Sample route PDF</p>
+                <h3>{generatedRoute.title}</h3>
+                <p>{generatedRoute.routeStyle}</p>
+              </div>
+              <div className="planner-result-badge">Created by Kyoto Guide Service</div>
+            </div>
+
+            <div className="planner-summary-grid">
+              {generatedRoute.summary.map((item) => (
+                <div className="planner-summary-item" key={item}>
+                  {item}
+                </div>
+              ))}
+            </div>
+
+            <div className="planner-result-section">
+              <h4>Suggested itinerary</h4>
+              <div className="planner-itinerary">
+                {generatedRoute.itinerary.map((step) => (
+                  <div className="planner-itinerary-row" key={`${step.time}-${step.place}`}>
+                    <div className="planner-itinerary-time">{step.time}</div>
+                    <div className="planner-itinerary-body">
+                      <strong>{step.place}</strong>
+                      <p>{step.notes}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div className="planner-result-section">
+              <h4>Why this route fits you</h4>
+              <ul className="planner-note-list">
+                {generatedRoute.why.map((item) => (
+                  <li key={item}>{item}</li>
+                ))}
+              </ul>
+            </div>
+
+            <div className="planner-result-section">
+              <h4>Travel notes</h4>
+              <ul className="planner-note-list">
+                {generatedRoute.travelNotes.map((item) => (
+                  <li key={item}>{item}</li>
+                ))}
+              </ul>
+            </div>
+
+            <div className="planner-pdf-footer">
+              <p>
+                This is a sample route. I can make it more realistic based on your hotel, travel
+                date, group members, weather, and walking pace.
+              </p>
+              <p>
+                Contact: <a href={mailto}>{email}</a> | Kyoto Guide Service by Don Tanaka
+              </p>
+            </div>
+
+            <div className="planner-actions planner-result-actions">
+              <button className="btn btn-primary" type="button" onClick={handlePrintRoute}>
+                Download / Save as PDF
+              </button>
+              <a className="btn btn-secondary" href="#contact">
+                Ask Don to Customise This Route
+              </a>
+            </div>
+          </div>
+        ) : (
+          <div className="planner-empty-card">
+            <h3>Your route will appear here</h3>
+            <p>
+              After you create a sample route, you can review the itinerary, save it as a PDF, and
+              send an enquiry if you would like Don to customise it.
+            </p>
+          </div>
+        )}
+      </section>
+
       <section className="content-section">
         <div className="section-head">
           <p className="section-kicker">How it works</p>
@@ -1088,7 +1994,7 @@ export default function Page() {
             <span>Group size</span>
             <span>Hotel or meeting area</span>
             <span>Kyoto only or beyond Kyoto</span>
-            <span>Preferred model route</span>
+            <span>Preferred model route or sample PDF</span>
             <span>Family or senior-friendly needs</span>
             <span>Walking pace</span>
           </div>
