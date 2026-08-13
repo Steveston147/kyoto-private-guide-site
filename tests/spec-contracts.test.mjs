@@ -5,18 +5,45 @@ import { readFile } from 'node:fs/promises';
 const read = (path) => readFile(new URL(`../${path}`, import.meta.url), 'utf8');
 
 test('canonical specification files exist and declare project boundaries', async () => {
-  const [project, agents, design] = await Promise.all([
+  const [project, agents, design, tech] = await Promise.all([
     read('PROJECT.md'),
     read('AGENTS.md'),
     read('DESIGN.md'),
+    read('TECH.md'),
   ]);
 
   assert.match(project, /not a booking engine/i);
   assert.match(agents, /not a booking engine/i);
   assert.match(design, /sending an enquiry or request/i);
+  assert.match(tech, /Node\.js 20\.9\.0/i);
 });
 
 test('route generator keeps a reservation disclaimer', async () => {
   const page = await read('app/page.tsx');
   assert.match(page, /sample route, not a final reservation/i);
+});
+
+test('runtime baseline is declared consistently', async () => {
+  const [pkgText, nvmrc] = await Promise.all([
+    read('package.json'),
+    read('.nvmrc'),
+  ]);
+  const pkg = JSON.parse(pkgText);
+
+  assert.equal(pkg.engines?.node, '>=20.9.0 <21');
+  assert.equal(nvmrc.trim(), '20.9.0');
+});
+
+test('known pre-upgrade hazards are absent', async () => {
+  const [page, layout, config] = await Promise.all([
+    read('app/page.tsx'),
+    read('app/layout.tsx'),
+    read('next.config.js'),
+  ]);
+  const source = `${page}\n${layout}\n${config}`;
+
+  assert.doesNotMatch(source, /@next\/font/);
+  assert.doesNotMatch(source, /from ['\"]next\/server['\"].*ImageResponse/);
+  assert.doesNotMatch(source, /\bcookies\s*\(/);
+  assert.doesNotMatch(source, /\bheaders\s*\(/);
 });
