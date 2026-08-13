@@ -1,36 +1,61 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Kyoto Private Guide Site
 
-## Getting Started
+Public website for Don Tanaka's private guide service in Kyoto and nearby areas.
 
-First, run the development server:
+Production domain: https://www.umaacademia.com
+
+## Purpose
+
+This site introduces the guide service, provides sample tour ideas and planning guidance, and accepts enquiries from prospective guests.
+
+It is not a live booking, payment, or availability system.
+
+## Specification documents
+
+Read these before making substantial changes:
+
+- `PROJECT.md` — canonical business and product specification.
+- `AGENTS.md` — guardrails for AI-assisted development.
+- `DESIGN.md` — visual, responsive, accessibility, and interaction rules.
+
+Additional technical/content specifications may be added as the project is hardened. If documentation and implementation disagree, do not silently rewrite business rules; flag the discrepancy for deliberate review.
+
+## Current stack
+
+- Next.js App Router
+- React
+- TypeScript
+- Tailwind CSS
+- Formspree contact form
+- SEO metadata, sitemap, and robots configuration
+
+Dependency versions are locked in `package.json` and `package-lock.json`.
+
+## Local development
 
 ```bash
+npm ci
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Then open `http://localhost:3000`.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Available project scripts are defined in `package.json`.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## Main implementation
 
-## Learn More
+- `app/page.tsx` — current main public page, content, route generator, calendar guidance, and enquiry UI.
+- `app/globals.css` — global styling.
+- `app/layout.tsx` — site metadata and root layout.
+- `app/robots.ts` — robots configuration.
+- `app/sitemap.ts` — sitemap configuration.
 
-To learn more about Next.js, take a look at the following resources:
+## Important maintenance notes
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+The current page contains business-sensitive public content and hard-coded Japanese holiday dates. Treat pricing/payment/availability/service-area/contact changes as controlled business changes rather than ordinary copy edits.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+Major dependency upgrades, large visual redesigns, and business-content changes should be separated into reviewable pull requests when practical.
 
-## Deploy on Vercel
+## Deployment
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+The project is designed for Vercel-compatible deployment. Changes should normally be made on a branch and reviewed through a pull request before merging to `main`.
