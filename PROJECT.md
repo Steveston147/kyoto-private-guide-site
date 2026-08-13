@@ -15,14 +15,14 @@ The website is a marketing and enquiry tool. It is not a booking engine, availab
 
 ## 2. Canonical source of truth
 
-For future development, the following priority applies when instructions conflict:
+For the current repository, the following priority applies when instructions conflict:
 
 1. `PROJECT.md` — business purpose, scope, service rules, and product boundaries.
-2. `CONTENT.md` — public-facing wording, claims, pricing presentation, and enquiry rules.
-3. `DESIGN.md` — visual and interaction rules.
-4. `TECH.md` — implementation, dependencies, deployment, and maintenance.
-5. `AGENTS.md` — rules for AI-assisted development.
-6. Current production code, where the documents above are silent.
+2. `DESIGN.md` — visual and interaction rules.
+3. `AGENTS.md` — rules for AI-assisted development.
+4. Current production code, where the documents above are silent.
+
+Additional focused specifications such as `CONTENT.md` or `TECH.md` may be added later as the project is hardened. Once added and approved, they become authoritative within their defined scope but may not override `PROJECT.md`.
 
 Do not silently change business rules just because the current code differs. When code and specification disagree, flag the discrepancy and resolve it deliberately.
 
@@ -104,7 +104,7 @@ It must:
 
 A visual calendar may indicate broad guidance such as weekends/public holidays being easier to accept, but it must never be presented as live availability unless a real availability source is implemented.
 
-Hard-coded holiday lists are maintenance-sensitive. If retained, they must be documented in `TECH.md`, tested, and updated before they expire.
+Hard-coded holiday lists are maintenance-sensitive. If retained, they must be documented, tested, and updated before they expire. A dedicated technical specification may own this rule in the future.
 
 ## 9. Enquiry and privacy rules
 
