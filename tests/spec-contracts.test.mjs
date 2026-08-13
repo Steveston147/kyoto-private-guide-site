@@ -34,6 +34,20 @@ test('runtime baseline is declared consistently', async () => {
   assert.equal(nvmrc.trim(), '20.9.0');
 });
 
+test('package manifest and lockfile root dependencies stay in sync', async () => {
+  const [pkgText, lockText] = await Promise.all([
+    read('package.json'),
+    read('package-lock.json'),
+  ]);
+  const pkg = JSON.parse(pkgText);
+  const lock = JSON.parse(lockText);
+  const locked = lock.packages?.['']?.dependencies ?? {};
+
+  for (const [name, version] of Object.entries(pkg.dependencies ?? {})) {
+    assert.equal(locked[name], version, `${name} differs between package.json and package-lock.json`);
+  }
+});
+
 test('known pre-upgrade hazards are absent', async () => {
   const [page, layout, config] = await Promise.all([
     read('app/page.tsx'),
