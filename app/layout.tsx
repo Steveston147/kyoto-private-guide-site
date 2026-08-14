@@ -2,6 +2,7 @@
 // PATH: app/layout.tsx
 
 import './globals.css';
+import './uat.css';
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 
@@ -11,7 +12,7 @@ const siteUrl = 'https://www.umaacademia.com';
 const siteName = 'Kyoto Private Guide';
 const title = 'Private Kyoto Guide | Don Tanaka, Licensed Guide Interpreter';
 const description =
-  'Private Kyoto tours by Don Tanaka, a Kyoto-born National Government Licensed Guide Interpreter. Calm, flexible, family-friendly and senior-friendly guiding in Kyoto, Osaka and Nara.';
+  'Private guiding in Kyoto by Don Tanaka, a Kyoto-born National Government Licensed Guide Interpreter. Clear guide fees, calm private tours, and regular guiding mainly on weekends and Japanese public holidays.';
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -35,9 +36,7 @@ export const metadata: Metadata = {
     'senior friendly Kyoto guide',
     'Gion private tour',
     'Fushimi Inari private guide',
-    'Arashiyama private tour',
-    'Nara private guide',
-    'Osaka private guide',
+    'Kyoto weekend guide',
     'Don Tanaka',
   ],
   authors: [{ name: 'Don Tanaka', url: siteUrl }],
@@ -50,7 +49,7 @@ export const metadata: Metadata = {
   openGraph: {
     title,
     description:
-      'A calm and flexible private guide service in Kyoto by Don Tanaka, a Kyoto-born licensed guide. Good for families, senior travellers, students and visitors who want a personal Kyoto day.',
+      'A calm private guide service in Kyoto by Don Tanaka, a Kyoto-born licensed guide. Clear fees and regular guiding mainly on weekends and Japanese public holidays.',
     url: siteUrl,
     siteName,
     images: [
@@ -68,7 +67,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title,
     description:
-      'Private Kyoto tours by Don Tanaka, a Kyoto-born licensed guide. Calm, flexible, family-friendly and senior-friendly.',
+      'Private Kyoto guiding by Don Tanaka, a Kyoto-born licensed guide. Clear fees and regular guiding mainly on weekends and Japanese public holidays.',
     images: ['/kyoto-hero.jpg'],
   },
   robots: {
