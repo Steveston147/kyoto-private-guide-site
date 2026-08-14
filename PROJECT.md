@@ -1,30 +1,29 @@
 # Kyoto Private Guide Site — Project Specification
 
-Last updated: 2026-08-13
+Last updated: 2026-08-14
 
 ## 1. Purpose
 
-This repository contains the public website for Don Tanaka's private guiding service in Kyoto and nearby areas.
+This repository contains the public website for Don Tanaka's private guiding service.
 
 The site has two jobs:
 
-1. Explain the guide service clearly and build trust with prospective guests.
-2. Turn suitable visitors into direct enquiries without making promises that Don has not personally confirmed.
+1. Explain the guide service, price, availability, and service boundaries quickly and clearly.
+2. Turn suitable visitors into direct enquiries without implying a booking or travel-agency service.
 
-The website is a marketing and enquiry tool. It is not a booking engine, availability system, payment system, or autonomous travel agent.
+The website is a marketing and enquiry tool. It is not a booking engine, availability system, payment system, transport service, hotel booking service, or autonomous travel agent.
 
 ## 2. Canonical source of truth
 
-For the current repository, the following priority applies when instructions conflict:
+When instructions conflict, use this priority:
 
 1. `PROJECT.md` — business purpose, scope, service rules, and product boundaries.
 2. `DESIGN.md` — visual and interaction rules.
 3. `AGENTS.md` — rules for AI-assisted development.
-4. Current production code, where the documents above are silent.
+4. `TECH.md` / `UPGRADE.md` — technical constraints and upgrade procedure.
+5. Current production code where the documents above are silent.
 
-Additional focused specifications such as `CONTENT.md` or `TECH.md` may be added later as the project is hardened. Once added and approved, they become authoritative within their defined scope but may not override `PROJECT.md`.
-
-Do not silently change business rules just because the current code differs. When code and specification disagree, flag the discrepancy and resolve it deliberately.
+Do not silently change business rules because old code differs.
 
 ## 3. Service positioning
 
@@ -33,131 +32,101 @@ The site should present Don Tanaka as:
 - a Kyoto-born private guide;
 - a National Government Licensed Guide Interpreter;
 - calm, practical, flexible, and easy to communicate with;
-- suitable for families, senior travellers, first-time visitors, university guests, corporate visitors, and mixed-age groups;
+- suitable for families, senior travellers, first-time visitors, and international guests;
 - focused on understandable cultural and historical context rather than information overload;
-- able to guide in Kyoto and, depending on schedule and plan, nearby areas such as Osaka and Nara.
+- primarily available on Saturdays, Sundays, and Japanese public holidays.
 
 The tone should be personal and professional rather than luxury-agency, mass-tour, or overly promotional.
 
-## 4. Business rules that require deliberate approval before changing
+## 4. Core business rules
 
-The following are business rules, not ordinary UI copy. AI or developers must not change them casually:
+These are controlled business rules and require explicit human approval before changing:
 
 - Tours are private unless explicitly agreed otherwise.
 - Don Tanaka personally handles enquiries and normally guides the tour.
-- Weekends and Japanese public holidays are easier to accept; weekdays require enquiry and confirmation.
+- Regular availability is primarily Saturdays, Sundays, and Japanese public holidays.
+- Weekday guiding is generally not offered. Do not invite weekday enquiries as if they are normally available.
+- The guide rate is ¥10,000 per hour.
+- Half day is up to 4 hours / ¥40,000.
+- Full day is up to 8 hours / ¥80,000.
+- Rates are per guide, not per person.
+- The service offered is guiding only.
+- Don does not arrange, book, or sell hotel accommodation.
+- Don does not arrange, book, or sell private cars, vans, hired vehicles, or transportation services.
+- Guests may use public transport or taxis and pay those providers directly.
+- Transport, meals, entrance fees, taxi fares, and personal expenses are separate from the guide fee.
 - The site must not imply real-time availability.
-- The site must not automatically confirm a reservation.
-- The site must not automatically accept payment.
-- Transport, meals, entrance fees, taxi fares, and personal expenses are separate unless explicitly agreed otherwise.
-- Public transport is the normal transport assumption; taxis may be suggested when useful.
-- Larger groups may require separate discussion.
-- Osaka and Nara guiding are possible only depending on plan and schedule.
-- Any statement about accepting USD or another currency must be treated as a business decision and confirmed before changing.
-- Any public price, cancellation condition, payment method, or group-size limit is controlled content and must be reviewed before modification.
+- The site must not automatically confirm a reservation or accept payment.
 
-## 5. Current product scope
+## 5. Website content priorities
 
-The current site may include:
+The homepage should be intentionally short. Priority order:
 
-- guide introduction and credentials;
-- service strengths;
-- suggested Kyoto experiences;
-- model routes;
-- family- and senior-friendly positioning;
-- educational/corporate visit support;
-- FAQ;
-- availability guidance based on general working-day preferences;
-- sample route generator based on visitor preferences;
-- contact/enquiry form;
-- direct email contact;
-- SEO metadata, sitemap, robots rules, Open Graph and social metadata.
+1. Who Don is and what the service is.
+2. Price.
+3. Weekend/public-holiday availability.
+4. Clear service boundary: guiding only; no hotel or vehicle arrangement.
+5. Guest feedback themes / reasons guests value the service.
+6. A small number of representative route examples.
+7. Short guide introduction.
+8. Short FAQ.
+9. Enquiry form.
 
-## 6. Explicit non-goals
+Avoid duplicating the same message across multiple sections.
 
-Do not add the following without a separate approved project decision:
+## 6. Route examples
 
-- live booking and automatic reservation confirmation;
-- live calendar exposure;
-- customer accounts;
-- card payment processing;
-- automated emails that appear to come personally from Don;
-- automated itinerary commitments based on unverified opening hours, transport conditions, weather, crowding, or availability;
-- storing sensitive traveller information beyond what is necessary for an enquiry;
-- publishing private personal information, employer information, internal work schedules, family information, or unrelated professional details.
+Route content should be simple and representative, not a catalogue.
 
-## 7. Route generator rules
+The homepage should normally show about three representative sample routes rather than many route cards or an interactive route generator.
 
-The route generator is a planning aid only.
+Sample routes must:
 
-It must:
+- be labelled as examples, not confirmed itineraries;
+- avoid guaranteeing opening hours, travel times, reservations, or availability;
+- be geographically realistic;
+- allow Don to adjust the final route after enquiry;
+- never imply that Don arranges transport, vehicles, hotels, or reservations as part of the guide service.
 
-- clearly identify outputs as sample routes rather than confirmed itineraries;
-- avoid claiming that venues are open or available on a specific date unless verified by a live data source;
-- avoid promising travel times as exact;
-- remind users that weather, crowds, closures, transport disruption, and seasonal conditions can affect the final plan;
-- allow Don to adjust the plan after receiving the enquiry;
-- avoid unsafe or unrealistic combinations of distant destinations in limited tour time;
-- respect walking pace, stairs, rest needs, group age, food preferences, and transport preferences where provided.
+## 7. Availability
 
-## 8. Availability/calendar rules
+Do not use a large calendar unless there is a real operational need.
 
-A visual calendar may indicate broad guidance such as weekends/public holidays being easier to accept, but it must never be presented as live availability unless a real availability source is implemented.
+A simple statement such as “Primarily Saturdays, Sundays and Japanese public holidays” is preferred over a long calendar. It must not be presented as live availability.
 
-Hard-coded holiday lists are maintenance-sensitive. If retained, they must be documented, tested, and updated before they expire. A dedicated technical specification may own this rule in the future.
+## 8. Enquiry and privacy
 
-## 9. Enquiry and privacy rules
-
-The enquiry form should collect only information useful to answer a tour enquiry, such as:
+The enquiry form should collect only information useful to answer a guide enquiry, such as:
 
 - preferred date;
 - group size;
-- hotel or starting area;
+- hotel or meeting area for pickup/meeting purposes only;
 - desired tour length;
 - mobility/walking pace;
 - interests;
-- food preferences where relevant;
 - special requests.
 
-Avoid requesting passport details, health diagnoses, payment-card information, or other unnecessary sensitive information.
+Do not request hotel booking details for the purpose of arranging accommodation. Do not request vehicle booking details for arranging transport.
 
 The form must not imply that submission creates a reservation.
 
-## 10. SEO and trust
+## 9. SEO and trust
 
-SEO should support genuine search intent such as private Kyoto guide, licensed Kyoto guide, family-friendly Kyoto tour, senior-friendly Kyoto guide, and related location-based terms.
+SEO should support genuine search intent such as private Kyoto guide, licensed Kyoto guide, family-friendly Kyoto tour, senior-friendly Kyoto guide, and weekend Kyoto guide.
 
-SEO work must not introduce unsupported claims, fake reviews, invented awards, misleading availability, keyword stuffing, or fabricated experience statistics.
+Do not introduce fake reviews, invented awards, unsupported claims, keyword stuffing, or misleading availability.
 
-Structured data, metadata, and visible copy must remain consistent.
-
-## 11. Quality bar
-
-A change is not complete solely because it renders correctly.
+## 10. Definition of done
 
 Before merge, changes should be checked for:
 
-- factual/business-rule accuracy;
+- business-rule accuracy;
+- price visibility near the top of the page;
+- clear weekend/public-holiday availability wording;
+- clear guiding-only boundary;
+- no hotel or vehicle arrangement claims;
 - mobile and desktop readability;
-- accessibility basics;
-- working contact paths;
-- no accidental leakage of personal/internal information;
+- working enquiry/contact paths;
 - no misleading booking or availability claims;
-- build/type/lint health appropriate to the current toolchain;
-- SEO metadata consistency;
+- build/type/lint/test health;
 - preservation of the calm, personal brand.
-
-## 12. Change discipline
-
-When changing business-facing content, identify whether the change is one of:
-
-- cosmetic;
-- UX;
-- factual content;
-- business rule;
-- legal/privacy-sensitive content;
-- technical maintenance.
-
-Business-rule, legal/privacy-sensitive, pricing, payment, availability, and cancellation changes require explicit human review.
-
-Major code modernisation should be separated from content/specification changes whenever practical so that regressions are easier to isolate.
