@@ -90,6 +90,16 @@ export default function Page() {
 
       <section className="content-section" id="routes">
         <div className="section-head"><p className="section-kicker">Representative routes</p><h2>Three simple ideas — then we adjust</h2></div>
+        <div className="kyoto-icon-grid" aria-label="Iconic Kyoto views">
+          <figure className="kyoto-icon-card">
+            <img src="/kyoto/fushimi-inari.jpg" alt="Vermilion torii gates at Fushimi Inari Shrine in Kyoto" loading="lazy" />
+            <figcaption><strong>Fushimi Inari</strong><span>Thousands of vermilion torii gates — one of Kyoto’s most recognisable sights.</span></figcaption>
+          </figure>
+          <figure className="kyoto-icon-card">
+            <img src="/kyoto/nijo-castle.jpg" alt="Historic Nijo Castle in Kyoto" loading="lazy" />
+            <figcaption><strong>Nijo Castle</strong><span>Shogun history in the heart of Kyoto.</span></figcaption>
+          </figure>
+        </div>
         <div className="route-grid">{routes.map((item, index) => <article className="route-card" key={item.title}><span className="route-number">0{index + 1}</span><h3>{item.title}</h3><p className="route-time">{item.time}</p><p className="route-flow">{item.route}</p><p>{item.text}</p></article>)}</div>
         <p className="section-note">This is a sample route, not a final reservation. The final plan depends on your group, meeting area, walking pace, weather, crowds, and opening conditions.</p>
       </section>
