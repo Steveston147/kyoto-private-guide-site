@@ -40,6 +40,16 @@ select:focus-visible {
   outline-offset: 3px;
 }
 
+/* Keep the Full Day badge clear of its heading on every viewport. */
+.price-badge {
+  position: static;
+  left: auto;
+  top: auto;
+  transform: none;
+  align-self: center;
+  margin: 0 0 8px;
+}
+
 @media (max-width: 760px) {
   .site-nav {
     overscroll-behavior-x: contain;
