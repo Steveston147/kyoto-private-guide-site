@@ -73,7 +73,19 @@ export default function Page() {
       <section className="content-section" id="feedback">
         <div className="section-head"><p className="section-kicker">Guest feedback</p><h2>What guests value about the experience</h2></div>
         <div className="guest-grid">{guestFeedback.map((text) => <article className="guest-card" key={text}><p className="guest-text">{text}</p></article>)}</div>
-        <p className="section-note">Recurring feedback themes from guests; not invented quotations or review scores.</p>
+        <p className="section-note">Recurring feedback themes from guests.</p>
+
+        <article className="recent-experience-card" aria-label="Recent guest experience">
+          <div className="recent-experience-image-wrap">
+            <img src="/recent-guests-austria.webp" alt="Don Tanaka with recent guests from Austria after a private Kyoto tour" className="recent-experience-image" loading="lazy" />
+          </div>
+          <div className="recent-experience-copy">
+            <p className="section-kicker">Recent guest experience</p>
+            <h3>Four hours across Kyoto with guests from Austria</h3>
+            <p>Fushimi Inari · Arashiyama Bamboo Grove · Tenryu-ji · Nijo Castle</p>
+            <p>A real recent guiding day, shared with permission from the guests.</p>
+          </div>
+        </article>
       </section>
 
       <section className="content-section" id="routes">
@@ -89,14 +101,14 @@ export default function Page() {
 
       <section className="content-section" id="faq">
         <div className="section-head compact-head"><p className="section-kicker">FAQ</p><h2>The questions I receive most often</h2></div>
-        <div className="faq-list">{faqItems.map((item, index) => { const isOpen = openFaqIndex === index; return <article className={`faq-item${isOpen ? " is-open" : ""}`} key={item.q}><button className="faq-button" type="button" onClick={() => setOpenFaqIndex(isOpen ? null : index)} aria-expanded={isOpen}><span>{item.q}</span><span className="faq-icon" aria-hidden="true">{isOpen ? "−" : "+"}</span></button>{isOpen ? <p className="faq-answer">{item.a}</p> : null}</article>; })}</div>
+        <div className="faq-list">{faqItems.map((item, index) => { const isOpen = openFaqIndex === index; const answerId = `faq-answer-${index}`; return <article className={`faq-item${isOpen ? " is-open" : ""}`} key={item.q}><button className="faq-button" type="button" onClick={() => setOpenFaqIndex(isOpen ? null : index)} aria-expanded={isOpen} aria-controls={answerId}><span>{item.q}</span><span className="faq-icon" aria-hidden="true">{isOpen ? "−" : "+"}</span></button>{isOpen ? <p className="faq-answer" id={answerId}>{item.a}</p> : null}</article>; })}</div>
       </section>
 
       <section className="content-section contact-section" id="contact">
         <div className="section-head compact-head"><p className="section-kicker">Contact</p><h2>Check a weekend date</h2></div>
         <div className="contact-card"><p className="contact-lead">Send your preferred Saturday, Sunday, or Japanese public-holiday date, group size, meeting area, and the kind of Kyoto experience you want. A rough idea is enough.</p>
           <form action={formAction} method="POST" className="contact-form"><input type="hidden" name="_subject" value="Kyoto Private Guide Enquiry" />
-            <div className="form-grid"><div className="form-field"><label htmlFor="name">Name</label><input id="name" name="name" type="text" autoComplete="name" required /></div><div className="form-field"><label htmlFor="email">Email</label><input id="email" name="email" type="email" autoComplete="email" required /></div><div className="form-field"><label htmlFor="preferred-date">Preferred date</label><input id="preferred-date" name="preferred_date" type="text" placeholder="Saturday, Sunday, or public holiday" required /></div><div className="form-field"><label htmlFor="group-size">Group size</label><input id="group-size" name="group_size" type="text" /></div><div className="form-field"><label htmlFor="meeting-area">Meeting area / hotel name</label><input id="meeting-area" name="meeting_area" type="text" /></div><div className="form-field"><label htmlFor="tour-length">Preferred length</label><select id="tour-length" name="tour_length" defaultValue="Half day / 4 hours"><option>Half day / 4 hours</option><option>Full day / 8 hours</option><option>Not sure yet</option></select></div></div>
+            <div className="form-grid"><div className="form-field"><label htmlFor="name">Name</label><input id="name" name="name" type="text" autoComplete="name" required /></div><div className="form-field"><label htmlFor="email">Email</label><input id="email" name="email" type="email" autoComplete="email" required /></div><div className="form-field"><label htmlFor="preferred-date">Preferred date</label><input id="preferred-date" name="preferred_date" type="text" placeholder="Saturday, Sunday, or public holiday" required /></div><div className="form-field"><label htmlFor="group-size">Group size</label><input id="group-size" name="group_size" type="text" inputMode="numeric" /></div><div className="form-field"><label htmlFor="meeting-area">Meeting area / hotel name</label><input id="meeting-area" name="meeting_area" type="text" /></div><div className="form-field"><label htmlFor="tour-length">Preferred length</label><select id="tour-length" name="tour_length" defaultValue="Half day / 4 hours"><option>Half day / 4 hours</option><option>Full day / 8 hours</option><option>Not sure yet</option></select></div></div>
             <div className="form-field form-field-full"><label htmlFor="interests">Places or interests</label><input id="interests" name="places_or_interests" type="text" placeholder="Gion, Fushimi Inari, history, food, family trip, etc." /></div>
             <div className="form-field form-field-full"><label htmlFor="message">Message</label><textarea id="message" name="message" rows={4} required placeholder="Please tell me your rough plan, walking pace, or any questions." /></div>
             <div className="contact-actions contact-actions-form"><button className="btn btn-primary" type="submit">Send enquiry</button><a className="btn btn-secondary" href={mailto}>Email directly</a></div>
