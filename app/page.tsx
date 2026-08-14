@@ -77,7 +77,7 @@ export default function Page() {
 
         <article className="recent-experience-card" aria-label="Recent guest experience">
           <div className="recent-experience-image-wrap">
-            <img src="/recent-guests-austria.webp" alt="Don Tanaka with recent guests from Austria after a private Kyoto tour" className="recent-experience-image" loading="lazy" />
+            <img src="/recent-guests-austria.jpg" alt="Don Tanaka with recent guests from Austria after a private Kyoto tour" className="recent-experience-image" loading="lazy" />
           </div>
           <div className="recent-experience-copy">
             <p className="section-kicker">Recent guest experience</p>
