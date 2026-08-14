@@ -18,9 +18,31 @@ test('canonical specification files exist and declare project boundaries', async
   assert.match(tech, /Node\.js 20\.9\.0/i);
 });
 
-test('route generator keeps a reservation disclaimer', async () => {
+test('sample routes keep a reservation disclaimer', async () => {
   const page = await read('app/page.tsx');
   assert.match(page, /sample route, not a final reservation/i);
+});
+
+test('final public service boundaries stay visible', async () => {
+  const page = await read('app/page.tsx');
+  assert.match(page, /Saturdays, Sundays, and Japanese public holidays/i);
+  assert.match(page, /guiding service only/i);
+  assert.match(page, /¥40,000/);
+  assert.match(page, /¥80,000/);
+  assert.match(page, /do not arrange or book hotels, private cars, vans/i);
+  assert.doesNotMatch(page, /Kyoto Route Planner/i);
+});
+
+test('final responsive UAT safeguards stay enabled', async () => {
+  const [layout, uatCss] = await Promise.all([
+    read('app/layout.tsx'),
+    read('app/uat.css'),
+  ]);
+  assert.match(layout, /import ['"]\.\/uat\.css['"]/);
+  assert.match(uatCss, /focus-visible/);
+  assert.match(uatCss, /prefers-reduced-motion/);
+  assert.match(uatCss, /min-height:\s*44px/);
+  assert.match(uatCss, /overflow-x:\s*hidden/);
 });
 
 test('runtime baseline is declared consistently', async () => {
