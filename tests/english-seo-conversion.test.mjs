@@ -19,7 +19,7 @@ test('English home keeps six useful route intents and route selection in the enq
   assert.match(page, /name="route_interest"/);
   assert.match(page, /Not sure yet/);
   assert.match(page, /Ask me to adjust a route/);
-  assert.match(page, /sample routes, not final reservations/i);
+  assert.match(page, /sample route, not a final reservation/i);
 });
 
 test('English home exposes search-focused metadata, hreflang and service structured data', async () => {
