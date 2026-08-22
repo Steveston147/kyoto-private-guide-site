@@ -1,6 +1,7 @@
 import './japanese-guide.css';
 import './proof-gallery.css';
 import './uat-polish.css';
+import './inquiry-form.css';
 import InquiryForm from './InquiryForm';
 
 export default function JapaneseGuideLayout({
