@@ -15,6 +15,9 @@ export const metadata: Metadata = {
   },
 };
 
+const email = "eltontanaka@gmail.com";
+const mailto = `mailto:${email}?subject=${encodeURIComponent("北尻 京都日本語プライベートガイド お問い合わせ")}`;
+
 const routes = [
   { title: "黒谷・真如堂から哲学の道へ", time: "約4時間", route: "金戒光明寺 → 真如堂 → 哲学の道 → 銀閣寺周辺", text: "幕末の歴史、静かな名刹、東山の空気を味わうコース。京都には何度も来たけれど、黒谷や真如堂はまだ、という方におすすめです。" },
   { title: "洛北の小さな名刹を歩く", time: "約4時間", route: "詩仙堂 → 圓光寺 → 曼殊院", text: "庭園や建築をゆっくり楽しみたい方へ。中心部のにぎわいから少し離れた洛北で、落ち着いた京都を歩きます。" },
@@ -29,7 +32,7 @@ export default function JapaneseGuidePage() {
     <main className="site-shell" lang="ja">
       <header className="site-header">
         <a className="brand" href="/" aria-label="Uma Academia Kyoto Private Guide home"><span className="brand-mark" aria-hidden="true">K</span><span className="brand-copy"><strong>Kyoto Private Guide</strong><small>Uma Academia</small></span></a>
-        <nav className="site-nav" aria-label="日本語ガイドページのナビゲーション"><a href="#about">北尻について</a><a href="#routes">モデルコース</a><a href="#service">ご案内内容</a><a href="#contact">お問い合わせ</a><a href="/">English</a></nav>
+        <nav className="site-nav" aria-label="日本語ガイドページのナビゲーション"><a href="#about">北尻について</a><a href="#routes">モデルコース</a><a href="#service">料金・ご案内内容</a><a href="#contact">お問い合わせ</a><a href="/">English</a></nav>
       </header>
 
       <section className="hero-section" id="top">
@@ -37,8 +40,8 @@ export default function JapaneseGuidePage() {
           <p className="eyebrow">京都リピーターのための日本語プライベートガイド</p>
           <h1>何度来ても、まだ知らない京都がある。</h1>
           <p className="hero-text">京都在住のベテランガイド・北尻が、ガイドブックでは通り過ぎてしまう路地、寺院、歴史と文化をご案内します。名所を急いで消化するのではなく、二度目、三度目、その先の京都を、ゆっくり深く味わう時間です。</p>
-          <div className="hero-actions"><a className="btn btn-primary" href="#routes">モデルコースを見る</a><a className="btn btn-secondary" href="#contact">問い合わせ方法</a></div>
-          <div className="badge-row" aria-label="サービスの特徴"><span>約4時間から</span><span>土日もご相談可</span><span>公共交通＋徒歩</span><span>個人ガイドに直接相談</span></div>
+          <div className="hero-actions"><a className="btn btn-primary" href="#contact">日程を問い合わせる</a><a className="btn btn-secondary" href="#routes">モデルコースを見る</a></div>
+          <div className="badge-row" aria-label="サービスの特徴"><span>4時間 ¥26,000</span><span>土日もご相談可</span><span>公共交通＋徒歩</span><span>当日現金払い</span></div>
         </div>
         <div className="hero-image-wrap"><img src="/kitajiri-guide.jpg" alt="京都で街歩きを案内する北尻ガイド" className="hero-image" fetchPriority="high" /></div>
       </section>
@@ -61,16 +64,17 @@ export default function JapaneseGuidePage() {
       </section>
 
       <section className="content-section pricing-section" id="service">
-        <div className="section-head"><p className="section-kicker">Service details</p><h2>ガイドのみ。シンプルな個人サービスです</h2></div>
-        <div className="service-grid"><article className="info-card"><h3>基本は約4時間</h3><p>公共交通機関と徒歩でご案内します。日程に余裕がある場合は時間延長もご相談いただけます。</p></article><article className="info-card"><h3>旅行代理店ではありません</h3><p>車両、タクシー、ホテル等の予約・手配は行いません。ガイドサービスのみを提供します。</p></article><article className="info-card"><h3>実費は別途</h3><p>交通費、昼食・飲食代、寺社等の拝観料・入場料は含まれません。ガイドの入場料も、必要な場合は当日現金で別途ご負担ください。</p></article></div>
+        <div className="section-head"><p className="section-kicker">Guide fee & service</p><h2>4時間 ¥26,000。延長もできます</h2><p className="section-intro">料金は1グループあたりのガイド料金です。当日、現金でお支払いください。</p></div>
+        <div className="pricing-grid"><article className="price-card featured"><div className="price-badge">基本プラン</div><h3>4時間</h3><div className="price">¥26,000</div><p>1グループあたり</p></article><article className="price-card"><h3>時間延長</h3><div className="price">¥6,000</div><p>1時間あたり</p></article><article className="price-card"><h3>お支払い</h3><div className="price">現金</div><p>ツアー当日にお支払い</p></article></div>
+        <div className="service-grid"><article className="info-card"><h3>公共交通機関と徒歩</h3><p>基本は約4時間。公共交通機関と徒歩でご案内します。日程に余裕がある場合は時間延長もご相談いただけます。</p></article><article className="info-card"><h3>旅行代理店ではありません</h3><p>車両、タクシー、ホテル等の予約・手配は行いません。ガイドサービスのみを提供します。</p></article><article className="info-card"><h3>実費は別途</h3><p>交通費、昼食・飲食代、寺社等の拝観料・入場料は含まれません。ガイドの入場料も、必要な場合は当日現金で別途ご負担ください。</p></article></div>
       </section>
 
       <section className="content-section contact-section" id="contact">
         <div className="section-head compact-head"><p className="section-kicker">Contact</p><h2>まずはメールでご相談ください</h2></div>
-        <div className="contact-card"><p className="contact-lead">ご希望の日程、人数、行ってみたい場所や興味のあるテーマ、歩くペースなどをお知らせください。行き先が決まっていなくても、「何度も京都に来ているので、今回は普通ではない京都を見たい」だけでも大丈夫です。</p><p>北尻本人が日程を確認し、対応可能な場合にご返信します。土曜日・日曜日もご相談いただけます。お問い合わせ時点では予約確定ではありません。</p><p className="pricing-note"><strong>公開前確認：</strong> 北尻本人に直接届くメールアドレスを設定後、このページの問い合わせボタンを有効にします。</p></div>
+        <div className="contact-card"><p className="contact-lead">ご希望の日程、人数、行ってみたい場所や興味のあるテーマ、歩くペースなどをお知らせください。行き先が決まっていなくても、「何度も京都に来ているので、今回は普通ではない京都を見たい」だけでも大丈夫です。</p><p>日程を確認し、対応可能な場合にご返信します。土曜日・日曜日もご相談いただけます。お問い合わせ時点では予約確定ではありません。</p><div className="contact-actions"><a className="btn btn-primary" href={mailto}>メールで問い合わせる</a></div><p className="contact-direct-note">お問い合わせ先：{email}<br />ガイド料金はツアー当日に現金でお支払いください。</p></div>
       </section>
 
-      <footer className="site-footer"><p><strong>北尻 | 京都 日本語プライベートガイド</strong></p><p>Uma Academia · 個人ガイドへの直接お問い合わせ</p></footer>
+      <footer className="site-footer"><p><strong>北尻 | 京都 日本語プライベートガイド</strong></p><p>Uma Academia · 日本語ガイドのお問い合わせ</p></footer>
     </main>
   );
 }
