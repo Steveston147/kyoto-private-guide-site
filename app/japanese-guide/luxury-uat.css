@@ -45,6 +45,21 @@
   text-wrap: balance;
 }
 
+.jp-hero-title-line {
+  display: block;
+}
+
+.jp-hero-title-lead {
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: 0.08em;
+}
+
+.jp-hero-title-chunk,
+.jp-hero-title-close {
+  white-space: nowrap;
+}
+
 .japanese-guide-page .hero-text {
   max-width: 590px;
   margin-top: 24px;
@@ -52,6 +67,19 @@
   font-size: 0.98rem;
   line-height: 1.92;
   letter-spacing: 0.004em;
+}
+
+.jp-hero-text-break {
+  display: block;
+  margin-top: 2px;
+}
+
+.jp-hero-assurance {
+  max-width: 585px;
+  margin: 12px 0 0;
+  color: #796a5b;
+  font-size: 0.86rem;
+  line-height: 1.78;
 }
 
 .japanese-guide-page .hero-actions {
@@ -192,7 +220,8 @@
     font-size: clamp(2.85rem, 6.2vw, 3.45rem);
   }
 
-  .japanese-guide-page .hero-text {
+  .japanese-guide-page .hero-text,
+  .jp-hero-assurance {
     max-width: 650px;
   }
 
@@ -246,6 +275,13 @@
     margin-top: 18px;
     font-size: 0.94rem;
     line-height: 1.86;
+  }
+
+  .jp-hero-assurance {
+    max-width: 36em;
+    margin-top: 10px;
+    font-size: 0.82rem;
+    line-height: 1.72;
   }
 
   .japanese-guide-page .hero-actions {
@@ -334,6 +370,14 @@
 
   .japanese-guide-page .hero-section h1 {
     max-width: 9.6em;
+  }
+
+  .jp-hero-title-lead {
+    display: block;
+  }
+
+  .jp-hero-title-chunk {
+    display: block;
   }
 
   .japanese-guide-page .hero-image-wrap.jp-kimono-hero {
