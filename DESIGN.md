@@ -47,7 +47,7 @@ Prefer real, relevant Kyoto/location photography. Avoid misleading stock imagery
 
 Image crops should preserve the main subject on common desktop and mobile aspect ratios.
 
-The Kitajiri hero portrait is a committed WebP asset. It must not depend on runtime/build reconstruction from text chunks or fall back to a placeholder. Browser UAT should verify that a real image with adequate intrinsic dimensions loads.
+The Kitajiri hero portrait is generated deterministically from the version-controlled source chunks in `app/japanese-guide/hero-base64/` by `scripts/prepare-kitajiri-hero.mjs` before local development and production builds. Do not replace those source chunks, the preparation script, or the resulting portrait with a placeholder. Browser UAT must verify actual visual variation as well as image dimensions so a technically valid beige/blank WebP cannot pass.
 
 ## Forms
 
