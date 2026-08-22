@@ -41,7 +41,7 @@ export default function Page() {
           <span className="brand-copy"><strong>Kyoto Private Guide</strong><small>Don Tanaka</small></span>
         </a>
         <nav className="site-nav" aria-label="Main navigation">
-          <a href="#pricing">Rates</a><a href="#feedback">Guest feedback</a><a href="#routes">Routes</a><a href="#about">About</a><a href="#faq">FAQ</a><a href="#contact">Contact</a>
+          <a href="#pricing">Rates</a><a href="#feedback">Guest feedback</a><a href="#routes">Routes</a><a href="#about">About</a><a href="#faq">FAQ</a><a href="#contact">Contact</a><a href="/japanese-guide" lang="ja">日本語ガイド</a>
         </nav>
       </header>
 
