@@ -43,11 +43,24 @@ The site should present Don Tanaka as:
 The Japanese-language page should present Kitajiri as:
 
 - a Kyoto-based, experienced Japanese-language private guide;
-- a long-time guide with major travel-company tour experience;
+- a long-time guide with major travel-company tour experience, including Club Tourism;
 - holder of Kyoto Kentei Level 1 and other history/culture-related qualifications;
 - especially suitable for repeat Kyoto visitors who want quieter temples, back streets, local history, and less-obvious places;
 - calm and unhurried in guiding style;
 - available by enquiry when the requested date is open, including Saturdays and Sundays.
+
+#### Primary target persona for the Japanese page
+
+Design and copy should be optimised primarily for:
+
+- an affluent couple living in Tokyo;
+- repeat Kyoto visitors who already consider themselves knowledgeable about Kyoto;
+- guests who are not looking for a first-time highlights checklist;
+- guests who want to learn from an experienced Kyoto-based guide and understand the history, culture, people, buildings, gardens, and local context behind what they see;
+- guests who value quieter temples, back streets, lesser-known places, and places their friends are unlikely to have visited;
+- guests who value comfort and are willing to use taxis at their own expense when this improves the route, pace, or experience.
+
+Do not explicitly label public visitors as wealthy or affluent. Express this positioning through calm editorial design, depth, customisation, quality, discretion, and comfort rather than luxury clichés.
 
 The tone for both services should be personal and professional rather than luxury-agency, mass-tour, or overly promotional.
 
@@ -83,7 +96,8 @@ These are controlled business rules and require explicit human approval before c
 - The guide fee is paid in cash on the tour day.
 - The service offered is guiding only.
 - Public transport and walking are the normal means of travel.
-- The service does not arrange or book hotels, private cars, vans, taxis, hired vehicles, or transportation services.
+- Guests may also use taxis during the tour when useful for comfort, distance, weather, or itinerary quality; taxi fares are paid separately by the guests.
+- The service does not pre-arrange or book hotels, private cars, vans, taxis, hired vehicles, or transportation services.
 - Transport, meals, entrance/admission fees, and personal expenses are separate from the guide fee.
 - When Kitajiri needs admission to accompany the guests, Kitajiri's admission fee is also paid separately by the guests on the day.
 - Enquiries use `eltontanaka@gmail.com`.
@@ -106,13 +120,14 @@ The homepage should be intentionally short. Priority order:
 
 The Japanese guide page should prioritise:
 
-1. Kitajiri's identity and guiding style.
-2. The repeat-visitor positioning: quieter and less-obvious Kyoto.
-3. The 4-hour ¥26,000 guide fee and ¥6,000/hour extension.
-4. Cash payment on the tour day.
-5. Representative routes and customisation.
-6. Guiding-only service boundaries and excluded costs.
-7. A clear email enquiry path.
+1. A clear repeat-visitor proposition: move from simply seeing Kyoto to learning and understanding Kyoto.
+2. Kitajiri's identity, experience, qualifications, guiding style, and credibility.
+3. Quiet and less-obvious Kyoto, with representative routes rather than a long generic sightseeing catalogue.
+4. Private customisation and a comfortable pace, including optional guest-paid taxi use when useful.
+5. The 4-hour ¥26,000 guide fee and ¥6,000/hour extension.
+6. Cash payment on the tour day.
+7. Guiding-only service boundaries and excluded costs.
+8. A clear email enquiry path.
 
 Avoid duplicating the same message across multiple sections.
 
@@ -154,7 +169,7 @@ An enquiry must not imply that submission creates a reservation.
 
 ## 9. SEO and trust
 
-SEO should support genuine search intent such as private Kyoto guide, licensed Kyoto guide, family-friendly Kyoto tour, senior-friendly Kyoto guide, weekend Kyoto guide, 京都 日本語ガイド, 京都 プライベートガイド, and 京都 穴場 ガイド.
+SEO should support genuine search intent such as private Kyoto guide, licensed Kyoto guide, family-friendly Kyoto tour, senior-friendly Kyoto guide, weekend Kyoto guide, 京都 日本語ガイド, 京都 プライベートガイド, 京都 穴場 ガイド, 京都 リピーター 観光, and 京都 歴史 ガイド.
 
 Do not introduce fake reviews, invented awards, unsupported claims, keyword stuffing, or misleading availability.
 
@@ -166,9 +181,11 @@ Before merge, changes should be checked for:
 - price visibility near the top of each relevant service page;
 - correct availability wording for the relevant guide;
 - clear guiding-only boundary;
-- no hotel or vehicle arrangement claims;
+- correct taxi wording: taxis may be used and paid directly/at cost by guests, without implying pre-arranged vehicle service;
 - mobile and desktop readability;
+- balanced multi-card layouts without orphan cards or misleading component styling;
 - working enquiry/contact paths;
+- correct Japanese social metadata for the Japanese page;
 - no misleading booking or availability claims;
 - build/type/lint/test health;
 - preservation of the calm, personal brand.
