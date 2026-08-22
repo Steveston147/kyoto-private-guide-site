@@ -9,7 +9,8 @@ Last updated: 2026-08-22
 - [ ] Mobile 390px: navigation remains horizontally usable without clipping the page.
 - [ ] Mobile: hero heading, badges, buttons, route cards, destination cards, pricing cards and enquiry form wrap without horizontal overflow.
 - [ ] Destination areas do not show testimonial quotation marks.
-- [ ] The hero portrait loads as the real committed WebP asset, not a placeholder or generated text-chunk reconstruction.
+- [ ] The hero portrait is the approved corrected committed WebP asset; source-level tests reject the previously used blank-placeholder blob.
+- [ ] Browser UAT verifies not only intrinsic image dimensions but also pixel/luminance variation and rendered screenshot complexity, so a beige/blank placeholder cannot pass simply because it is a technically valid WebP.
 
 ## Business rules
 
