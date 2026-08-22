@@ -221,7 +221,7 @@ export default function Page() {
           </figure>
         </div>
         <div className="route-grid">{routes.map((item, index) => <article className="route-card" key={item.title}><span className="route-number">0{index + 1}</span><h3>{item.title}</h3><p className="route-time">{item.time}</p><p className="route-best-for"><strong>Best for:</strong> {item.bestFor}</p><p className="route-flow">{item.route}</p><p>{item.text}</p></article>)}</div>
-        <p className="section-note">These are sample routes, not final reservations. The final plan depends on your group, meeting area, walking pace, weather, crowds, and opening conditions.</p>
+        <p className="section-note">Think of each as a sample route, not a final reservation. The final plan depends on your group, meeting area, walking pace, weather, crowds, and opening conditions.</p>
         <div className="route-cta"><div><strong>See something close to what you want?</strong><span>Choose a route in the enquiry form, or simply select “Not sure yet.”</span></div><a className="btn btn-primary" href="#contact">Ask me to adjust a route</a></div>
       </section>
 
