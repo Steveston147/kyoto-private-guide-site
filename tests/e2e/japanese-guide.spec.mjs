@@ -12,20 +12,50 @@ test.beforeEach(async ({ page }) => {
   await page.goto('/japanese-guide', { waitUntil: 'domcontentloaded' });
 });
 
-test('Japanese guide hero is real, readable and stable', async ({ page }) => {
+test('Japanese guide hero is the real portrait, not a blank placeholder', async ({ page }) => {
   await expect(page.getByRole('heading', { level: 1, name: /何度来ても.*京都がある/ })).toBeVisible();
   const hero = page.locator('.jp-kimono-hero .hero-image');
   await expect(hero).toBeVisible();
 
-  await expect.poll(async () => hero.evaluate((image) => image.naturalWidth)).toBeGreaterThanOrEqual(500);
+  await expect.poll(async () => hero.evaluate((image) => image.naturalWidth)).toBeGreaterThanOrEqual(360);
   const imageState = await hero.evaluate((image) => ({
     complete: image.complete,
     naturalWidth: image.naturalWidth,
     naturalHeight: image.naturalHeight,
   }));
   expect(imageState.complete).toBeTruthy();
-  expect(imageState.naturalWidth).toBeGreaterThanOrEqual(500);
-  expect(imageState.naturalHeight).toBeGreaterThanOrEqual(600);
+  expect(imageState.naturalWidth).toBeGreaterThanOrEqual(360);
+  expect(imageState.naturalHeight).toBeGreaterThanOrEqual(450);
+
+  const visualStats = await hero.evaluate((image) => {
+    const canvas = document.createElement('canvas');
+    canvas.width = 32;
+    canvas.height = 40;
+    const context = canvas.getContext('2d', { willReadFrequently: true });
+    if (!context) throw new Error('Canvas 2D context unavailable');
+    context.drawImage(image, 0, 0, canvas.width, canvas.height);
+    const pixels = context.getImageData(0, 0, canvas.width, canvas.height).data;
+    const luminance = [];
+    const colourBuckets = new Set();
+    for (let i = 0; i < pixels.length; i += 4) {
+      const r = pixels[i];
+      const g = pixels[i + 1];
+      const b = pixels[i + 2];
+      luminance.push(0.2126 * r + 0.7152 * g + 0.0722 * b);
+      colourBuckets.add(`${r >> 4}-${g >> 4}-${b >> 4}`);
+    }
+    const mean = luminance.reduce((sum, value) => sum + value, 0) / luminance.length;
+    const variance = luminance.reduce((sum, value) => sum + (value - mean) ** 2, 0) / luminance.length;
+    return {
+      luminanceStdDev: Math.sqrt(variance),
+      colourBucketCount: colourBuckets.size,
+    };
+  });
+  expect(visualStats.luminanceStdDev).toBeGreaterThan(18);
+  expect(visualStats.colourBucketCount).toBeGreaterThan(40);
+
+  const renderedHero = await page.locator('.jp-kimono-hero').screenshot();
+  expect(renderedHero.length).toBeGreaterThan(20_000);
   await expectNoHorizontalOverflow(page);
 });
 

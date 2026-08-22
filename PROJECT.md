@@ -211,7 +211,7 @@ The V1 hardening baseline includes:
 - documentation synchronised to production behaviour;
 - direct Formspree enquiry form with successful human receipt test;
 - privacy disclosure and `/privacy` page;
-- Kitajiri hero portrait committed as a normal WebP asset rather than reconstructed during build;
+- Kitajiri hero portrait generated deterministically from version-controlled source chunks during `predev` / `prebuild`, with the rendered image protected by actual pixel-content browser UAT;
 - source-level regression tests plus Playwright desktop/mobile browser UAT.
 
 Dependency/framework modernisation is a separate technical PR and must not be mixed into V1 hardening.

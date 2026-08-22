@@ -9,7 +9,9 @@ Last updated: 2026-08-22
 - [ ] Mobile 390px: navigation remains horizontally usable without clipping the page.
 - [ ] Mobile: hero heading, badges, buttons, route cards, destination cards, pricing cards and enquiry form wrap without horizontal overflow.
 - [ ] Destination areas do not show testimonial quotation marks.
-- [ ] The hero portrait loads as the real committed WebP asset, not a placeholder or generated text-chunk reconstruction.
+- [ ] The Kitajiri hero is reconstructed from the version-controlled source chunks by `scripts/prepare-kitajiri-hero.mjs` through `predev` / `prebuild`.
+- [ ] A technically valid WebP or plausible image dimensions alone are not sufficient acceptance criteria.
+- [ ] Browser UAT verifies intrinsic dimensions, pixel/luminance variation, colour variation, and rendered screenshot complexity so a beige/blank placeholder cannot pass.
 
 ## Business rules
 
