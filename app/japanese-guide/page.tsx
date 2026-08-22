@@ -69,10 +69,14 @@ export default function JapaneseGuidePage() {
       <section className="hero-section" id="top">
         <div className="hero-copy">
           <p className="eyebrow">京都を何度も訪れている方へ</p>
-          <h1>何度来ても、まだ知らない京都がある。</h1>
-          <p className="hero-text">名所を「見る」京都から、その背景を「知る」京都へ。京都在住のベテランガイド・北尻が、静かな名刹、裏道、歴史と文化をご案内します。京都を知っている方にこそ楽しんでいただきたい、一組貸切の4時間です。</p>
+          <h1 className="jp-hero-title">
+            <span className="jp-hero-title-line jp-hero-title-lead"><span className="jp-hero-title-chunk">何度来ても、</span><span className="jp-hero-title-chunk">まだ知らない</span></span>
+            <span className="jp-hero-title-line jp-hero-title-close">京都がある。</span>
+          </h1>
+          <p className="hero-text">名所を「見る」京都から、その背景を「知る」京都へ。<span className="jp-hero-text-break">京都在住のベテランガイド・北尻が、静かな名刹や裏道を、その土地の歴史や文化とともにご案内します。</span></p>
+          <p className="jp-hero-assurance">京都を何度も訪れている方にこそ楽しんでいただきたい、一組貸切の4時間です。</p>
           <div className="hero-actions"><a className="btn btn-primary" href="#contact">希望日を相談する</a><a className="btn btn-secondary" href="#places">訪問地を見る</a></div>
-          <div className="badge-row" aria-label="サービスの特徴"><span>4時間 ¥26,000</span><span>一組貸切</span><span>タクシー利用も可</span><span>当日現金払い</span></div>
+          <div className="badge-row" aria-label="サービスの特徴"><span>京都検定1級</span><span>クラブツーリズムでも活動</span><span>4時間 ¥26,000</span><span>一組貸切</span></div>
         </div>
         <div className="hero-image-wrap jp-kimono-hero">
           <img src="/kitajiri-kimono.webp" alt="祇園白川で着物姿の京都ガイド北尻" className="hero-image" fetchPriority="high" />
