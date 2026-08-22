@@ -36,11 +36,18 @@ test('Japanese guide inquiry form is mounted directly and submits through Formsp
   assert.match(css, /@media \(max-width: 760px\)[\s\S]*grid-template-columns:\s*1fr/);
 });
 
-test('Kitajiri kimono hero is a committed WebP asset, not build-generated text chunks', async () => {
+test('Kitajiri kimono hero is a committed WebP asset with adequate intrinsic dimensions', async () => {
   const image = await readBytes('public/kitajiri-kimono.webp');
-  assert.ok(image.length > 50000, `kimono hero asset is unexpectedly small: ${image.length} bytes`);
+  assert.ok(image.length > 10000, `kimono hero asset is unexpectedly small: ${image.length} bytes`);
   assert.equal(image.subarray(0, 4).toString('ascii'), 'RIFF');
   assert.equal(image.subarray(8, 12).toString('ascii'), 'WEBP');
+
+  const vp8FrameMarker = image.indexOf(Buffer.from([0x9d, 0x01, 0x2a]));
+  assert.ok(vp8FrameMarker > 0, 'VP8 frame marker not found in kimono hero');
+  const width = image.readUInt16LE(vp8FrameMarker + 3) & 0x3fff;
+  const height = image.readUInt16LE(vp8FrameMarker + 5) & 0x3fff;
+  assert.ok(width >= 500, `kimono hero width is too small: ${width}px`);
+  assert.ok(height >= 600, `kimono hero height is too small: ${height}px`);
 
   const pkg = JSON.parse(await read('package.json'));
   assert.equal(pkg.scripts?.prebuild, undefined, 'hero image should not depend on a prebuild reconstruction step');
