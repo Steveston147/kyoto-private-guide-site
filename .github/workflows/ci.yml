@@ -68,4 +68,4 @@ jobs:
             cat /tmp/kyoto-guide-next.log
             exit 1
           fi
-          npx playwright test --config=playwright.config.ts
+          npx playwright test --config=playwright.config.mjs
