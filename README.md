@@ -75,7 +75,7 @@ The CI workflow additionally installs Playwright without saving it to the projec
 - `app/layout.tsx` — root metadata and layout.
 - `app/robots.ts` / `app/sitemap.ts` — crawl and sitemap configuration.
 - `tests/*.test.mjs` — contract and source-level regression tests.
-- `tests/e2e/japanese-guide.spec.ts` — real-browser Japanese-page UAT.
+- `tests/e2e/japanese-guide.spec.mjs` — real-browser Japanese-page UAT.
 
 ## Controlled business content
 
