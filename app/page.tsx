@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useState } from "react";
 
 const email = "eltontanaka@gmail.com";
@@ -92,11 +93,11 @@ export default function Page() {
         <div className="section-head"><p className="section-kicker">Representative routes</p><h2>Three simple ideas — then we adjust</h2></div>
         <div className="kyoto-icon-grid" aria-label="Iconic Kyoto views">
           <figure className="kyoto-icon-card">
-            <img src="/kyoto/fushimi-inari.jpg" alt="Vermilion torii gates at Fushimi Inari Shrine in Kyoto" loading="lazy" />
+            <Image src="/kyoto/fushimi-inari.jpg" alt="Vermilion torii gates at Fushimi Inari Shrine in Kyoto" width={2832} height={1888} sizes="(max-width: 760px) 100vw, 50vw" />
             <figcaption><strong>Fushimi Inari</strong><span>Thousands of vermilion torii gates — one of Kyoto’s most recognisable sights.</span></figcaption>
           </figure>
           <figure className="kyoto-icon-card">
-            <img src="/kyoto/nijo-castle.jpg" alt="Historic Nijo Castle in Kyoto" loading="lazy" />
+            <Image src="/kyoto/nijo-castle.jpg" alt="Historic Nijo Castle in Kyoto" width={4080} height={3072} sizes="(max-width: 760px) 100vw, 50vw" />
             <figcaption><strong>Nijo Castle</strong><span>Shogun history in the heart of Kyoto.</span></figcaption>
           </figure>
         </div>
