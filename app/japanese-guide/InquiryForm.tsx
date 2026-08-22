@@ -1,16 +1,22 @@
 'use client';
 
-import { FormEvent, useState } from 'react';
+import { FormEvent, useEffect, useState } from 'react';
+import { createPortal } from 'react-dom';
 
 const email = 'eltontanaka@gmail.com';
 
 export default function InquiryForm() {
+  const [target, setTarget] = useState<Element | null>(null);
   const [name, setName] = useState('');
   const [replyEmail, setReplyEmail] = useState('');
   const [date, setDate] = useState('');
   const [partySize, setPartySize] = useState('2');
   const [places, setPlaces] = useState('');
   const [message, setMessage] = useState('');
+
+  useEffect(() => {
+    setTarget(document.querySelector('.jp-contact-card'));
+  }, []);
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -34,7 +40,9 @@ export default function InquiryForm() {
     window.location.href = `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
   };
 
-  return (
+  if (!target) return null;
+
+  return createPortal(
     <form className="jp-inquiry-form" onSubmit={handleSubmit}>
       <div className="jp-form-grid">
         <label className="jp-form-field">
@@ -69,6 +77,7 @@ export default function InquiryForm() {
         <button className="btn btn-primary" type="submit">入力内容をメールで送る</button>
         <p>送信ボタンを押すと、お使いのメールソフトが開きます。内容をご確認のうえ送信してください。</p>
       </div>
-    </form>
+    </form>,
+    target,
   );
 }
