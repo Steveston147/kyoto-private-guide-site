@@ -274,6 +274,20 @@
     line-height: 1.18;
   }
 
+  .japanese-guide-page .section-head h2 {
+    font-size: 2rem;
+    line-height: 1.34;
+    letter-spacing: -0.012em;
+    text-wrap: pretty;
+  }
+
+  .japanese-guide-page .jp-proof-panel h3 {
+    font-size: 1.72rem;
+    line-height: 1.38;
+    letter-spacing: -0.01em;
+    text-wrap: pretty;
+  }
+
   .jp-hero-photo-label span {
     font-size: 0.68rem;
   }
