@@ -9,7 +9,7 @@ async function expectNoHorizontalOverflow(page) {
 }
 
 test.beforeEach(async ({ page }) => {
-  await page.goto('/japanese-guide', { waitUntil: 'networkidle' });
+  await page.goto('/japanese-guide', { waitUntil: 'domcontentloaded' });
 });
 
 test('Japanese guide hero is real, readable and stable', async ({ page }) => {
