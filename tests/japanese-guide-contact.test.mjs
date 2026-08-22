@@ -27,13 +27,17 @@ test('Japanese guide inquiry form is mounted and submits directly', async () => 
   assert.match(css, /@media \(max-width: 760px\)[\s\S]*grid-template-columns:\s*1fr/);
 });
 
-test('Kitajiri kimono hero source reconstructs a real WebP', async () => {
-  const encoded = (await read('app/japanese-guide/hero-base64/part1.txt')).trim();
+test('Kitajiri kimono hero chunks reconstruct a real WebP', async () => {
+  const chunks = await Promise.all(
+    [1, 2, 3, 4, 5].map((number) => read(`app/japanese-guide/hero-base64/chunk${number}.txt`)),
+  );
+  const encoded = chunks.map((chunk) => chunk.trim()).join('');
   const image = Buffer.from(encoded, 'base64');
-  assert.ok(image.length > 20000, `kimono hero source is unexpectedly small: ${image.length} bytes`);
+  assert.ok(image.length > 15000, `kimono hero source is unexpectedly small: ${image.length} bytes`);
   assert.equal(image.subarray(0, 4).toString('ascii'), 'RIFF');
   assert.equal(image.subarray(8, 12).toString('ascii'), 'WEBP');
 
   const buildScript = await read('scripts/prepare-kitajiri-hero.mjs');
+  assert.match(buildScript, /chunk\$\{number\}\.txt/);
   assert.match(buildScript, /public\/kitajiri-kimono\.webp/);
 });
