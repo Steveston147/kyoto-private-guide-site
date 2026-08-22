@@ -2,17 +2,18 @@
 
 ## Purpose
 
-This repository is the public website for Don Tanaka's private guide service in Kyoto. AI-assisted changes must preserve business accuracy, trust, privacy, and the personal nature of the service.
+This repository is the public website for Don Tanaka's private guide service and Kitajiri's Japanese private guide page in Kyoto. AI-assisted changes must preserve business accuracy, trust, privacy, and the personal nature of the services.
 
 ## Read before editing
 
 Before changing code or copy, read:
 
 1. `PROJECT.md`
-2. `CONTENT.md` if it exists
-3. `DESIGN.md` if it exists
-4. `TECH.md` if it exists
-5. the files directly affected by the change
+2. `DESIGN.md`
+3. `TECH.md`
+4. `UPGRADE.md` when technical dependencies or framework versions are involved
+5. `app/japanese-guide/UAT_CHECKLIST.md` when the Japanese page is affected
+6. the files directly affected by the change
 
 Do not assume the current UI text is the only source of truth.
 
@@ -20,7 +21,7 @@ Do not assume the current UI text is the only source of truth.
 
 Treat the following as controlled business content:
 
-- guide identity and licence wording;
+- guide identity and licence/qualification wording;
 - prices and guide fees;
 - payment methods or currencies;
 - cancellation/refund terms;
@@ -28,16 +29,16 @@ Treat the following as controlled business content:
 - weekday/weekend/public-holiday availability policy;
 - service areas;
 - what costs are included or excluded;
-- contact details and enquiry destinations;
+- contact details, Formspree endpoint, and enquiry destinations;
 - statements that imply availability, booking confirmation, reservations, or guaranteed access.
 
-If a task appears cosmetic but touches one of these, stop the automatic rewrite and preserve the existing rule unless the user explicitly requested the business change.
+If a task appears cosmetic but touches one of these, preserve the existing rule unless the user explicitly requested the business change.
 
 ## Product boundaries
 
 The site is an enquiry and marketing website, not a booking engine.
 
-Do not introduce automatic reservation confirmation, live availability claims, payment processing, customer accounts, or autonomous outbound communication without an explicit approved specification.
+Do not introduce automatic reservation confirmation, live availability claims, payment processing, customer accounts, autonomous outbound communication, hotel booking, or vehicle booking without an explicit approved specification.
 
 Sample routes must remain examples. They must not be presented as guaranteed opening hours, exact travel times, confirmed reservations, or live operational data.
 
@@ -47,27 +48,37 @@ Do not expose private family information, employer/internal-work information, ho
 
 Collect only information reasonably necessary to answer a tour enquiry.
 
+The Japanese form must keep its short privacy disclosure and link to `/privacy`. If the form provider or collected fields change, review the privacy copy in the same PR.
+
+## Japanese enquiry implementation
+
+The Japanese enquiry form is intentionally rendered directly inside the contact section. Do not move it back to a DOM-query/Portal mount or a `mailto:`-only interaction.
+
+The form posts to the approved Formspree endpoint and remains an enquiry only. Do not submit real test enquiries from automated CI.
+
+## Photography / critical assets
+
+The Kitajiri kimono hero is a normal committed WebP under `public/`. Do not replace it with a tiny placeholder, generate it from Base64/text chunks during build, or silently substitute a different person/image.
+
 ## Technical change discipline
 
 Prefer small, reviewable pull requests.
 
-Separate dependency/framework modernisation from major content or design changes when practical.
+Separate dependency/framework modernisation from major content or design changes when practical. The V1 hardening PR must not include the planned Next.js/React dependency migration.
 
-Before merge, run the repository's available quality checks. At minimum, preserve buildability and avoid introducing TypeScript or lint regressions beyond already documented legacy limitations.
+Before merge, run the repository's quality checks. For changes affecting the Japanese public page, the GitHub Actions browser UAT must pass at both desktop and mobile baseline viewports.
 
-Do not remove SEO metadata, sitemap, robots rules, form submission, or accessibility-related behaviour as collateral damage from visual refactors.
+Do not remove SEO metadata, sitemap, robots rules, form submission, privacy disclosure, or accessibility-related behaviour as collateral damage from visual refactors.
 
 ## Content discipline
 
-Keep public English concise, calm, and credible. Avoid invented statistics, fake testimonials, unsupported awards, superlatives, and keyword stuffing.
+Keep public English concise, calm, and credible. Keep Japanese copy calm, knowledgeable, and appropriate for repeat Kyoto visitors. Avoid invented statistics, fake testimonials, unsupported awards, superlatives, keyword stuffing, or overt luxury clichés.
 
-When editing route suggestions, check geographic realism and stated duration. Family and senior-friendly claims should be reflected in practical route choices, not only marketing wording.
+When editing route suggestions, check geographic realism and stated duration. Comfort claims should be reflected in practical route choices and optional guest-paid taxi use, not only marketing wording.
 
-## Availability and holidays
+## Availability
 
-A hard-coded calendar is not live availability. Never relabel it as such.
-
-Hard-coded Japanese holiday data is time-sensitive and must be reviewed before its covered years expire.
+Do not introduce a hard-coded or visual calendar as live availability. For Don, regular availability remains mainly Saturdays, Sundays, and Japanese public holidays. For Kitajiri, requested dates are reviewed after enquiry.
 
 ## Definition of done
 
@@ -79,5 +90,6 @@ A change is ready for review only when:
 - contact/enquiry flow still works conceptually;
 - desktop/mobile readability is considered;
 - metadata and visible claims are consistent;
-- relevant build/lint/type checks have been run where available;
-- limitations or follow-up risks are stated in the PR description.
+- relevant lint/type/test/build checks pass;
+- browser UAT passes when the Japanese page is affected;
+- limitations or deferred technical risks are stated in the PR description.

@@ -127,7 +127,7 @@ The Japanese guide page should prioritise:
 5. The 4-hour ¥26,000 guide fee and ¥6,000/hour extension.
 6. Cash payment on the tour day.
 7. Guiding-only service boundaries and excluded costs.
-8. A clear email enquiry path.
+8. A clear direct enquiry path that does not imply booking confirmation.
 
 Avoid duplicating the same message across multiple sections.
 
@@ -167,11 +167,21 @@ Do not request hotel booking details for the purpose of arranging accommodation.
 
 An enquiry must not imply that submission creates a reservation.
 
+For the Japanese guide page:
+
+- the on-page enquiry form posts directly to the approved Formspree endpoint;
+- the form is rendered directly in the contact section, not injected later through DOM queries or a Portal;
+- the form must not revert to a `mailto:`-only flow;
+- a short privacy disclosure and link to `/privacy` must be visible near the form;
+- automated browser tests must not submit real enquiries.
+
 ## 9. SEO and trust
 
 SEO should support genuine search intent such as private Kyoto guide, licensed Kyoto guide, family-friendly Kyoto tour, senior-friendly Kyoto guide, weekend Kyoto guide, 京都 日本語ガイド, 京都 プライベートガイド, 京都 穴場 ガイド, 京都 リピーター 観光, and 京都 歴史 ガイド.
 
 Do not introduce fake reviews, invented awards, unsupported claims, keyword stuffing, or misleading availability.
+
+Current activity evidence such as third-party travel-company listings must be presented with a clear disclaimer that the external company's tours are separate products.
 
 ## 10. Definition of done
 
@@ -185,7 +195,23 @@ Before merge, changes should be checked for:
 - mobile and desktop readability;
 - balanced multi-card layouts without orphan cards or misleading component styling;
 - working enquiry/contact paths;
+- privacy disclosure consistency when form fields/providers change;
 - correct Japanese social metadata for the Japanese page;
 - no misleading booking or availability claims;
 - build/type/lint/test health;
+- real-browser desktop/mobile UAT for Japanese-page changes;
 - preservation of the calm, personal brand.
+
+## 11. V1 freeze / hardening rule
+
+After the Japanese guide V1 is hardened and merged, prefer operating and observing real enquiries over adding speculative features.
+
+The V1 hardening baseline includes:
+
+- documentation synchronised to production behaviour;
+- direct Formspree enquiry form with successful human receipt test;
+- privacy disclosure and `/privacy` page;
+- Kitajiri hero portrait committed as a normal WebP asset rather than reconstructed during build;
+- source-level regression tests plus Playwright desktop/mobile browser UAT.
+
+Dependency/framework modernisation is a separate technical PR and must not be mixed into V1 hardening.

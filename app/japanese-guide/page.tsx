@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import InquiryForm from "./InquiryForm";
 
 export const metadata: Metadata = {
   title: "京都をもっと深く知る日本語プライベートガイド 北尻",
@@ -23,7 +24,6 @@ export const metadata: Metadata = {
 };
 
 const email = "eltontanaka@gmail.com";
-const mailto = `mailto:${email}?subject=${encodeURIComponent("北尻 京都日本語プライベートガイド お問い合わせ")}`;
 const clubTourismUrl = "https://www.club-t.com/keyword/%E5%8C%97%E5%B0%BB/";
 
 const qualifications = ["京都検定 1級", "奈良検定", "神社検定", "温泉ソムリエ", "びわ湖検定"];
@@ -154,7 +154,7 @@ export default function JapaneseGuidePage() {
         <div className="contact-card jp-contact-card">
           <p className="contact-lead">ご希望の日程、人数、行ってみたい場所をお知らせください。「静かな寺を巡りたい」「歴史の話をたくさん聞きたい」「歩きすぎず、タクシーも使いたい」など、旅の好みも一言いただければ十分です。</p>
           <p>日程を確認し、対応可能な場合にご返信します。土曜日・日曜日もご相談いただけます。お問い合わせ時点では予約確定ではありません。</p>
-          <div className="contact-actions"><a className="btn btn-primary" href={mailto}>希望日をメールで相談する</a></div>
+          <InquiryForm />
           <p className="contact-direct-note">お問い合わせ先：{email}<br />ガイド料金はツアー当日に現金でお支払いください。</p>
         </div>
       </section>

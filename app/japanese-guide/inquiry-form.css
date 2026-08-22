@@ -106,6 +106,20 @@
   line-height: 1.6;
 }
 
+.jp-form-privacy {
+  margin: 0;
+  color: #807264;
+  font-size: 0.72rem;
+  line-height: 1.65;
+}
+
+.jp-form-privacy a {
+  color: #6e563f;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+}
+
 .japanese-guide-page .jp-contact-card .contact-direct-note {
   order: 4;
   margin-top: 18px !important;

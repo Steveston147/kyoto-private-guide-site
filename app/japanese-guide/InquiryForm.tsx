@@ -1,20 +1,7 @@
-'use client';
-
-import { useEffect, useState } from 'react';
-import { createPortal } from 'react-dom';
-
 const formEndpoint = 'https://formspree.io/f/mykdbwbl';
 
 export default function InquiryForm() {
-  const [target, setTarget] = useState<Element | null>(null);
-
-  useEffect(() => {
-    setTarget(document.querySelector('.jp-contact-card'));
-  }, []);
-
-  if (!target) return null;
-
-  return createPortal(
+  return (
     <form className="jp-inquiry-form" action={formEndpoint} method="POST">
       <input type="hidden" name="_subject" value="北尻 京都日本語プライベートガイド お問い合わせ" />
       <input type="hidden" name="guide" value="北尻 日本語プライベートガイド" />
@@ -56,7 +43,7 @@ export default function InquiryForm() {
         <button className="btn btn-primary" type="submit">問い合わせを送信する</button>
         <p>入力内容はフォームから直接送信されます。メールソフトは起動しません。お問い合わせ時点では予約確定ではありません。</p>
       </div>
-    </form>,
-    target,
+      <p className="jp-form-privacy">入力いただいた情報は、お問い合わせへの回答とツアー調整のためにのみ使用します。送信にはFormspreeを利用しています。詳しくは<a href="/privacy">プライバシーについて</a>をご確認ください。</p>
+    </form>
   );
 }
