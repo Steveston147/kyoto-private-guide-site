@@ -58,13 +58,17 @@ The form posts to the approved Formspree endpoint and remains an enquiry only. D
 
 ## Photography / critical assets
 
-The Kitajiri kimono hero is a normal committed WebP under `public/`. Do not replace it with a tiny placeholder, generate it from Base64/text chunks during build, or silently substitute a different person/image.
+The authoritative Kitajiri kimono hero source is the version-controlled five-chunk source under `app/japanese-guide/hero-base64/` together with `scripts/prepare-kitajiri-hero.mjs`. `predev` and `prebuild` intentionally reconstruct `public/kitajiri-kimono.webp` from that source.
+
+Do not remove this preparation path, replace its chunks, substitute a historical static WebP, or silently use a different person/image without explicit approval and successful browser visual UAT. A valid WebP container and plausible dimensions are not sufficient: the 2026-08-22 regression showed that a blank beige image can satisfy both checks.
+
+Any change to the Kitajiri hero must pass desktop and mobile Playwright checks for dimensions, pixel/luminance variation, colour variation, and rendered screenshot complexity before merge.
 
 ## Technical change discipline
 
 Prefer small, reviewable pull requests.
 
-Separate dependency/framework modernisation from major content or design changes when practical. The V1 hardening PR must not include the planned Next.js/React dependency migration.
+Separate dependency/framework modernisation from major content or design changes when practical. V1 production hardening must not include the planned Next.js/React dependency migration.
 
 Before merge, run the repository's quality checks. For changes affecting the Japanese public page, the GitHub Actions browser UAT must pass at both desktop and mobile baseline viewports.
 
