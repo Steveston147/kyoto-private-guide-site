@@ -1,0 +1,28 @@
+/* Keep two high-visibility Japanese headings phrase-safe on phones.
+   Desktop/tablet typography stays unchanged. */
+@media (max-width: 520px) {
+  .japanese-guide-page #about .jp-wide-head h2,
+  .japanese-guide-page #proof .jp-wide-head h2 {
+    font-size: 0;
+    line-height: 0;
+  }
+
+  .japanese-guide-page #about .jp-wide-head h2::before,
+  .japanese-guide-page #proof .jp-wide-head h2::before {
+    display: block;
+    color: var(--jp-luxury-ink, #2d2721);
+    font-size: clamp(1.84rem, 7.5vw, 2.08rem);
+    font-weight: 600;
+    line-height: 1.42;
+    letter-spacing: -0.022em;
+    white-space: pre-line;
+  }
+
+  .japanese-guide-page #about .jp-wide-head h2::before {
+    content: "北尻と歩く、\A京都を教わる4時間";
+  }
+
+  .japanese-guide-page #proof .jp-wide-head h2::before {
+    content: "経験と資格は、\A知識のエビデンス。";
+  }
+}
