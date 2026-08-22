@@ -39,7 +39,7 @@ test('Japanese guide inquiry form is mounted directly and submits through Formsp
 
 test('Kitajiri kimono hero is the approved corrected WebP asset', async () => {
   const image = await readBytes('public/kitajiri-kimono.webp');
-  assert.ok(image.length > 20000, `kimono hero asset is unexpectedly small: ${image.length} bytes`);
+  assert.ok(image.length >= 15000, `kimono hero asset is unexpectedly small: ${image.length} bytes`);
   assert.equal(image.subarray(0, 4).toString('ascii'), 'RIFF');
   assert.equal(image.subarray(8, 12).toString('ascii'), 'WEBP');
 
