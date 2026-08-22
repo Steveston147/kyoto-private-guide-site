@@ -1,14 +1,14 @@
 # Kyoto Private Guide Site — Project Specification
 
-Last updated: 2026-08-14
+Last updated: 2026-08-22
 
 ## 1. Purpose
 
-This repository contains the public website for Don Tanaka's private guiding service.
+This repository contains the public website for Don Tanaka's private guiding service and a Japanese-language private guide page for Kitajiri.
 
 The site has two jobs:
 
-1. Explain the guide service, price, availability, and service boundaries quickly and clearly.
+1. Explain each guide service, price, availability, and service boundaries quickly and clearly.
 2. Turn suitable visitors into direct enquiries without implying a booking or travel-agency service.
 
 The website is a marketing and enquiry tool. It is not a booking engine, availability system, payment system, transport service, hotel booking service, or autonomous travel agent.
@@ -27,6 +27,8 @@ Do not silently change business rules because old code differs.
 
 ## 3. Service positioning
 
+### Don Tanaka
+
 The site should present Don Tanaka as:
 
 - a Kyoto-born private guide;
@@ -36,9 +38,22 @@ The site should present Don Tanaka as:
 - focused on understandable cultural and historical context rather than information overload;
 - primarily available on Saturdays, Sundays, and Japanese public holidays.
 
-The tone should be personal and professional rather than luxury-agency, mass-tour, or overly promotional.
+### Kitajiri Japanese guide
+
+The Japanese-language page should present Kitajiri as:
+
+- a Kyoto-based, experienced Japanese-language private guide;
+- a long-time guide with major travel-company tour experience;
+- holder of Kyoto Kentei Level 1 and other history/culture-related qualifications;
+- especially suitable for repeat Kyoto visitors who want quieter temples, back streets, local history, and less-obvious places;
+- calm and unhurried in guiding style;
+- available by enquiry when the requested date is open, including Saturdays and Sundays.
+
+The tone for both services should be personal and professional rather than luxury-agency, mass-tour, or overly promotional.
 
 ## 4. Core business rules
+
+### Don Tanaka service
 
 These are controlled business rules and require explicit human approval before changing:
 
@@ -58,6 +73,23 @@ These are controlled business rules and require explicit human approval before c
 - The site must not imply real-time availability.
 - The site must not automatically confirm a reservation or accept payment.
 
+### Kitajiri Japanese guide service
+
+These are controlled business rules and require explicit human approval before changing:
+
+- Tours are private unless explicitly agreed otherwise.
+- The standard guide fee is ¥26,000 for 4 hours per group.
+- Extension is ¥6,000 per additional hour.
+- The guide fee is paid in cash on the tour day.
+- The service offered is guiding only.
+- Public transport and walking are the normal means of travel.
+- The service does not arrange or book hotels, private cars, vans, taxis, hired vehicles, or transportation services.
+- Transport, meals, entrance/admission fees, and personal expenses are separate from the guide fee.
+- When Kitajiri needs admission to accompany the guests, Kitajiri's admission fee is also paid separately by the guests on the day.
+- Enquiries use `eltontanaka@gmail.com`.
+- Saturdays and Sundays may be requested, but the site must not imply live or guaranteed availability.
+- The site must not automatically confirm a reservation or accept online payment.
+
 ## 5. Website content priorities
 
 The homepage should be intentionally short. Priority order:
@@ -72,31 +104,41 @@ The homepage should be intentionally short. Priority order:
 8. Short FAQ.
 9. Enquiry form.
 
+The Japanese guide page should prioritise:
+
+1. Kitajiri's identity and guiding style.
+2. The repeat-visitor positioning: quieter and less-obvious Kyoto.
+3. The 4-hour ¥26,000 guide fee and ¥6,000/hour extension.
+4. Cash payment on the tour day.
+5. Representative routes and customisation.
+6. Guiding-only service boundaries and excluded costs.
+7. A clear email enquiry path.
+
 Avoid duplicating the same message across multiple sections.
 
 ## 6. Route examples
 
 Route content should be simple and representative, not a catalogue.
 
-The homepage should normally show about three representative sample routes rather than many route cards or an interactive route generator.
-
 Sample routes must:
 
 - be labelled as examples, not confirmed itineraries;
 - avoid guaranteeing opening hours, travel times, reservations, or availability;
 - be geographically realistic;
-- allow Don to adjust the final route after enquiry;
-- never imply that Don arranges transport, vehicles, hotels, or reservations as part of the guide service.
+- allow the guide to adjust the final route after enquiry;
+- never imply that the service arranges transport, vehicles, hotels, or reservations as part of the guide service.
 
 ## 7. Availability
 
 Do not use a large calendar unless there is a real operational need.
 
-A simple statement such as “Primarily Saturdays, Sundays and Japanese public holidays” is preferred over a long calendar. It must not be presented as live availability.
+For Don, a simple statement such as “Primarily Saturdays, Sundays and Japanese public holidays” is preferred over a long calendar. It must not be presented as live availability.
+
+For Kitajiri, visitors may enquire about dates including Saturdays and Sundays. Do not present any date as available until the enquiry has been reviewed.
 
 ## 8. Enquiry and privacy
 
-The enquiry form should collect only information useful to answer a guide enquiry, such as:
+The enquiry form or email prompt should collect only information useful to answer a guide enquiry, such as:
 
 - preferred date;
 - group size;
@@ -108,11 +150,11 @@ The enquiry form should collect only information useful to answer a guide enquir
 
 Do not request hotel booking details for the purpose of arranging accommodation. Do not request vehicle booking details for arranging transport.
 
-The form must not imply that submission creates a reservation.
+An enquiry must not imply that submission creates a reservation.
 
 ## 9. SEO and trust
 
-SEO should support genuine search intent such as private Kyoto guide, licensed Kyoto guide, family-friendly Kyoto tour, senior-friendly Kyoto guide, and weekend Kyoto guide.
+SEO should support genuine search intent such as private Kyoto guide, licensed Kyoto guide, family-friendly Kyoto tour, senior-friendly Kyoto guide, weekend Kyoto guide, 京都 日本語ガイド, 京都 プライベートガイド, and 京都 穴場 ガイド.
 
 Do not introduce fake reviews, invented awards, unsupported claims, keyword stuffing, or misleading availability.
 
@@ -121,8 +163,8 @@ Do not introduce fake reviews, invented awards, unsupported claims, keyword stuf
 Before merge, changes should be checked for:
 
 - business-rule accuracy;
-- price visibility near the top of the page;
-- clear weekend/public-holiday availability wording;
+- price visibility near the top of each relevant service page;
+- correct availability wording for the relevant guide;
 - clear guiding-only boundary;
 - no hotel or vehicle arrangement claims;
 - mobile and desktop readability;
