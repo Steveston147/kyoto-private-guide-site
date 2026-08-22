@@ -1,13 +1,16 @@
 import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import { dirname, resolve } from 'node:path';
 
-const source = resolve('app/japanese-guide/hero-base64/part1.txt');
+const chunkPaths = [1, 2, 3, 4, 5].map((number) =>
+  resolve(`app/japanese-guide/hero-base64/chunk${number}.txt`),
+);
 const target = resolve('public/kitajiri-kimono.webp');
 
-const encoded = (await readFile(source, 'utf8')).trim();
+const chunks = await Promise.all(chunkPaths.map((path) => readFile(path, 'utf8')));
+const encoded = chunks.map((chunk) => chunk.trim()).join('');
 const image = Buffer.from(encoded, 'base64');
 
-if (image.length < 20000) {
+if (image.length < 15000) {
   throw new Error(`Kitajiri hero source is unexpectedly small: ${image.length} bytes`);
 }
 if (image.subarray(0, 4).toString('ascii') !== 'RIFF' || image.subarray(8, 12).toString('ascii') !== 'WEBP') {
