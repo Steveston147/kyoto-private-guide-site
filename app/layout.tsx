@@ -3,10 +3,8 @@
 
 import './globals.css';
 import './uat.css';
+import './mobile-performance.css';
 import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
-
-const inter = Inter({ subsets: ['latin'] });
 
 const siteUrl = 'https://www.umaacademia.com';
 const siteName = 'Kyoto Private Guide';
@@ -90,7 +88,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body>{children}</body>
     </html>
   );
 }
