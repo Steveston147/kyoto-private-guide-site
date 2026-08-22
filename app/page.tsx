@@ -193,7 +193,7 @@ export default function Page() {
 
         <article className="recent-experience-card" aria-label="Recent guest experience">
           <div className="recent-experience-image-wrap">
-            <img src="/recent-guests-austria.jpg" alt="Don Tanaka with recent guests from Austria after a private Kyoto tour" className="recent-experience-image" loading="lazy" />
+            <img src="/recent-guests-austria.jpg" alt="Don Tanaka with recent guests from Austria after a private Kyoto tour" className="recent-experience-image" loading="lazy" decoding="async" />
           </div>
           <div className="recent-experience-copy">
             <p className="section-kicker">Recent guest experience</p>
@@ -227,7 +227,7 @@ export default function Page() {
 
       <section className="content-section" id="about">
         <div className="section-head"><p className="section-kicker">About your guide</p><h2>Hello, I’m Don Tanaka</h2></div>
-        <div className="about-grid"><div className="about-photo-card"><img src="/don.jpg" alt="Don Tanaka, private guide in Kyoto" className="about-photo" /></div><div className="about-copy"><p>I was born and raised in Kyoto and I am a National Government Licensed Guide Interpreter. I have many years of international experience supporting visitors from overseas.</p><p>My guiding style is calm and practical. I prefer a comfortable day with enough time to understand Kyoto rather than rushing through a long checklist of places.</p><p>I personally handle enquiries and normally guide the tour myself. Families, senior travellers, first-time visitors, and mixed-age groups are especially welcome.</p></div></div>
+        <div className="about-grid"><div className="about-photo-card"><img src="/don.jpg" alt="Don Tanaka, private guide in Kyoto" className="about-photo" loading="lazy" decoding="async" /></div><div className="about-copy"><p>I was born and raised in Kyoto and I am a National Government Licensed Guide Interpreter. I have many years of international experience supporting visitors from overseas.</p><p>My guiding style is calm and practical. I prefer a comfortable day with enough time to understand Kyoto rather than rushing through a long checklist of places.</p><p>I personally handle enquiries and normally guide the tour myself. Families, senior travellers, first-time visitors, and mixed-age groups are especially welcome.</p></div></div>
       </section>
 
       <section className="content-section" id="faq">
