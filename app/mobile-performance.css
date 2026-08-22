@@ -1,0 +1,88 @@
+/* Mobile readability and low-overhead rendering audit — 2026-08-23. */
+
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+/* Keep Japanese typography fully system-native: no downloadable Japanese webfont. */
+.japanese-guide-page {
+  --jp-sans: "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Yu Gothic Medium", "Yu Gothic", "Noto Sans JP", "Segoe UI", sans-serif;
+  --jp-serif: "Hiragino Mincho ProN", "Yu Mincho", "YuMincho", "Noto Serif JP", serif;
+}
+
+@media (max-width: 760px) {
+  /* Improve scanability without making the page feel oversized. */
+  .section-intro,
+  .section-note,
+  .pricing-note {
+    font-size: 0.94rem;
+    line-height: 1.72;
+  }
+
+  .info-card p,
+  .route-card p,
+  .guest-text,
+  .about-copy p,
+  .faq-answer {
+    font-size: 0.93rem;
+    line-height: 1.72;
+  }
+
+  .japanese-guide-page .section-intro {
+    font-size: 0.96rem;
+    line-height: 1.88;
+  }
+
+  .japanese-guide-page .about-copy p,
+  .japanese-guide-page .jp-proof-panel p,
+  .japanese-guide-page .jp-qualification-note {
+    font-size: 0.96rem;
+    line-height: 1.82;
+  }
+
+  /* Render long below-the-fold sections only as they approach the viewport. */
+  .content-section {
+    content-visibility: auto;
+    contain-intrinsic-size: auto 620px;
+  }
+
+  /* Reduce expensive paint effects on phones while preserving the design language. */
+  .price-card,
+  .info-card,
+  .guest-card,
+  .route-card,
+  .faq-item,
+  .contact-card,
+  .about-photo-card,
+  .kyoto-icon-card,
+  .jp-proof-panel,
+  .jp-scene-card,
+  .jp-destination-card {
+    box-shadow: 0 5px 16px rgba(73, 54, 34, 0.045);
+  }
+
+  .hero-image,
+  .about-photo,
+  .recent-experience-image,
+  .jp-scene-card img,
+  .jp-destination-card img {
+    image-rendering: auto;
+  }
+}
+
+@media (max-width: 430px) {
+  .japanese-guide-page .section-head h2 {
+    font-size: clamp(1.72rem, 7.6vw, 2rem);
+    line-height: 1.32;
+  }
+
+  .japanese-guide-page .jp-proof-panel h3 {
+    font-size: 1.42rem;
+    line-height: 1.4;
+  }
+}
