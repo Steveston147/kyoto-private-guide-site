@@ -12,13 +12,13 @@ export const metadata: Metadata = {
     url: "/japanese-guide",
     locale: "ja_JP",
     type: "website",
-    images: [{ url: "/kitajiri-guide.jpg", alt: "京都在住の日本語プライベートガイド北尻" }],
+    images: [{ url: "/kitajiri-kimono.webp", alt: "祇園白川で着物姿の京都ガイド北尻" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "何度来ても、まだ知らない京都がある。｜日本語ガイド 北尻",
     description: "京都を何度も訪れている方へ。静かな名刹、裏道、歴史と文化をベテランガイドと深く味わう4時間。",
-    images: ["/kitajiri-guide.jpg"],
+    images: ["/kitajiri-kimono.webp"],
   },
 };
 
@@ -57,7 +57,10 @@ export default function JapaneseGuidePage() {
   return (
     <main className="site-shell japanese-guide-page" lang="ja">
       <header className="site-header">
-        <a className="brand" href="/" aria-label="Uma Academia Kyoto Private Guide home"><span className="brand-mark" aria-hidden="true">K</span><span className="brand-copy"><strong>Kyoto Private Guide</strong><small>Uma Academia</small></span></a>
+        <a className="brand" href="/" aria-label="Uma Academia Kyoto Private Guide home">
+          <span className="brand-mark" aria-hidden="true">K</span>
+          <span className="brand-copy"><strong>Kyoto Private Guide</strong><small>Uma Academia</small></span>
+        </a>
         <nav className="site-nav" aria-label="日本語ガイドページのナビゲーション">
           <a href="#about">北尻について</a><a href="#proof">実績・資格</a><a href="#places">訪問地</a><a href="#service">料金</a><a href="#contact">お問い合わせ</a><a href="/">English</a>
         </nav>
@@ -71,7 +74,10 @@ export default function JapaneseGuidePage() {
           <div className="hero-actions"><a className="btn btn-primary" href="#contact">希望日を相談する</a><a className="btn btn-secondary" href="#places">訪問地を見る</a></div>
           <div className="badge-row" aria-label="サービスの特徴"><span>4時間 ¥26,000</span><span>一組貸切</span><span>タクシー利用も可</span><span>当日現金払い</span></div>
         </div>
-        <div className="hero-image-wrap"><img src="/kitajiri-guide.jpg" alt="京都在住の日本語プライベートガイド北尻" className="hero-image" fetchPriority="high" /></div>
+        <div className="hero-image-wrap jp-kimono-hero">
+          <img src="/kitajiri-kimono.webp" alt="祇園白川で着物姿の京都ガイド北尻" className="hero-image" fetchPriority="high" />
+          <div className="jp-hero-photo-label"><strong>北尻</strong><span>京都在住・京都検定1級</span></div>
+        </div>
       </section>
 
       <section className="content-section jp-audience-section" aria-labelledby="jp-audience-title">
@@ -136,8 +142,17 @@ export default function JapaneseGuidePage() {
       </section>
 
       <section className="content-section contact-section" id="contact">
-        <div className="section-head compact-head jp-contact-head"><p className="section-kicker">Contact</p><h2>次の京都について、まずはメールで話しましょう。</h2></div>
-        <div className="contact-card jp-contact-card"><p className="contact-lead">ご希望の日程、人数、行ってみたい場所をお知らせください。「静かな寺を巡りたい」「歴史の話をたくさん聞きたい」「歩きすぎず、タクシーも使いたい」など、旅の好みも一言いただければ十分です。</p><p>日程を確認し、対応可能な場合にご返信します。土曜日・日曜日もご相談いただけます。お問い合わせ時点では予約確定ではありません。</p><div className="contact-actions"><a className="btn btn-primary" href={mailto}>希望日をメールで相談する</a></div><p className="contact-direct-note">お問い合わせ先：{email}<br />ガイド料金はツアー当日に現金でお支払いください。</p></div>
+        <div className="section-head compact-head jp-contact-head">
+          <p className="section-kicker">Contact</p>
+          <h2>次の京都を、まずはメールでご相談ください。</h2>
+          <p className="jp-contact-subcopy">コースが決まっていなくても大丈夫です。行きたい場所や、今回の京都で楽しみたいことをお聞かせください。</p>
+        </div>
+        <div className="contact-card jp-contact-card">
+          <p className="contact-lead">ご希望の日程、人数、行ってみたい場所をお知らせください。「静かな寺を巡りたい」「歴史の話をたくさん聞きたい」「歩きすぎず、タクシーも使いたい」など、旅の好みも一言いただければ十分です。</p>
+          <p>日程を確認し、対応可能な場合にご返信します。土曜日・日曜日もご相談いただけます。お問い合わせ時点では予約確定ではありません。</p>
+          <div className="contact-actions"><a className="btn btn-primary" href={mailto}>希望日をメールで相談する</a></div>
+          <p className="contact-direct-note">お問い合わせ先：{email}<br />ガイド料金はツアー当日に現金でお支払いください。</p>
+        </div>
       </section>
 
       <footer className="site-footer"><p><strong>北尻 | 京都 日本語プライベートガイド</strong></p><p>Uma Academia · 京都を何度も訪れている方のための個人ガイド</p></footer>
