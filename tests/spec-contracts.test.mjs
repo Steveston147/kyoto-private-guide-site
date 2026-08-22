@@ -33,9 +33,9 @@ test('Japanese guide controlled business rules stay visible', async () => {
   const page = await read('app/japanese-guide/page.tsx');
   assert.match(page, /4時間 ¥26,000/);
   assert.match(page, /¥6,000/);
-  assert.match(page, /当日現金払い/);
+  assert.match(page, /ツアー当日に現金でお支払いください/);
   assert.match(page, /eltontanaka@gmail\.com/);
-  assert.match(page, /タクシー利用も可/);
+  assert.match(page, /タクシーも利用できます/);
   assert.match(page, /タクシー代はお客様の実費負担/);
   assert.match(page, /ホテル、専用車、ハイヤー等の予約・手配は行いません/);
   assert.match(page, /お問い合わせ時点では予約確定ではありません/);
