@@ -1,0 +1,318 @@
+.jp-scenes-section,
+.jp-proof-section,
+.jp-destinations-section {
+  border-top: 1px solid var(--jp-line);
+}
+
+.jp-scene-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.jp-scene-card {
+  margin: 0;
+  overflow: hidden;
+  border: 1px solid rgba(190, 166, 137, 0.3);
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.84);
+  box-shadow: 0 12px 30px rgba(73, 54, 34, 0.055);
+}
+
+.jp-scene-card img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+}
+
+.jp-scene-card figcaption {
+  padding: 15px 15px 17px;
+}
+
+.jp-scene-card strong,
+.jp-scene-card span {
+  display: block;
+}
+
+.jp-scene-card strong {
+  margin-bottom: 6px;
+  color: var(--jp-ink);
+  font-family: "Yu Mincho", "Hiragino Mincho ProN", "YuMincho", serif;
+  font-size: 1rem;
+}
+
+.jp-scene-card span {
+  color: var(--jp-muted);
+  font-size: 0.82rem;
+  line-height: 1.62;
+}
+
+.jp-proof-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.18fr) minmax(300px, 0.82fr);
+  gap: 18px;
+}
+
+.jp-proof-panel {
+  padding: 30px 28px;
+  border: 1px solid rgba(190, 166, 137, 0.34);
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.84);
+  box-shadow: 0 14px 36px rgba(73, 54, 34, 0.06);
+}
+
+.jp-club-panel {
+  background: linear-gradient(145deg, rgba(255,255,255,.94), rgba(247,239,228,.78));
+}
+
+.jp-proof-overline {
+  margin: 0 0 12px;
+  color: #9a744b;
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.15em;
+}
+
+.jp-proof-panel h3 {
+  margin: 0 0 14px;
+  color: var(--jp-ink);
+  font-family: "Yu Mincho", "Hiragino Mincho ProN", "YuMincho", serif;
+  font-size: 1.42rem;
+  line-height: 1.45;
+}
+
+.jp-proof-panel > p:not(.jp-proof-overline):not(.jp-proof-date):not(.jp-qualification-note) {
+  margin: 0;
+  color: var(--jp-muted);
+  font-size: 0.94rem;
+  line-height: 1.78;
+}
+
+.jp-tour-examples {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+  margin: 20px 0 14px;
+}
+
+.jp-tour-examples span {
+  display: flex;
+  align-items: center;
+  min-height: 42px;
+  padding: 9px 11px;
+  border-left: 2px solid rgba(142, 102, 57, 0.55);
+  background: rgba(255,255,255,.68);
+  color: #50443a;
+  font-size: 0.82rem;
+  line-height: 1.45;
+}
+
+.jp-proof-date {
+  margin: 0 0 12px;
+  color: #857565;
+  font-size: 0.74rem;
+}
+
+.jp-external-link {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  margin-top: 2px;
+  padding: 10px 14px;
+  border: 1px solid rgba(142, 102, 57, 0.42);
+  border-radius: 999px;
+  color: #704d29;
+  font-size: 0.84rem;
+  font-weight: 800;
+  transition: background .18s, transform .18s;
+}
+
+.jp-external-link:hover {
+  background: #f5eadb;
+  transform: translateY(-1px);
+}
+
+.jp-qualification-list {
+  display: grid;
+  gap: 0;
+  margin: 4px 0 18px;
+  padding: 0;
+  list-style: none;
+}
+
+.jp-qualification-list li {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  min-height: 48px;
+  border-top: 1px solid #eadfce;
+  color: #40362e;
+}
+
+.jp-qualification-list li:first-child {
+  border-top: 0;
+}
+
+.jp-qualification-list li span {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  flex: 0 0 24px;
+  border-radius: 50%;
+  background: #f1e2cf;
+  color: #76522f;
+  font-size: 0.76rem;
+}
+
+.jp-qualification-list strong {
+  font-size: 0.96rem;
+}
+
+.jp-qualification-note {
+  margin: 0;
+  color: var(--jp-muted);
+  font-size: 0.82rem;
+  line-height: 1.68;
+}
+
+.jp-proof-disclaimer {
+  max-width: 980px;
+  margin: 13px 0 0;
+  color: #817365;
+  font-size: 0.74rem;
+  line-height: 1.65;
+}
+
+.jp-destination-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.jp-destination-card {
+  position: relative;
+  min-height: 176px;
+  overflow: hidden;
+  border: 1px solid rgba(190, 166, 137, 0.35);
+  border-radius: 17px;
+  background: #ded2c3;
+  box-shadow: 0 10px 28px rgba(73,54,34,.06);
+}
+
+.jp-destination-card img,
+.jp-destination-shade {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.jp-destination-card img {
+  object-fit: cover;
+  transition: transform .3s ease;
+}
+
+.jp-destination-card:hover img {
+  transform: scale(1.025);
+}
+
+.jp-destination-shade {
+  background: linear-gradient(to top, rgba(24,20,16,.46), rgba(24,20,16,0) 58%);
+}
+
+.jp-destination-card h3 {
+  position: absolute;
+  left: 12px;
+  right: 12px;
+  bottom: 12px;
+  z-index: 1;
+  width: max-content;
+  max-width: calc(100% - 24px);
+  margin: 0;
+  padding: 8px 12px;
+  border: 1px solid rgba(185, 145, 93, 0.72);
+  border-radius: 8px;
+  background: rgba(255, 250, 243, 0.93);
+  color: #3f342b;
+  font-family: "Yu Mincho", "Hiragino Mincho ProN", "YuMincho", serif;
+  font-size: 0.94rem;
+  line-height: 1.35;
+  box-shadow: 0 4px 14px rgba(27,19,12,.12);
+}
+
+.jp-photo-credit {
+  margin: 11px 0 0;
+  color: #88796b;
+  font-size: 0.69rem;
+  line-height: 1.65;
+}
+
+@media (max-width: 980px) {
+  .jp-scene-grid,
+  .jp-destination-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .jp-proof-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 760px) {
+  .jp-scene-grid {
+    gap: 10px;
+  }
+
+  .jp-proof-panel {
+    padding: 23px 18px;
+  }
+
+  .jp-destination-grid {
+    gap: 10px;
+  }
+
+  .jp-destination-card {
+    min-height: 150px;
+  }
+
+  .jp-destination-card h3 {
+    left: 9px;
+    right: 9px;
+    bottom: 9px;
+    max-width: calc(100% - 18px);
+    padding: 7px 9px;
+    font-size: 0.84rem;
+  }
+}
+
+@media (max-width: 430px) {
+  .jp-scene-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .jp-tour-examples {
+    grid-template-columns: 1fr;
+  }
+
+  .jp-destination-card {
+    min-height: 132px;
+  }
+
+  .jp-destination-card h3 {
+    font-size: 0.78rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .jp-destination-card img,
+  .jp-external-link {
+    transition: none;
+  }
+
+  .jp-destination-card:hover img,
+  .jp-external-link:hover {
+    transform: none;
+  }
+}
