@@ -6,6 +6,7 @@
     "node": ">=20.9.0 <21"
   },
   "scripts": {
+    "predev": "node scripts/prepare-kitajiri-hero.mjs",
     "dev": "next dev",
     "prebuild": "node scripts/prepare-kitajiri-hero.mjs",
     "build": "next build",
