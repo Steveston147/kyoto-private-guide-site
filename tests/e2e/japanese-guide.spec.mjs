@@ -17,6 +17,7 @@ test('Japanese guide hero is real, readable and stable', async ({ page }) => {
   const hero = page.locator('.jp-kimono-hero .hero-image');
   await expect(hero).toBeVisible();
 
+  await expect.poll(async () => hero.evaluate((image) => image.naturalWidth)).toBeGreaterThanOrEqual(500);
   const imageState = await hero.evaluate((image) => ({
     complete: image.complete,
     naturalWidth: image.naturalWidth,
