@@ -1,1 +1,0 @@
-Japanese guide page implementation files live in this directory. See UAT_CHECKLIST.md for page-specific checks.
