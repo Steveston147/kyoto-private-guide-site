@@ -15,11 +15,11 @@ export default defineConfig({
   projects: [
     {
       name: 'desktop-chromium',
-      use: { ...devices['Desktop Chrome'], viewport: { width: 1440, height: 900 } },
+      use: { ...devices['Desktop Chrome'], browserName: 'chromium', viewport: { width: 1440, height: 900 } },
     },
     {
       name: 'mobile-chromium',
-      use: { ...devices['iPhone 13'], viewport: { width: 390, height: 844 } },
+      use: { ...devices['iPhone 13'], browserName: 'chromium', viewport: { width: 390, height: 844 } },
     },
   ],
 });
