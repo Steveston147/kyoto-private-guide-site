@@ -1,0 +1,139 @@
+.japanese-guide-page .jp-contact-card {
+  display: grid;
+  gap: 0;
+}
+
+.japanese-guide-page .jp-contact-card .contact-lead {
+  order: 1;
+}
+
+.japanese-guide-page .jp-contact-card > p:not(.contact-lead):not(.contact-direct-note) {
+  order: 2;
+}
+
+.japanese-guide-page .jp-contact-card .contact-actions {
+  display: none;
+}
+
+.jp-inquiry-form {
+  order: 3;
+  display: grid;
+  gap: 15px;
+  margin-top: 24px;
+  padding-top: 24px;
+  border-top: 1px solid #eadfce;
+}
+
+.jp-form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.jp-form-field {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.jp-form-field > span {
+  color: #40362e;
+  font-size: 0.82rem;
+  font-weight: 800;
+  line-height: 1.4;
+}
+
+.jp-form-field em {
+  margin-left: 4px;
+  color: #8e6639;
+  font-size: 0.68rem;
+  font-style: normal;
+  font-weight: 800;
+}
+
+.jp-form-field input,
+.jp-form-field select,
+.jp-form-field textarea {
+  width: 100%;
+  min-height: 44px;
+  padding: 11px 12px;
+  border: 1px solid #ddcfbc;
+  border-radius: 11px;
+  background: #fffdf9;
+  color: #2b251f;
+  font: inherit;
+  font-size: 16px;
+  line-height: 1.5;
+  transition: border-color .18s ease, box-shadow .18s ease, background .18s ease;
+}
+
+.jp-form-field textarea {
+  min-height: 118px;
+  resize: vertical;
+}
+
+.jp-form-field input:focus,
+.jp-form-field select:focus,
+.jp-form-field textarea:focus {
+  outline: none;
+  border-color: #a77b49;
+  background: #fff;
+  box-shadow: 0 0 0 3px rgba(167, 123, 73, 0.12);
+}
+
+.jp-form-field input::placeholder,
+.jp-form-field textarea::placeholder {
+  color: #9a8d80;
+}
+
+.jp-form-actions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-top: 2px;
+}
+
+.jp-form-actions .btn {
+  flex: 0 0 auto;
+}
+
+.jp-form-actions p {
+  max-width: 390px;
+  margin: 0;
+  color: #746759;
+  font-size: 0.74rem;
+  line-height: 1.6;
+}
+
+.japanese-guide-page .jp-contact-card .contact-direct-note {
+  order: 4;
+  margin-top: 18px !important;
+  padding-top: 16px;
+  border-top: 1px solid #f0e6da;
+}
+
+@media (max-width: 760px) {
+  .jp-form-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .jp-inquiry-form {
+    margin-top: 20px;
+    padding-top: 20px;
+  }
+
+  .jp-form-actions {
+    display: block;
+  }
+
+  .jp-form-actions .btn {
+    width: 100%;
+  }
+
+  .jp-form-actions p {
+    max-width: none;
+    margin-top: 10px;
+  }
+}
