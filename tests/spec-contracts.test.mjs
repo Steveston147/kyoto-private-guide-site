@@ -74,11 +74,32 @@ test('Japanese guide UAT gallery stays photo-led and page-scoped', async () => {
   assert.match(galleryCss, /@media \(max-width: 980px\)[\s\S]*\.jp-destination-grid[\s\S]*repeat\(2,/);
 });
 
+test('Japanese guide strict visual UAT keeps premium hero, Japanese typography and left-aligned contact', async () => {
+  const [page, layout, polishCss] = await Promise.all([
+    read('app/japanese-guide/page.tsx'),
+    read('app/japanese-guide/layout.tsx'),
+    read('app/japanese-guide/uat-polish.css'),
+  ]);
+
+  assert.match(page, /\/kitajiri-kimono\.webp/);
+  assert.match(page, /jp-kimono-hero/);
+  assert.match(page, /京都在住・京都検定1級/);
+  assert.match(page, /次の京都を、まずはメールでご相談ください。/);
+  assert.doesNotMatch(page, /次の京都について、まずはメールで話しましょう。/);
+  assert.match(layout, /import ['"]\.\/uat-polish\.css['"]/);
+  assert.match(polishCss, /--jp-sans:/);
+  assert.match(polishCss, /--jp-serif:/);
+  assert.match(polishCss, /\.japanese-guide-page \.contact-section\s*\{[\s\S]*grid-template-columns:/);
+  assert.match(polishCss, /\.japanese-guide-page \.jp-contact-head\s*\{[\s\S]*text-align:\s*left/);
+  assert.match(polishCss, /\.japanese-guide-page \.jp-contact-card \.contact-lead\s*\{[\s\S]*text-align:\s*left/);
+  assert.match(polishCss, /@media \(max-width: 760px\)[\s\S]*\.japanese-guide-page \.contact-section[\s\S]*grid-template-columns:\s*1fr/);
+});
+
 test('Japanese guide social metadata does not inherit the English Twitter card', async () => {
   const page = await read('app/japanese-guide/page.tsx');
   assert.match(page, /twitter:\s*\{/);
   assert.match(page, /何度来ても、まだ知らない京都がある。/);
-  assert.match(page, /\/kitajiri-guide\.jpg/);
+  assert.match(page, /\/kitajiri-kimono\.webp/);
   assert.match(page, /京都 リピーター 観光/);
 });
 
