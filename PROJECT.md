@@ -106,17 +106,17 @@ These are controlled business rules and require explicit human approval before c
 
 ## 5. Website content priorities
 
-The homepage should be intentionally short. Priority order:
+The English homepage should stay focused, but not so short that visitors cannot picture the service. Priority order:
 
 1. Who Don is and what the service is.
 2. Price.
 3. Weekend/public-holiday availability.
 4. Clear service boundary: guiding only; no hotel or vehicle arrangement.
 5. Guest feedback themes / reasons guests value the service.
-6. A small number of representative route examples.
+6. Five to six representative route examples that cover genuine visitor intent and help prospective guests picture a realistic day.
 7. Short guide introduction.
 8. Short FAQ.
-9. Enquiry form.
+9. Enquiry form with an optional route-interest selector and a `Not sure yet` choice.
 
 The Japanese guide page should prioritise:
 
@@ -133,7 +133,9 @@ Avoid duplicating the same message across multiple sections.
 
 ## 6. Route examples
 
-Route content should be simple and representative, not a catalogue.
+Route content should be useful and representative, not a huge catalogue.
+
+For the English page, route examples are both a conversion aid and genuine search-intent content. Do not remove them merely to shorten the page without first considering the effect on enquiries and search relevance. The baseline should cover a balanced set such as first-time half day, full-day highlights, history, northwest Kyoto / Zen, family-friendly travel, and senior-friendly comfort.
 
 Sample routes must:
 
@@ -142,6 +144,8 @@ Sample routes must:
 - be geographically realistic;
 - allow the guide to adjust the final route after enquiry;
 - never imply that the service arranges transport, vehicles, hotels, or reservations as part of the guide service.
+
+The enquiry form may let a visitor select a representative route as a starting point, but it must also offer a neutral `Not sure yet` option.
 
 ## 7. Availability
 
@@ -159,6 +163,7 @@ The enquiry form or email prompt should collect only information useful to answe
 - group size;
 - hotel or meeting area for pickup/meeting purposes only;
 - desired tour length;
+- preferred sample route or `Not sure yet`;
 - mobility/walking pace;
 - interests;
 - special requests.
@@ -177,7 +182,16 @@ For the Japanese guide page:
 
 ## 9. SEO and trust
 
-SEO should support genuine search intent such as private Kyoto guide, licensed Kyoto guide, family-friendly Kyoto tour, senior-friendly Kyoto guide, weekend Kyoto guide, 京都 日本語ガイド, 京都 プライベートガイド, 京都 穴場 ガイド, 京都 リピーター 観光, and 京都 歴史 ガイド.
+SEO should support genuine search intent such as private Kyoto guide, licensed Kyoto guide, Kyoto private tour, Kyoto half-day tour, Kyoto history tour, family-friendly Kyoto tour, senior-friendly Kyoto guide, weekend Kyoto guide, Nijo Castle guide, Ryoan-ji guide, 京都 日本語ガイド, 京都 プライベートガイド, 京都 穴場 ガイド, 京都 リピーター 観光, and 京都 歴史 ガイド.
+
+For the English homepage:
+
+- prioritise useful visible content over keyword stuffing;
+- keep a descriptive page title and search-intent description;
+- keep canonical metadata and English/Japanese alternate-language discovery;
+- structured data may describe the real public Person and Service only when the same claims and prices are visible on the page;
+- do not create thin temple pages only to target keywords;
+- use Search Console performance data when available before attributing traffic or enquiry changes to a single content change.
 
 Do not introduce fake reviews, invented awards, unsupported claims, keyword stuffing, or misleading availability.
 
@@ -196,10 +210,10 @@ Before merge, changes should be checked for:
 - balanced multi-card layouts without orphan cards or misleading component styling;
 - working enquiry/contact paths;
 - privacy disclosure consistency when form fields/providers change;
-- correct Japanese social metadata for the Japanese page;
+- correct social/canonical metadata for the affected page;
 - no misleading booking or availability claims;
 - build/type/lint/test health;
-- real-browser desktop/mobile UAT for Japanese-page changes;
+- real-browser desktop/mobile UAT for Japanese-page changes and for substantial English SEO/conversion changes;
 - preservation of the calm, personal brand.
 
 ## 11. V1 freeze / hardening rule
@@ -213,5 +227,7 @@ The V1 hardening baseline includes:
 - privacy disclosure and `/privacy` page;
 - Kitajiri hero portrait generated deterministically from version-controlled source chunks during `predev` / `prebuild`, with the rendered image protected by actual pixel-content browser UAT;
 - source-level regression tests plus Playwright desktop/mobile browser UAT.
+
+English SEO/conversion work must not change the protected Japanese V1 image pipeline or Japanese controlled business rules.
 
 Dependency/framework modernisation is a separate technical PR and must not be mixed into V1 hardening.
