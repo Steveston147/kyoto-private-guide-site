@@ -33,6 +33,43 @@ test('final public service boundaries stay visible', async () => {
   assert.doesNotMatch(page, /Kyoto Route Planner/i);
 });
 
+test('Japanese guide controlled business rules stay visible', async () => {
+  const page = await read('app/japanese-guide/page.tsx');
+
+  assert.match(page, /4時間 ¥26,000/);
+  assert.match(page, /¥6,000/);
+  assert.match(page, /当日現金払い/);
+  assert.match(page, /eltontanaka@gmail\.com/);
+  assert.match(page, /タクシー利用も可/);
+  assert.match(page, /タクシー代はお客様の実費負担/);
+  assert.match(page, /ホテル、専用車、ハイヤー等の予約・手配は行いません/);
+  assert.match(page, /お問い合わせ時点では予約確定ではありません/);
+});
+
+test('Japanese guide UAT layout stays balanced and page-scoped', async () => {
+  const [page, layout, css] = await Promise.all([
+    read('app/japanese-guide/page.tsx'),
+    read('app/japanese-guide/layout.tsx'),
+    read('app/japanese-guide/japanese-guide.css'),
+  ]);
+
+  assert.match(page, /className="site-shell japanese-guide-page"/);
+  assert.doesNotMatch(page, /className="guest-card"/);
+  assert.match(page, /jp-area-grid/);
+  assert.match(layout, /import ['"]\.\/japanese-guide\.css['"]/);
+  assert.match(css, /\.japanese-guide-page \.route-grid\s*\{[\s\S]*grid-template-columns:\s*repeat\(2,/);
+  assert.match(css, /@media \(max-width: 760px\)[\s\S]*\.japanese-guide-page \.route-grid,[\s\S]*grid-template-columns:\s*1fr/);
+});
+
+test('Japanese guide social metadata does not inherit the English Twitter card', async () => {
+  const page = await read('app/japanese-guide/page.tsx');
+
+  assert.match(page, /twitter:\s*\{/);
+  assert.match(page, /何度来ても、まだ知らない京都がある。/);
+  assert.match(page, /\/kitajiri-guide\.jpg/);
+  assert.match(page, /京都 リピーター 観光/);
+});
+
 test('final responsive UAT safeguards stay enabled', async () => {
   const [layout, uatCss] = await Promise.all([
     read('app/layout.tsx'),
