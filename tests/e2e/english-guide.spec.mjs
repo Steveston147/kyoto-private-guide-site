@@ -16,8 +16,8 @@ test('English private-guide page exposes useful route depth without layout overf
   await expect(page.getByRole('heading', { level: 1, name: 'Kyoto made simple, calm, and personal.' })).toBeVisible();
   await expect(page.locator('#routes .route-card')).toHaveCount(6);
   await expect(page.getByRole('heading', { name: 'Six useful starting points — then we adjust them to you' })).toBeVisible();
-  await expect(page.getByText('Nijo Castle & Kyoto History', { exact: true })).toBeVisible();
-  await expect(page.getByText('Comfortable Kyoto for Senior Travellers', { exact: true })).toBeVisible();
+  await expect(page.locator('#routes').getByRole('heading', { name: 'Nijo Castle & Kyoto History' })).toBeVisible();
+  await expect(page.locator('#routes').getByRole('heading', { name: 'Comfortable Kyoto for Senior Travellers' })).toBeVisible();
   await expectNoHorizontalOverflow(page);
 });
 
@@ -36,7 +36,7 @@ test('English enquiry form lets guests choose a route without implying booking',
 
 test('English page publishes canonical, hreflang and service structured data', async ({ page }) => {
   await expect(page).toHaveTitle('Private Kyoto Guide | Don Tanaka, Licensed Guide Interpreter');
-  await expect(page.locator('link[rel="canonical"]')).toHaveAttribute('href', 'https://www.umaacademia.com/');
+  await expect(page.locator('link[rel="canonical"]')).toHaveAttribute('href', 'https://www.umaacademia.com');
   await expect(page.locator('link[rel="alternate"][hreflang="ja-JP"]')).toHaveAttribute('href', 'https://www.umaacademia.com/japanese-guide');
 
   const jsonLd = await page.locator('script[type="application/ld+json"]').textContent();
