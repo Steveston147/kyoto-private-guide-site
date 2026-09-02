@@ -1,17 +1,19 @@
+const PHOTO_BASE = 'https://raw.githubusercontent.com/Steveston147/kyoto-private-guide-site/c4cdb49aed37ba13a8afe5143efb72ae2848335f/public/pattern-h';
+
 export const photos = {
-  hero: '/pattern-h/uma-editorial-hero.webp',
-  guests: '/pattern-h/uma-guests.webp',
-  don: '/pattern-h/uma-don.webp',
-  culture: '/pattern-h/uma-culture.webp',
-  fushimi: '/kyoto/fushimi-inari.jpg',
-  nijo: '/kyoto/nijo-castle.jpg',
-  lane: '/pattern-h/uma-editorial-hero.webp',
-  garden: '/pattern-h/uma-culture.webp',
-  tea: '/pattern-h/uma-culture.webp',
-  food: '/pattern-h/uma-don.webp',
-  autumn: '/pattern-h/uma-editorial-hero.webp',
-  shrine: '/pattern-h/uma-guests.webp',
-  alley: '/pattern-h/uma-editorial-hero.webp',
+  hero: `${PHOTO_BASE}/uma-editorial-hero.webp`,
+  guests: `${PHOTO_BASE}/uma-guests.webp`,
+  don: `${PHOTO_BASE}/uma-don.webp`,
+  culture: `${PHOTO_BASE}/uma-culture.webp`,
+  fushimi: `${PHOTO_BASE}/uma-editorial-hero.webp`,
+  nijo: `${PHOTO_BASE}/uma-culture.webp`,
+  lane: `${PHOTO_BASE}/uma-editorial-hero.webp`,
+  garden: `${PHOTO_BASE}/uma-culture.webp`,
+  tea: `${PHOTO_BASE}/uma-culture.webp`,
+  food: `${PHOTO_BASE}/uma-don.webp`,
+  autumn: `${PHOTO_BASE}/uma-editorial-hero.webp`,
+  shrine: `${PHOTO_BASE}/uma-guests.webp`,
+  alley: `${PHOTO_BASE}/uma-editorial-hero.webp`,
 };
 
 export const routes = [
