@@ -1,19 +1,17 @@
-const PHOTO_BASE = 'https://raw.githubusercontent.com/Steveston147/kyoto-private-guide-site/c4cdb49aed37ba13a8afe5143efb72ae2848335f/public/pattern-h';
-
 export const photos = {
-  hero: `${PHOTO_BASE}/uma-editorial-hero.webp`,
-  guests: `${PHOTO_BASE}/uma-guests.webp`,
-  don: `${PHOTO_BASE}/uma-don.webp`,
-  culture: `${PHOTO_BASE}/uma-culture.webp`,
-  fushimi: `${PHOTO_BASE}/uma-editorial-hero.webp`,
-  nijo: `${PHOTO_BASE}/uma-culture.webp`,
-  lane: `${PHOTO_BASE}/uma-editorial-hero.webp`,
-  garden: `${PHOTO_BASE}/uma-culture.webp`,
-  tea: `${PHOTO_BASE}/uma-culture.webp`,
-  food: `${PHOTO_BASE}/uma-don.webp`,
-  autumn: `${PHOTO_BASE}/uma-editorial-hero.webp`,
-  shrine: `${PHOTO_BASE}/uma-guests.webp`,
-  alley: `${PHOTO_BASE}/uma-editorial-hero.webp`,
+  hero: '/kyoto-hero.jpg',
+  guests: '/recent-guests-austria.jpg',
+  don: '/don.jpg',
+  culture: '/kyoto/nijo-castle.jpg',
+  fushimi: '/kyoto/fushimi-inari.jpg',
+  nijo: '/kyoto/nijo-castle.jpg',
+  lane: '/kyoto-hero.jpg',
+  garden: '/kyoto/nijo-castle.jpg',
+  tea: '/kyoto-hero.jpg',
+  food: '/recent-guests-austria.jpg',
+  autumn: '/kyoto-hero.jpg',
+  shrine: '/kyoto/fushimi-inari.jpg',
+  alley: '/kyoto-hero.jpg',
 };
 
 export const routes = [
