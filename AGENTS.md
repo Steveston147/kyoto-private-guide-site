@@ -8,9 +8,11 @@ This repository is the public website for Don Tanaka's private guide service and
 
 For any substantial visual design, redesign, pattern implementation, or mockup-to-code work, `docs/CREATIVE_FRONTEND_CONSTITUTION.md` is the highest implementation rule in this repository.
 
+The mandatory operating procedure is `docs/VISUAL_FIDELITY_PRODUCTION_PROTOCOL.md`. Reusable pattern work must also consult `docs/PATTERN_IMPLEMENTATION_BLUEPRINTS.md`.
+
 Approved mockups and pattern references are specifications, not loose inspiration. Existing components, templates, previous implementations and framework conventions are not visual authority. If they conflict with an approved visual reference, preserve business/technical constraints but implement the approved design using the appropriate frontend technique.
 
-Do not claim visual verification unless the actual rendered page was inspected. Build success is not visual completion.
+Do not claim visual verification unless the actual rendered page was inspected. Build success is not visual completion. For fidelity-led pattern/mockup work, use the production protocol's Reference -> Measurement -> Blueprint -> Browser Comparison/Convergence -> Acceptance gates and retain a Visual QA Record.
 
 ## Read before editing
 
@@ -20,9 +22,11 @@ Before changing code or copy, read:
 2. `DESIGN.md`
 3. `TECH.md`
 4. `docs/CREATIVE_FRONTEND_CONSTITUTION.md` for any visual/pattern work
-5. `UPGRADE.md` when technical dependencies or framework versions are involved
-6. `app/japanese-guide/UAT_CHECKLIST.md` when the Japanese page is affected
-7. the files directly affected by the change
+5. `docs/VISUAL_FIDELITY_PRODUCTION_PROTOCOL.md` for substantial mockup/pattern implementation
+6. `docs/PATTERN_IMPLEMENTATION_BLUEPRINTS.md` when implementing or refining a named design pattern
+7. `UPGRADE.md` when technical dependencies or framework versions are involved
+8. `app/japanese-guide/UAT_CHECKLIST.md` when the Japanese page is affected
+9. the files directly affected by the change
 
 Do not assume the current UI text or current visual implementation is the only source of truth.
 
@@ -97,9 +101,11 @@ Do not introduce a hard-coded or visual calendar as live availability. For Don, 
 
 ## Visual definition of done
 
-For substantial design or pattern work, the change is not ready merely because code compiles or a preview exists. In addition to the general requirements below, follow the mandatory render -> reference comparison -> deviation correction workflow in `docs/CREATIVE_FRONTEND_CONSTITUTION.md`.
+For substantial design or pattern work, the change is not ready merely because code compiles or a preview exists. In addition to the general requirements below, follow the mandatory gates and seven-axis scoring in `docs/VISUAL_FIDELITY_PRODUCTION_PROTOCOL.md`.
 
-A visual change may not be described as complete if the authoritative reference was not actually inspected, the relevant desktop/mobile render was not actually viewed, or material deviations remain unexplained.
+A visual change may not be described as complete if the authoritative reference was not actually inspected, the required visual measurement/blueprint was skipped, the relevant desktop/mobile render was not actually viewed, the comparison/convergence loop was not completed, or material deviations remain unexplained.
+
+For fidelity-led pattern/mockup work, target an overall visual-fidelity score of at least 9.5/10, with no applicable axis below 9.0 without explicit design-owner acceptance. Signature art-directed hero sections require Composition and Geometry of at least 9.2/10.
 
 ## Definition of done
 
@@ -115,4 +121,5 @@ A change is ready for review only when:
 - browser UAT passes when the Japanese page is affected;
 - visual reference comparison is completed when a mockup/pattern governs the work;
 - material visual deviations are fixed or explicitly recorded/accepted;
+- the required Visual QA Record exists for fidelity-led pattern/mockup work;
 - limitations or deferred technical risks are stated in the PR description.
