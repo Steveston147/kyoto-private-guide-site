@@ -2,7 +2,15 @@
 
 ## Purpose
 
-This repository is the public website for Don Tanaka's private guide service and Kitajiri's Japanese private guide page in Kyoto. AI-assisted changes must preserve business accuracy, trust, privacy, and the personal nature of the services.
+This repository is the public website for Don Tanaka's private guide service and Kitajiri's Japanese private guide page in Kyoto. AI-assisted changes must preserve business accuracy, trust, privacy, the personal nature of the services, and the approved visual design.
+
+## Supreme visual implementation rule
+
+For any substantial visual design, redesign, pattern implementation, or mockup-to-code work, `docs/CREATIVE_FRONTEND_CONSTITUTION.md` is the highest implementation rule in this repository.
+
+Approved mockups and pattern references are specifications, not loose inspiration. Existing components, templates, previous implementations and framework conventions are not visual authority. If they conflict with an approved visual reference, preserve business/technical constraints but implement the approved design using the appropriate frontend technique.
+
+Do not claim visual verification unless the actual rendered page was inspected. Build success is not visual completion.
 
 ## Read before editing
 
@@ -11,11 +19,12 @@ Before changing code or copy, read:
 1. `PROJECT.md`
 2. `DESIGN.md`
 3. `TECH.md`
-4. `UPGRADE.md` when technical dependencies or framework versions are involved
-5. `app/japanese-guide/UAT_CHECKLIST.md` when the Japanese page is affected
-6. the files directly affected by the change
+4. `docs/CREATIVE_FRONTEND_CONSTITUTION.md` for any visual/pattern work
+5. `UPGRADE.md` when technical dependencies or framework versions are involved
+6. `app/japanese-guide/UAT_CHECKLIST.md` when the Japanese page is affected
+7. the files directly affected by the change
 
-Do not assume the current UI text is the only source of truth.
+Do not assume the current UI text or current visual implementation is the only source of truth.
 
 ## Never change casually
 
@@ -64,6 +73,8 @@ Do not remove this preparation path, replace its chunks, substitute a historical
 
 Any change to the Kitajiri hero must pass desktop and mobile Playwright checks for dimensions, pixel/luminance variation, colour variation, and rendered screenshot complexity before merge.
 
+For all critical photography, inspect native dimensions before assigning display roles. Do not upscale weak assets into hero roles or reuse photography in ways that contradict an approved pattern's uniqueness/storytelling rules.
+
 ## Technical change discipline
 
 Prefer small, reviewable pull requests.
@@ -84,6 +95,12 @@ When editing route suggestions, check geographic realism and stated duration. Co
 
 Do not introduce a hard-coded or visual calendar as live availability. For Don, regular availability remains mainly Saturdays, Sundays, and Japanese public holidays. For Kitajiri, requested dates are reviewed after enquiry.
 
+## Visual definition of done
+
+For substantial design or pattern work, the change is not ready merely because code compiles or a preview exists. In addition to the general requirements below, follow the mandatory render -> reference comparison -> deviation correction workflow in `docs/CREATIVE_FRONTEND_CONSTITUTION.md`.
+
+A visual change may not be described as complete if the authoritative reference was not actually inspected, the relevant desktop/mobile render was not actually viewed, or material deviations remain unexplained.
+
 ## Definition of done
 
 A change is ready for review only when:
@@ -92,8 +109,10 @@ A change is ready for review only when:
 - controlled business content has not changed accidentally;
 - privacy boundaries are preserved;
 - contact/enquiry flow still works conceptually;
-- desktop/mobile readability is considered;
+- desktop/mobile readability is considered and actually inspected when visual work is substantial;
 - metadata and visible claims are consistent;
 - relevant lint/type/test/build checks pass;
 - browser UAT passes when the Japanese page is affected;
+- visual reference comparison is completed when a mockup/pattern governs the work;
+- material visual deviations are fixed or explicitly recorded/accepted;
 - limitations or deferred technical risks are stated in the PR description.
