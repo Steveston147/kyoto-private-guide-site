@@ -1,0 +1,38 @@
+name: Add recent tour gallery
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - '.github/workflows/add-recent-tour-gallery.yml'
+permissions:
+  contents: write
+jobs:
+  update-gallery:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Update recent guest gallery
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          p=Path('app/page.tsx')
+          s=p.read_text()
+          old='''        <article className="recent-experience-card" aria-label="Recent guest experience">\n          <div className="recent-experience-image-wrap">\n            <img src="/recent-guests-austria.jpg" alt="Don Tanaka with recent guests from Austria after a private Kyoto tour" className="recent-experience-image" loading="lazy" decoding="async" />\n          </div>\n          <div className="recent-experience-copy">\n            <p className="section-kicker">Recent guest experience</p>\n            <h3>Four hours across Kyoto with guests from Austria</h3>\n            <p>Fushimi Inari · Arashiyama Bamboo Grove · Tenryu-ji · Nijo Castle</p>\n            <p>A real recent guiding day, shared with permission from the guests.</p>\n          </div>\n        </article>'''
+          new='''        <section className="recent-tour-gallery" aria-label="Recent private tour experiences">\n          <div className="recent-tour-heading">\n            <p className="section-kicker">Recent guest experiences</p>\n            <h3>Real days in Kyoto with recent guests</h3>\n            <p>Private tours are never exactly the same. These are recent moments from tours around Arashiyama and Kiyomizu-dera.</p>\n          </div>\n          <div className="recent-tour-grid">\n            <figure className="recent-tour-photo recent-tour-photo-wide"><img src="/recent-tour-arashiyama-couple.jpg" alt="Don with recent guests in the Arashiyama bamboo grove" loading="lazy" decoding="async" /><figcaption>Arashiyama Bamboo Grove</figcaption></figure>\n            <figure className="recent-tour-photo"><img src="/recent-tour-arashiyama-family.jpg" alt="Don with a recent private tour group in the Arashiyama bamboo grove" loading="lazy" decoding="async" /><figcaption>Arashiyama · a flexible private day</figcaption></figure>\n            <figure className="recent-tour-photo"><img src="/recent-tour-kiyomizudera-couple.jpg" alt="Don with recent guests at Kiyomizu-dera in Kyoto" loading="lazy" decoding="async" /><figcaption>Kiyomizu-dera</figcaption></figure>\n            <figure className="recent-tour-photo recent-tour-photo-wide"><img src="/recent-tour-kiyomizudera-family.jpg" alt="Don with a recent family group at Kiyomizu-dera in Kyoto" loading="lazy" decoding="async" /><figcaption>Kiyomizu-dera · Kyoto with family</figcaption></figure>\n          </div>\n          <p className="section-note">Recent guiding moments, shared with permission from the guests.</p>\n        </section>'''
+          if old not in s:
+              raise SystemExit('Expected recent experience block not found')
+          p.write_text(s.replace(old,new))
+          css=Path('app/globals.css')
+          c=css.read_text()
+          marker='/* Recent tour gallery */'
+          if marker not in c:
+              c += '''\n\n/* Recent tour gallery */\n.recent-tour-gallery{margin-top:30px}.recent-tour-heading{max-width:760px;margin-bottom:18px}.recent-tour-heading h3{margin:0;font-size:clamp(1.55rem,2.4vw,2.15rem);line-height:1.15;letter-spacing:-.02em}.recent-tour-heading>p:last-child{margin:9px 0 0;color:#6a5d50;font-size:.93rem;line-height:1.65}.recent-tour-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}.recent-tour-photo{margin:0;overflow:hidden;border:1px solid rgba(190,166,137,.3);border-radius:20px;background:rgba(255,255,255,.86);box-shadow:0 10px 30px rgba(73,54,34,.055)}.recent-tour-photo img{width:100%;height:390px;object-fit:cover}.recent-tour-photo figcaption{padding:12px 16px 14px;color:#5d5147;font-size:.86rem;line-height:1.45}.recent-tour-photo-wide img{height:430px}@media(max-width:760px){.recent-tour-grid{grid-template-columns:1fr;gap:12px}.recent-tour-photo img,.recent-tour-photo-wide img{height:auto;aspect-ratio:4/3;object-fit:cover}.recent-tour-photo figcaption{padding:11px 14px 13px}}\n'''
+          css.write_text(c)
+          PY
+      - name: Commit gallery
+        run: |
+          git config user.name "Don"
+          git config user.email "154335034+Steveston147@users.noreply.github.com"
+          git add app/page.tsx app/globals.css
+          git diff --cached --quiet || git commit -m "Show recent Kyoto tour gallery"
+          git push
