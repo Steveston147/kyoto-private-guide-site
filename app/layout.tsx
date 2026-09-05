@@ -4,6 +4,7 @@
 import './globals.css';
 import './uat.css';
 import './mobile-performance.css';
+import './recent-tour-crop.css';
 import type { Metadata } from 'next';
 
 const siteUrl = 'https://www.umaacademia.com';
