@@ -22,7 +22,7 @@ test('sample routes keep a reservation disclaimer', async () => {
 test('final public service boundaries stay visible', async () => {
   const page = await read('app/page.tsx');
   assert.match(page, /Saturdays, Sundays, and Japanese public holidays/i);
-  assert.match(page, /guiding service only/i);
+  assert.match(page, /guiding services? only/i);
   assert.match(page, /¥40,000/);
   assert.match(page, /¥80,000/);
   assert.match(page, /do not arrange or book hotels, private cars, vans/i);
