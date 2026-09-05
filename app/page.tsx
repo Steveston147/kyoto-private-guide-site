@@ -10,7 +10,7 @@ const formAction = "https://formspree.io/f/mykdbwbl";
 export const metadata: Metadata = {
   title: { absolute: "Private Kyoto Guide | Don Tanaka, Licensed Guide Interpreter" },
   description:
-    "Private Kyoto guide Don Tanaka is a Kyoto-born National Government Licensed Guide Interpreter. Custom half-day and full-day Kyoto tours for couples, families, senior travellers and first-time visitors, mainly on weekends and Japanese public holidays.",
+    "Private Kyoto guide Don Tanaka is a Kyoto-born National Government Licensed Guide Interpreter. Custom half-day and full-day Kyoto tours, including a Kyoto Station Arrival Tour for Shinkansen travellers, mainly on weekends and Japanese public holidays.",
   alternates: {
     canonical: "/",
     languages: {
@@ -22,7 +22,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Private Kyoto Guide | Don Tanaka, Licensed Guide Interpreter",
     description:
-      "Calm, custom private Kyoto tours with a Kyoto-born licensed guide. Half-day and full-day route ideas for first-time visitors, families and senior travellers.",
+      "Calm, custom private Kyoto tours with a Kyoto-born licensed guide, including a Kyoto Station Arrival Tour for travellers arriving by Shinkansen.",
     url: "/",
     locale: "en_US",
     type: "website",
@@ -46,6 +46,13 @@ const guestFeedback = [
 ];
 
 const routes = [
+  {
+    title: "Kyoto Station Arrival Tour",
+    time: "Up to 4 or 8 hours",
+    bestFor: "Travellers arriving from Tokyo or elsewhere by Shinkansen who want to start exploring Kyoto immediately.",
+    route: "Shinkansen platform welcome → same-day luggage delivery → start sightseeing → finish at your Kyoto hotel",
+    text: "I meet you on the Shinkansen platform at Kyoto Station. If your arrival time, luggage and hotel are eligible, we can use JR West's pikuraku PORTER so your bags are delivered to your hotel the same day. Then we start your private Kyoto tour without first going to the hotel. The route remains flexible and can use walking, public transport or taxis when useful. The tour finishes at your Kyoto hotel.",
+  },
   {
     title: "First-Time Kyoto Half Day",
     time: "Up to 4 hours",
@@ -92,9 +99,11 @@ const routes = [
 
 const faqItems: FaqItem[] = [
   { q: "When are you available?", a: "My regular guiding days are mainly Saturdays, Sundays, and Japanese public holidays. Weekdays are generally not available." },
-  { q: "How much is the guide fee?", a: "My rate is ¥10,000 per hour. A half day is up to 4 hours / ¥40,000, and a full day is up to 8 hours / ¥80,000. The fee is per guide, not per person." },
+  { q: "How much is the guide fee?", a: "My rate is ¥10,000 per hour. A half day is up to 4 hours / ¥40,000, and a full day is up to 8 hours / ¥80,000. The fee is per guide, not per person. The Kyoto Station Arrival Tour uses the same guide fee." },
+  { q: "Can you meet us when our Shinkansen arrives at Kyoto Station?", a: "Yes. For the Kyoto Station Arrival Tour, I can meet you on the Shinkansen platform at Kyoto Station. After meeting, we can deal with your luggage and start sightseeing without first travelling to your hotel." },
+  { q: "Can our luggage be sent to our hotel on the same day?", a: "Often, yes. JR West's pikuraku PORTER accepts eligible luggage at Kyoto Station for same-day delivery to participating Kyoto hotels when deposited by 2:00 p.m. Availability depends on your arrival time, hotel, luggage size and service conditions. The delivery charge is not included in my guide fee and is paid directly to the service provider." },
   { q: "Can you arrange a car, van, or hotel?", a: "No. I provide guiding services only. I do not arrange or book private cars, vans, hired vehicles, transport services, or hotel accommodation. We can use public transport or taxis during the tour, and guests pay the provider directly." },
-  { q: "What is not included in the guide fee?", a: "Transport, meals, entrance fees, taxi fares, and personal expenses are not included in the guide fee." },
+  { q: "What is not included in the guide fee?", a: "Transport, luggage delivery, meals, entrance fees, taxi fares, and personal expenses are not included in the guide fee." },
   { q: "Can you customise the route and meet us at our hotel?", a: "Yes. The routes shown here are examples. I can adjust the final route to your interests, walking pace, group, weather, and meeting area. A hotel can usually be used as the meeting point when practical, but I do not arrange accommodation." },
 ];
 
@@ -124,7 +133,7 @@ const structuredData = {
       url: siteUrl,
       provider: { "@id": `${siteUrl}/#don-tanaka` },
       areaServed: { "@type": "City", name: "Kyoto" },
-      description: "Private half-day and full-day Kyoto guiding with custom route planning for couples, families, senior travellers and first-time visitors.",
+      description: "Private half-day and full-day Kyoto guiding with custom route planning, including a Kyoto Station Arrival Tour for Shinkansen travellers.",
       offers: [
         {
           "@type": "Offer",
@@ -164,15 +173,15 @@ export default function Page() {
         <div className="hero-copy">
           <p className="eyebrow">Weekend private guide in Kyoto</p>
           <h1>Kyoto made simple, calm, and personal.</h1>
-          <p className="hero-text">I am Don Tanaka, a Kyoto-born National Government Licensed Guide Interpreter. I plan calm private Kyoto tours for couples, families, senior travellers and first-time visitors, mainly on Saturdays, Sundays, and Japanese public holidays.</p>
+          <p className="hero-text">I am Don Tanaka, a Kyoto-born National Government Licensed Guide Interpreter. I plan calm private Kyoto tours for couples, families, senior travellers and first-time visitors, mainly on Saturdays, Sundays, and Japanese public holidays. Arriving by Shinkansen? I can meet you at Kyoto Station and your tour can start there.</p>
           <div className="hero-actions"><a className="btn btn-primary" href="#contact">Send an enquiry</a><a className="btn btn-secondary" href="#routes">See tour ideas</a></div>
-          <div className="badge-row" aria-label="Key service details"><span>From ¥40,000</span><span>Weekends & public holidays</span><span>Guiding service only</span><span>Kyoto-born licensed guide</span></div>
+          <div className="badge-row" aria-label="Key service details"><span>From ¥40,000</span><span>Weekends & public holidays</span><span>Kyoto Station arrival option</span><span>Kyoto-born licensed guide</span></div>
         </div>
         <div className="hero-image-wrap"><img src="/kyoto-hero.jpg" alt="Kyoto street view with Yasaka Pagoda" className="hero-image" fetchPriority="high" /></div>
       </section>
 
       <section className="content-section pricing-section" id="pricing">
-        <div className="section-head"><p className="section-kicker">Guide fee</p><h2>Price first — clear and simple</h2><p className="section-intro">Rates are per guide, not per person.</p></div>
+        <div className="section-head"><p className="section-kicker">Guide fee</p><h2>Price first — clear and simple</h2><p className="section-intro">Rates are per guide, not per person. The Kyoto Station Arrival Tour uses exactly the same guide rates.</p></div>
         <div className="pricing-grid">
           <article className="price-card"><h3>Half Day</h3><div className="price">¥40,000</div><p>Up to 4 hours</p></article>
           <article className="price-card featured"><div className="price-badge">Most requested</div><h3>Full Day</h3><div className="price">¥80,000</div><p>Up to 8 hours</p></article>
@@ -181,7 +190,7 @@ export default function Page() {
         <div className="service-grid">
           <article className="info-card"><h3>Mainly weekends</h3><p>Regular guiding is mainly on Saturdays, Sundays, and Japanese public holidays. Weekdays are generally not available.</p></article>
           <article className="info-card"><h3>Guiding only</h3><p>I provide private guide services only. I do not arrange or book hotels, private cars, vans, hired vehicles, or transportation services.</p></article>
-          <article className="info-card"><h3>Other costs</h3><p>Transport, meals, entrance fees, taxi fares, and personal expenses are paid separately by the guests.</p></article>
+          <article className="info-card"><h3>Other costs</h3><p>Transport, luggage delivery, meals, entrance fees, taxi fares, and personal expenses are paid separately by the guests.</p></article>
         </div>
         <p className="pricing-note">Public transport and taxis may be used during the tour, but guests book or pay the transport provider directly.</p>
       </section>
@@ -207,7 +216,7 @@ export default function Page() {
       <section className="content-section" id="routes">
         <div className="section-head route-section-head">
           <p className="section-kicker">Private Kyoto tour ideas</p>
-          <h2>Six useful starting points — then we adjust them to you</h2>
+          <h2>Seven useful starting points — then we adjust them to you</h2>
           <p className="section-intro">A private tour is easier to picture when you can see a real route. These are practical examples, not fixed packages. I adjust the final plan to your interests, hotel area, walking pace, weather and crowds.</p>
         </div>
         <div className="kyoto-icon-grid" aria-label="Iconic Kyoto views">
@@ -221,7 +230,7 @@ export default function Page() {
           </figure>
         </div>
         <div className="route-grid">{routes.map((item, index) => <article className="route-card" key={item.title}><span className="route-number">0{index + 1}</span><h3>{item.title}</h3><p className="route-time">{item.time}</p><p className="route-best-for"><strong>Best for:</strong> {item.bestFor}</p><p className="route-flow">{item.route}</p><p>{item.text}</p></article>)}</div>
-        <p className="section-note">Think of each as a sample route, not a final reservation. The final plan depends on your group, meeting area, walking pace, weather, crowds, and opening conditions.</p>
+        <p className="section-note">Think of each as a sample route, not a final reservation. The final plan depends on your group, meeting area, walking pace, weather, crowds, and opening conditions. Same-day luggage delivery is provided by a third party and is subject to that provider's eligibility and operating conditions.</p>
         <div className="route-cta"><div><strong>See something close to what you want?</strong><span>Choose a route in the enquiry form, or simply select “Not sure yet.”</span></div><a className="btn btn-primary" href="#contact">Ask me to adjust a route</a></div>
       </section>
 
@@ -237,11 +246,11 @@ export default function Page() {
 
       <section className="content-section contact-section" id="contact">
         <div className="section-head compact-head"><p className="section-kicker">Contact</p><h2>Check a weekend date</h2><p className="section-intro">You do not need a finished itinerary before contacting me. A date and rough idea are enough.</p></div>
-        <div className="contact-card"><p className="contact-lead">Send your preferred Saturday, Sunday, or Japanese public-holiday date, group size, meeting area, and the kind of Kyoto experience you want. If one of the route ideas above feels close, choose it below and I can adjust it.</p>
+        <div className="contact-card"><p className="contact-lead">Send your preferred Saturday, Sunday, or Japanese public-holiday date, group size, meeting area, and the kind of Kyoto experience you want. If you are arriving by Shinkansen, select “Kyoto Station Arrival Tour” and tell me your train or approximate arrival time.</p>
           <form action={formAction} method="POST" className="contact-form"><input type="hidden" name="_subject" value="Kyoto Private Guide Enquiry" /><input type="hidden" name="source" value={siteUrl} />
-            <div className="form-grid"><div className="form-field"><label htmlFor="name">Name</label><input id="name" name="name" type="text" autoComplete="name" required /></div><div className="form-field"><label htmlFor="email">Email</label><input id="email" name="email" type="email" autoComplete="email" required /></div><div className="form-field"><label htmlFor="preferred-date">Preferred date</label><input id="preferred-date" name="preferred_date" type="text" placeholder="Saturday, Sunday, or public holiday" required /></div><div className="form-field"><label htmlFor="group-size">Group size</label><input id="group-size" name="group_size" type="text" inputMode="numeric" /></div><div className="form-field"><label htmlFor="route-interest">Route idea</label><select id="route-interest" name="route_interest" defaultValue="Not sure yet"><option>Not sure yet</option>{routes.map((route) => <option key={route.title}>{route.title}</option>)}</select></div><div className="form-field"><label htmlFor="meeting-area">Meeting area / hotel name</label><input id="meeting-area" name="meeting_area" type="text" /></div><div className="form-field"><label htmlFor="tour-length">Preferred length</label><select id="tour-length" name="tour_length" defaultValue="Half day / 4 hours"><option>Half day / 4 hours</option><option>Full day / 8 hours</option><option>Not sure yet</option></select></div></div>
+            <div className="form-grid"><div className="form-field"><label htmlFor="name">Name</label><input id="name" name="name" type="text" autoComplete="name" required /></div><div className="form-field"><label htmlFor="email">Email</label><input id="email" name="email" type="email" autoComplete="email" required /></div><div className="form-field"><label htmlFor="preferred-date">Preferred date</label><input id="preferred-date" name="preferred_date" type="text" placeholder="Saturday, Sunday, or public holiday" required /></div><div className="form-field"><label htmlFor="group-size">Group size</label><input id="group-size" name="group_size" type="text" inputMode="numeric" /></div><div className="form-field"><label htmlFor="route-interest">Route idea</label><select id="route-interest" name="route_interest" defaultValue="Not sure yet"><option>Not sure yet</option>{routes.map((route) => <option key={route.title}>{route.title}</option>)}</select></div><div className="form-field"><label htmlFor="meeting-area">Meeting area / hotel name</label><input id="meeting-area" name="meeting_area" type="text" placeholder="Kyoto Station, hotel name, etc." /></div><div className="form-field"><label htmlFor="tour-length">Preferred length</label><select id="tour-length" name="tour_length" defaultValue="Half day / 4 hours"><option>Half day / 4 hours</option><option>Full day / 8 hours</option><option>Not sure yet</option></select></div></div>
             <div className="form-field form-field-full"><label htmlFor="interests">Places or interests</label><input id="interests" name="places_or_interests" type="text" placeholder="Gion, Fushimi Inari, history, food, family trip, etc." /></div>
-            <div className="form-field form-field-full"><label htmlFor="message">Message</label><textarea id="message" name="message" rows={4} required placeholder="Please tell me your rough plan, walking pace, or any questions." /></div>
+            <div className="form-field form-field-full"><label htmlFor="message">Message</label><textarea id="message" name="message" rows={4} required placeholder="Please tell me your rough plan, walking pace, Shinkansen arrival time, or any questions." /></div>
             <div className="contact-actions contact-actions-form"><button className="btn btn-primary" type="submit">Send enquiry</button><a className="btn btn-secondary" href={mailto}>Email directly</a></div>
           </form><p className="contact-direct-note">Sending this form is an enquiry only. It does not create a reservation.</p></div>
       </section>
