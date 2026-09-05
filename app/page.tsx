@@ -200,17 +200,20 @@ export default function Page() {
         <div className="guest-grid">{guestFeedback.map((text) => <article className="guest-card" key={text}><p className="guest-text">{text}</p></article>)}</div>
         <p className="section-note">Recurring feedback themes from guests.</p>
 
-        <article className="recent-experience-card" aria-label="Recent guest experience">
-          <div className="recent-experience-image-wrap">
-            <img src="/recent-guests-austria.jpg" alt="Don Tanaka with recent guests from Austria after a private Kyoto tour" className="recent-experience-image" loading="lazy" decoding="async" />
+        <section className="recent-tour-gallery" aria-label="Recent private tour experiences">
+          <div className="recent-tour-heading">
+            <p className="section-kicker">Recent guest experiences</p>
+            <h3>Real days in Kyoto with recent guests</h3>
+            <p>Private tours are never exactly the same. These are recent moments from tours around Arashiyama and Kiyomizu-dera.</p>
           </div>
-          <div className="recent-experience-copy">
-            <p className="section-kicker">Recent guest experience</p>
-            <h3>Four hours across Kyoto with guests from Austria</h3>
-            <p>Fushimi Inari · Arashiyama Bamboo Grove · Tenryu-ji · Nijo Castle</p>
-            <p>A real recent guiding day, shared with permission from the guests.</p>
+          <div className="recent-tour-grid">
+            <figure className="recent-tour-photo recent-tour-photo-wide"><img src="/recent-tour-arashiyama-couple.jpg" alt="Don with recent guests in the Arashiyama bamboo grove" loading="lazy" decoding="async" /><figcaption>Arashiyama Bamboo Grove</figcaption></figure>
+            <figure className="recent-tour-photo"><img src="/recent-tour-arashiyama-family.jpg" alt="Don with a recent private tour group in the Arashiyama bamboo grove" loading="lazy" decoding="async" /><figcaption>Arashiyama · a flexible private day</figcaption></figure>
+            <figure className="recent-tour-photo"><img src="/recent-tour-kiyomizudera-couple.jpg" alt="Don with recent guests at Kiyomizu-dera in Kyoto" loading="lazy" decoding="async" /><figcaption>Kiyomizu-dera</figcaption></figure>
+            <figure className="recent-tour-photo recent-tour-photo-wide"><img src="/recent-tour-kiyomizudera-family.jpg" alt="Don with a recent family group at Kiyomizu-dera in Kyoto" loading="lazy" decoding="async" /><figcaption>Kiyomizu-dera · Kyoto with family</figcaption></figure>
           </div>
-        </article>
+          <p className="section-note">Recent guiding moments, shared with permission from the guests.</p>
+        </section>
       </section>
 
       <section className="content-section" id="routes">
