@@ -1,0 +1,18 @@
+/* Keep the guide, who stands on the left edge of guest photos, outside the visible gallery crop.
+   The source images remain unchanged so this can be tuned or reversed without image loss. */
+.recent-tour-photo img {
+  width: 130%;
+  max-width: none;
+  margin-left: -30%;
+  object-position: right center;
+}
+
+@media (max-width: 760px) {
+  .recent-tour-photo img,
+  .recent-tour-photo-wide img {
+    width: 130%;
+    max-width: none;
+    margin-left: -30%;
+    object-position: right center;
+  }
+}
