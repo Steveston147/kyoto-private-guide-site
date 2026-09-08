@@ -8,6 +8,19 @@ const tourIdeas = [
   { title: 'Kyoto Highlights', text: 'A full day shaped around the places you most want to experience.', image: siteAssets.tours.highlights },
   { title: 'Kyoto at a Gentle Pace', text: 'Fewer stops, more time — ideal if you prefer a comfortable and unhurried day.', image: siteAssets.tours.gentlePace },
 ];
+
+const snapshotCaptions = [
+  'Walking through bamboo groves.',
+  'Good food, great company.',
+  'Beautiful views.',
+  'New friends, new experiences.',
+  'History comes alive.',
+  'Incredible moments together.',
+  'Strolling old streets.',
+  'Timeless Kyoto.',
+  'A perfect day in Kyoto.',
+  'Local places, lasting memories.',
+];
 ---
 <!doctype html>
 <html lang="en">
@@ -20,7 +33,7 @@ const tourIdeas = [
 <section class="split-section wrap experience"><div class="image-panel tall experience-photo"><img src={siteAssets.experience.src} alt={siteAssets.experience.alt} width="1600" height="1068" decoding="async"/></div><div class="copy-panel"><p class="eyebrow">YOUR DAY IN KYOTO</p><h2>At your pace.</h2><p class="lead">Kyoto does not need to be rushed.</p><p>I will help you make the most of your time while keeping the day comfortable, flexible, and personal.</p><p>First visit, travelling with family, or simply looking for a slower pace — we can shape the day around you.</p><a href="#tours" style="display:inline-flex;align-items:center;gap:18px;margin-top:26px;padding:13px 28px;border:1px solid #b66f45;border-radius:999px;font-size:.95rem;">Explore Tour Ideas <span>→</span></a></div></section>
 <section class="arrival-section"><div class="wrap"><p class="eyebrow light">A DIFFERENT WAY TO START KYOTO</p><div class="arrival-head"><h2>Arrive in Kyoto.<br/>Start exploring.</h2><p>Arriving by Shinkansen? I can meet you at Kyoto Station and start your private tour from there.</p></div><div class="steps"><article><span>01</span><h3>ARRIVE</h3><p>Meet Don at Kyoto Station.</p></article><article><span>02</span><h3>LUGGAGE</h3><p>Use same-day luggage delivery when available.</p></article><article><span>03</span><h3>EXPLORE</h3><p>Start sightseeing right away.</p></article><article><span>04</span><h3>HOTEL</h3><p>Finish the tour at your hotel.</p></article></div><a class="text-link light" href="#tours">Explore the Arrival Tour →</a></div></section>
 <section id="tours" class="wrap tours-section"><div class="section-heading"><div><p class="eyebrow">TOUR IDEAS</p><h2>Ideas, not fixed packages.</h2></div><p>Start with an idea. We can adjust the day around your interests, pace and location.</p></div><div class="tour-grid">{tourIdeas.map((tour)=><article class="tour-card"><div class="tour-image"><img src={tour.image} alt={tour.title} loading="lazy" decoding="async"/></div><h3>{tour.title}</h3><p>{tour.text}</p></article>)}</div><a class="text-link" href="#contact">Ask about a tour idea →</a></section>
-<section class="guest-section"><div class="wrap"><p class="eyebrow">REAL DAYS IN KYOTO</p><h2>Kyoto, shared.</h2><p class="section-note">Recent guiding moments, shared with permission.</p><div class="guest-grid">{siteAssets.gallery.map((image)=><div class="guest-photo-frame"><img class:list={['gallery-photo', image.crop === 'guide-left' && 'gallery-photo--guide-left']} src={image.src} alt={image.alt} loading="lazy" decoding="async"/></div>)}</div></div></section>
+<section class="guest-section snapshot-section"><div class="wrap"><p class="eyebrow">REAL DAYS IN KYOTO</p><h2>Kyoto, shared.</h2><p class="section-note">Recent guiding moments, shared with permission.</p><p class="snapshot-line">Different people. Different stories. One Kyoto.</p><div class="snapshot-wall">{siteAssets.gallery.map((image, index)=><figure class={`snapshot snapshot-${index + 1}`}><div class="snapshot-photo"><img class:list={['gallery-photo', image.crop === 'guide-left' && 'gallery-photo--guide-left']} src={image.src} alt={image.alt} loading="lazy" decoding="async"/></div><figcaption>{snapshotCaptions[index]}</figcaption></figure>)}</div></div></section>
 <section class="rates-section wrap"><div><p class="eyebrow">RATES</p><h2>Simple, clear pricing.</h2></div><div class="rate-grid"><article><p>HALF DAY</p><span>4 hours</span><strong>¥40,000</strong></article><article><p>FULL DAY</p><span>8 hours</span><strong>¥80,000</strong></article></div><div class="rate-notes"><p>Additional hour — ¥10,000</p><p><strong>Prices are per guide, not per person.</strong></p><p>Guiding service only. Transportation, meals, admission fees, taxi fares and personal expenses are separate.</p></div></section>
 <section id="about" class="split-section wrap about-section"><div class="copy-panel"><p class="eyebrow">YOUR GUIDE</p><h2>Hi, I'm Don.</h2><p>I was born and raised in Kyoto and am a National Government Licensed Guide Interpreter.</p><p>I have also spent many years overseas, so I understand both Kyoto and some of the questions and small difficulties international visitors may experience in Japan.</p><p>I personally plan and guide each tour.</p></div><div class="image-panel portrait"><img src={siteAssets.guide.src} alt={siteAssets.guide.alt} loading="lazy" decoding="async"/></div></section>
 <section id="contact" class="final-cta"><div class="wrap final-inner"><p class="eyebrow light">PLAN YOUR DAY</p><h2>Planning a weekend in Kyoto?</h2><p>Tell me your date, group size and what interests you. You do not need to have your itinerary ready.</p><a class="button primary" href="mailto:eltontanaka@gmail.com?subject=Kyoto%20Private%20Guide%20Enquiry">Check Availability</a><small>Sending an enquiry does not confirm a booking.</small></div></section>
