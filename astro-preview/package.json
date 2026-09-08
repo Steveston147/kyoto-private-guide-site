@@ -5,7 +5,8 @@
   "type": "module",
   "scripts": {
     "dev": "astro dev",
-    "prebuild": "node scripts/fetch-assets.mjs",
+    "audit": "node scripts/audit-assets.mjs",
+    "prebuild": "node scripts/fetch-assets.mjs && node scripts/audit-assets.mjs",
     "build": "astro build",
     "preview": "astro preview"
   },
