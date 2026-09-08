@@ -1,6 +1,6 @@
 import { mkdir, writeFile } from 'node:fs/promises';
 
-const url = 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/47/Kyoto%2C_Japan_%28Unsplash_UIN-pFfJ7c%29.jpg/2560px-Kyoto%2C_Japan_%28Unsplash_UIN-pFfJ7c%29.jpg';
+const url = 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/47/Kyoto%2C_Japan_%28Unsplash_UIN-pFfJ7c%29.jpg/1280px-Kyoto%2C_Japan_%28Unsplash_UIN-pFfJ7c%29.jpg';
 const outDir = new URL('../public/kyoto/', import.meta.url);
 const outFile = new URL('../public/kyoto/yasaka-pagoda.jpg', import.meta.url);
 
