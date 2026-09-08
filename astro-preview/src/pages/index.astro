@@ -19,7 +19,7 @@ const tourIdeas = [
   },
 ];
 
-const guestImages = ['/guests/guest02.jpg','/guests/guest03.jpg'];
+const guestImages = ['/guests/guest02.jpg','/guests/guest03.jpg','/guests/guest04.jpg'];
 ---
 <!doctype html>
 <html lang="en">
@@ -65,12 +65,11 @@ const guestImages = ['/guests/guest02.jpg','/guests/guest03.jpg'];
       <section class="split-section wrap experience">
         <div class="image-panel tall experience-photo">
           <img
-            src="/hplus/guest-fushimi-inari-photography.webp"
-            alt="A guest photographing the torii gates at Fushimi Inari in Kyoto"
+            src="/kyoto/fushimi-inari.jpg"
+            alt="Fushimi Inari shrine gates in Kyoto"
             width="1200"
             height="1600"
             decoding="async"
-            onerror="this.onerror=null;this.src='/guests/guest01.jpg'"
           />
         </div>
         <div class="copy-panel">
@@ -123,16 +122,14 @@ const guestImages = ['/guests/guest02.jpg','/guests/guest03.jpg'];
           <p class="section-note">Recent guiding moments, shared with permission.</p>
           <div class="guest-grid">
             <img
-              src="/hplus/guests-hozugawa-boat.webp"
-              alt="Guests enjoying a boat ride through the Hozugawa valley near Kyoto"
+              src="/recent-tour-arashiyama-family.jpg"
+              alt="A recent private guiding day in Arashiyama"
               width="1400"
               height="1050"
               loading="lazy"
               decoding="async"
-              onerror="this.onerror=null;this.src='/guests/guest01.jpg'"
             />
             {guestImages.map((image, i) => <img src={image} alt={`Recent private guiding moment in Kyoto ${i + 2}`} loading="lazy" decoding="async" />)}
-            <img src="/guests/guest04.jpg" alt="Recent private guiding moment in Kyoto" loading="lazy" decoding="async" />
           </div>
         </div>
       </section>
