@@ -3,6 +3,7 @@
   "private": true,
   "version": "0.1.0",
   "type": "module",
+  "engines": { "node": ">=24" },
   "scripts": {
     "dev": "astro dev",
     "audit": "node scripts/audit-assets.mjs",
@@ -10,5 +11,5 @@
     "build": "astro build",
     "preview": "astro preview"
   },
-  "dependencies": { "astro": "^5.0.0" }
+  "dependencies": { "astro": "7.3.1" }
 }
