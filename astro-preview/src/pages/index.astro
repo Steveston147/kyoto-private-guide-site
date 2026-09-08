@@ -32,34 +32,47 @@ const guestImages = ['/guests/guest02.jpg','/guests/guest03.jpg','/guests/guest0
   </head>
   <body>
     <header class="site-header">
-      <a class="brand" href="#top">UMA ACADEMIA</a>
+      <a class="brand" href="#top">
+        <span class="brand-main">uma academia</span>
+        <span class="brand-sub">KYOTO LOCAL TOURS</span>
+      </a>
       <nav aria-label="Primary">
-        <a href="#tours">Tours</a>
+        <a class="active" href="#top">Home</a>
         <a href="#about">About</a>
-        <a class="nav-cta" href="#contact">Check Availability</a>
+        <a href="#tours">Tour Ideas</a>
+        <a href="#about">Private Guide</a>
+        <a href="#contact">Contact</a>
+        <a class="nav-cta" href="#contact">Plan Your Tour <span>→</span></a>
+        <span class="lang">◎ EN⌄</span>
       </nav>
     </header>
 
     <main id="top">
-      <section class="hero">
-        <img src="/kyoto-hero.jpg" alt="Historic Higashiyama streets in Kyoto" />
+      <section class="hero hero-fushimi">
+        <img src="/kyoto/fushimi-inari.jpg" alt="Vermilion torii gates at Fushimi Inari Taisha in Kyoto" />
         <div class="hero-shade"></div>
         <div class="hero-copy wrap">
-          <p class="eyebrow light">PRIVATE KYOTO GUIDE</p>
-          <h1>Kyoto made simple,<br />calm, and personal.</h1>
-          <p class="hero-intro">Explore Kyoto with Don, a Kyoto-born National Government Licensed Guide Interpreter. Private tours mainly on weekends and public holidays.</p>
+          <h1>Discover<br />Kyoto Differently</h1>
+          <p class="hero-tagline">Local insights. Meaningful encounters.<br />Unforgettable moments.</p>
           <div class="actions">
-            <a class="button primary" href="#contact">Check Availability</a>
-            <a class="button ghost" href="#tours">Explore Tours</a>
+            <a class="button primary" href="#contact">Plan Your Tour <span>→</span></a>
           </div>
+        </div>
+
+        <div class="hero-features wrap" aria-label="Why travel with Uma Academia">
+          <div class="hero-feature"><span class="feature-icon">◯</span><div><strong>Small Groups</strong><small>More personal experiences</small></div></div>
+          <div class="hero-feature"><span class="feature-icon">◇</span><div><strong>Local Insights</strong><small>Beyond the guidebooks</small></div></div>
+          <div class="hero-feature"><span class="feature-icon">♡</span><div><strong>Meaningful Travel</strong><small>Real connections</small></div></div>
+          <div class="hero-location"><strong>Fushimi Inari Taisha</strong><small>A journey through a thousand torii</small></div>
         </div>
       </section>
 
-      <section class="trust-strip" aria-label="Key service facts">
-        <div><strong>KYOTO-BORN</strong><span>Born and raised in Kyoto</span></div>
-        <div><strong>LICENSED</strong><span>National Government Licensed Guide Interpreter</span></div>
-        <div><strong>PRIVATE</strong><span>Your group only</span></div>
-        <div><strong>CLEAR PRICING</strong><span>From ¥40,000</span></div>
+      <section class="editorial-intro">
+        <div class="wrap editorial-inner">
+          <p class="eyebrow">MORE THAN SIGHTSEEING</p>
+          <h2>Thoughtful Tours for Curious Travelers</h2>
+          <span class="editorial-rule"></span>
+        </div>
       </section>
 
       <section class="split-section wrap experience">
