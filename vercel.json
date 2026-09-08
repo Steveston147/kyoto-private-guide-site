@@ -1,0 +1,15 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "services": {
+    "hplus": {
+      "root": "astro-preview/",
+      "framework": "astro"
+    }
+  },
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": { "service": "hplus" }
+    }
+  ]
+}
