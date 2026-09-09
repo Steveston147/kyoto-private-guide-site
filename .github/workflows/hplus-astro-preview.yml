@@ -1,5 +1,6 @@
-name: H+ Astro Preview CI
+name: H+ Astro Preview Lightweight CI
 
+# Preview policy: no security audit. Keep CI limited to install + build verification.
 on:
   push:
     branches:
