@@ -6,8 +6,8 @@
   "engines": { "node": ">=24" },
   "scripts": {
     "dev": "astro dev",
-    "audit": "node scripts/audit-assets.mjs",
-    "prebuild": "node scripts/fetch-assets.mjs && node scripts/audit-assets.mjs",
+    "validate:assets": "node scripts/validate-assets.mjs",
+    "prebuild": "node scripts/fetch-assets.mjs && node scripts/validate-assets.mjs",
     "build": "astro build",
     "preview": "astro preview"
   },

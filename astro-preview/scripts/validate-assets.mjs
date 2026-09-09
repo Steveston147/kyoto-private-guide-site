@@ -1,7 +1,6 @@
 import { access, readFile, stat } from 'node:fs/promises';
 import { fileURLToPath } from 'node:url';
 
-const root = fileURLToPath(new URL('../', import.meta.url));
 const publicRoot = fileURLToPath(new URL('../public/', import.meta.url));
 const configPath = fileURLToPath(new URL('../astro.config.mjs', import.meta.url));
 const pagePath = fileURLToPath(new URL('../src/pages/index.astro', import.meta.url));
@@ -24,20 +23,40 @@ for (const assetPath of new Set(paths)) {
     failures.push(`Asset path must be root-relative: ${assetPath}`);
     continue;
   }
+
   const filePath = `${publicRoot}${assetPath.slice(1)}`;
   try {
     await access(filePath);
     const info = await stat(filePath);
-    if (info.size === 0) failures.push(`Asset is empty: ${assetPath}`);
+    if (info.size === 0) {
+      failures.push(`Asset is empty: ${assetPath}`);
+      continue;
+    }
+
+    const lower = assetPath.toLowerCase();
+    if (/\.(jpe?g|png|webp)$/.test(lower)) {
+      const data = await readFile(filePath);
+      const isJpeg = data.length >= 3 && data[0] === 0xff && data[1] === 0xd8 && data[2] === 0xff;
+      const isPng = data.length >= 8 && data.subarray(0, 8).equals(Buffer.from([0x89,0x50,0x4e,0x47,0x0d,0x0a,0x1a,0x0a]));
+      const isWebp = data.length >= 12 && data.subarray(0,4).toString() === 'RIFF' && data.subarray(8,12).toString() === 'WEBP';
+
+      if (lower.endsWith('.jpg') || lower.endsWith('.jpeg')) {
+        if (!isJpeg) failures.push(`Invalid JPEG binary: ${assetPath}`);
+      } else if (lower.endsWith('.png')) {
+        if (!isPng) failures.push(`Invalid PNG binary: ${assetPath}`);
+      } else if (lower.endsWith('.webp')) {
+        if (!isWebp) failures.push(`Invalid WebP binary: ${assetPath}`);
+      }
+    }
   } catch {
     failures.push(`Missing local asset: ${assetPath}`);
   }
 }
 
 if (failures.length) {
-  console.error(`Asset audit failed in ${root}`);
+  console.error('Asset validation failed.');
   for (const failure of failures) console.error(`- ${failure}`);
   process.exit(1);
 }
 
-console.log(`Asset audit passed: ${new Set(paths).size} local assets verified.`);
+console.log(`Asset validation passed: ${new Set(paths).size} local assets verified.`);
