@@ -1,6 +1,6 @@
 name: H+ Astro Preview Lightweight CI
 
-# Preview policy: no npm/security audit. Keep CI limited to install + build verification.
+# Preview policy: no security audit. Keep CI limited to install + build verification.
 on:
   push:
     branches:
@@ -23,6 +23,6 @@ jobs:
         with:
           node-version: 24
       - name: Install dependencies
-        run: npm install --no-audit --no-fund
+        run: npm install
       - name: Build Astro preview
         run: npm run build
