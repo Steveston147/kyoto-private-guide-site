@@ -31,6 +31,8 @@ export const siteAssets = {
     { src: '/kyoto/nijo-castle.jpg', alt: 'Nijo Castle in Kyoto', crop: 'center' },
     { src: '/kyoto/fushimi-inari.jpg', alt: 'Fushimi Inari Taisha in Kyoto', crop: 'center' },
     { src: '/kyoto-hero.jpg', alt: 'A Kyoto streetscape', crop: 'center' },
+    { src: '/gallery/randen-station.svg', alt: 'Randen tram at a Kyoto station', crop: 'center' },
+    { src: '/gallery/guest-greenery.svg', alt: 'Guests enjoying a green temple garden in Kyoto', crop: 'center' },
   ] satisfies SiteAsset[],
   guide: {
     src: '/don.jpg',
