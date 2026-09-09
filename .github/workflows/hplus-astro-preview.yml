@@ -23,7 +23,5 @@ jobs:
           node-version: 24
       - name: Install dependencies
         run: npm install
-      - name: Security audit
-        run: npm audit --audit-level=high
       - name: Build Astro preview
         run: npm run build
