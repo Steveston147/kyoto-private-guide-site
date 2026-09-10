@@ -1,0 +1,130 @@
+---
+import '../styles/global.css';
+
+const routes = [
+  {
+    number: '01',
+    title: 'First-Time Kyoto',
+    time: '4 hours · ¥40,000',
+    route: 'Kiyomizu-dera → Sannenzaka / Ninenzaka → Yasaka Shrine → Gion',
+    text: 'A classic first look at Kyoto, with temple views, old streets and time to enjoy the atmosphere without rushing.',
+    image: '/gallery/kiyomizudera-family.jpg',
+    alt: 'A recent private guiding day at Kiyomizu-dera in Kyoto',
+  },
+  {
+    number: '02',
+    title: 'Fushimi Inari & Southern Kyoto',
+    time: '4 hours · ¥40,000',
+    route: 'Fushimi Inari → Sanjusangendo → Higashiyama or Gion',
+    text: 'A flexible route for the famous torii gates and southern Kyoto, adjusted to your walking pace and the crowds that day.',
+    image: '/kyoto/fushimi-inari.jpg',
+    alt: 'Vermilion torii gates at Fushimi Inari Taisha in Kyoto',
+  },
+  {
+    number: '03',
+    title: 'Nijo Castle & Kyoto History',
+    time: '4 hours · ¥40,000',
+    route: 'Nijo Castle → Kyoto Gyoen → Nishiki or a tea break',
+    text: 'For guests who want to understand Kyoto through shogun history, architecture and the stories behind what they see.',
+    image: '/kyoto/nijo-castle.jpg',
+    alt: 'Nijo Castle in Kyoto',
+  },
+  {
+    number: '04',
+    title: 'Arashiyama at Your Pace',
+    time: '4 hours · ¥40,000',
+    route: 'Bamboo Grove → riverside → temple or local stop',
+    text: 'A relaxed Arashiyama half day with room to change the order, shorten the walking or stop somewhere that catches your interest.',
+    image: '/recent-tour-arashiyama-family.jpg',
+    alt: 'A recent private guiding day in Arashiyama',
+  },
+];
+
+const places = ['Kiyomizu-dera / Higashiyama','Fushimi Inari','Gion / Yasaka Shrine','Nijo Castle','Kinkaku-ji / Ryoan-ji','Arashiyama','Nishiki Market','Quiet local areas','Not sure — please suggest'];
+const interests = ['Temples & shrines','History & culture','Traditional streets','Gardens','Food & markets','Tea / matcha','Photography','Family-friendly pace','Senior-friendly pace','Less walking / more breaks'];
+---
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width" />
+  <title>Kyoto Private Tours | Don Tanaka</title>
+  <meta name="description" content="Flexible private Kyoto tours with Don Tanaka, a Kyoto-born National Government Licensed Guide Interpreter. Four-hour private guiding from ¥40,000 per guide." />
+  <meta name="robots" content="noindex,nofollow" />
+  <style>
+    :root{--tour-paper:#f4f0e8;--tour-ink:#1f1e1a;--tour-green:#5d674f;--tour-line:rgba(31,30,26,.18);--tour-warm:#b66f45}
+    body{background:var(--tour-paper);color:var(--tour-ink)}
+    .tour-header{position:absolute;z-index:20;top:0;left:0;right:0;display:flex;justify-content:space-between;align-items:flex-start;padding:28px 6vw;color:#fff}.tour-header .brand{color:#fff}.tour-header nav{display:flex;align-items:center;gap:28px;font-size:.94rem;padding-top:8px}.tour-header nav>a{padding-bottom:8px;border-bottom:1px solid transparent}.tour-header nav>a.active{border-color:#fff}.tour-header .nav-cta{border:1px solid rgba(255,255,255,.8);border-radius:999px;padding:11px 22px;white-space:nowrap}
+    .tour-hero{position:relative;min-height:610px;color:#fff;display:flex;align-items:flex-end;overflow:hidden}.tour-hero>img,.tour-hero-shade{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}.tour-hero>img{object-position:center 46%;image-rendering:auto}.tour-hero-shade{background:linear-gradient(90deg,rgba(35,8,3,.76) 0%,rgba(35,8,3,.36) 47%,rgba(35,8,3,.08) 78%),linear-gradient(180deg,rgba(0,0,0,.08),rgba(0,0,0,.2))}.tour-hero-copy{position:relative;z-index:3;padding-bottom:82px}.tour-hero h1{font-family:Georgia,'Times New Roman',serif;font-weight:400;font-size:clamp(4rem,7vw,7.2rem);line-height:.92;letter-spacing:-.04em;margin:0;max-width:850px}.tour-hero p{font-family:Georgia,'Times New Roman',serif;font-size:clamp(1.3rem,2.1vw,2rem);line-height:1.2;max-width:660px;margin:22px 0 0}.tour-hero-meta{display:flex;gap:30px;flex-wrap:wrap;margin-top:28px;font-size:.84rem;letter-spacing:.08em}.tour-hero-meta strong{font-family:Georgia,serif;font-size:1.1rem;font-weight:400;letter-spacing:0}
+    .tour-intro{padding:82px 0 78px}.tour-intro-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:76px;align-items:end}.tour-intro h2,.routes h2,.planner h2,.rates h2,.contact h2{font-family:Georgia,'Times New Roman',serif;font-weight:400;letter-spacing:-.03em;line-height:.98}.tour-intro h2{font-size:clamp(3rem,5vw,5.2rem);margin:0}.tour-intro-copy{max-width:570px;font-size:1.06rem}.tour-intro-copy p{margin:0 0 16px}.hand-note{font-family:'Segoe Print','Bradley Hand',cursive;color:#35517b;font-size:1.3rem;transform:rotate(-1deg);margin-top:20px!important}
+    .routes{padding:95px 0;background:#ece6db}.section-head{display:grid;grid-template-columns:1.1fr .9fr;gap:60px;align-items:end;margin-bottom:48px}.routes h2,.planner h2,.rates h2,.contact h2{font-size:clamp(2.8rem,4.8vw,4.9rem);margin:0}.section-head>p{max-width:500px;margin:0;color:#66635b}.route-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:34px}.route-card{background:#f7f3eb}.route-photo{height:320px;overflow:hidden;background:#d8d2c7}.route-photo img{width:100%;height:100%;object-fit:cover;display:block;image-rendering:auto}.route-copy{padding:28px 30px 32px}.route-number{font-family:Georgia,serif;font-size:1.2rem;color:#8d806d}.route-copy h3{font-family:Georgia,serif;font-size:2rem;font-weight:400;line-height:1.05;margin:10px 0 8px}.route-time{font-size:.78rem;letter-spacing:.12em;font-weight:700;margin:0 0 18px}.route-line{font-weight:700;margin:0 0 12px;line-height:1.45}.route-copy p:last-child{margin:0;color:#625f57}.route-note{margin:34px 0 0;color:#66635b}
+    .rates{padding:95px 0}.rate-strip{display:grid;grid-template-columns:1.3fr .7fr;margin-top:44px;border-top:1px solid var(--tour-line);border-bottom:1px solid var(--tour-line)}.rate-main,.rate-side{padding:34px}.rate-main{border-right:1px solid var(--tour-line)}.rate-label{font-size:.75rem;letter-spacing:.15em;font-weight:700}.rate-main strong,.rate-side strong{display:block;font-family:Georgia,serif;font-weight:400}.rate-main strong{font-size:clamp(3.5rem,6vw,6rem);line-height:1;margin-top:8px}.rate-side strong{font-size:2.5rem;margin-top:10px}.rate-notes{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:24px;font-size:.92rem;color:#5f5d56}
+    .planner{padding:100px 0;background:#25261f;color:#f7f2e8}.planner .section-head>p{color:#cfccc2}.planner-form{margin-top:48px;background:#f4f0e8;color:#1f1e1a;padding:38px;display:grid;gap:30px}.form-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px}.field{display:grid;gap:8px}.field label,.check-title{font-weight:700;font-size:.86rem;letter-spacing:.03em}.field input,.field select,.field textarea{width:100%;border:1px solid #d0c8bb;background:#fff;padding:13px 14px;font:inherit;color:#1f1e1a;border-radius:0}.field textarea{min-height:120px;resize:vertical}.check-group{display:grid;gap:12px}.checks{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px 18px}.check{display:flex;align-items:flex-start;gap:9px;font-size:.92rem}.check input{margin-top:5px;accent-color:#5d674f}.submit-row{display:flex;align-items:center;justify-content:space-between;gap:24px;border-top:1px solid #d8d0c4;padding-top:28px}.submit-row p{margin:0;color:#66635b;font-size:.9rem;max-width:560px}.submit{border:0;background:var(--tour-green);color:#fff;padding:15px 26px;font-weight:700;cursor:pointer}.planner-small{font-size:.86rem;color:#d4d0c8;margin:18px 0 0}
+    .contact{padding:95px 0;text-align:center}.contact p{max-width:690px;margin:20px auto 0}.contact-actions{display:flex;justify-content:center;gap:14px;margin-top:28px}.contact a{display:inline-flex;padding:13px 24px;border:1px solid #1f1e1a}.contact a.primary{background:#1f1e1a;color:#fff}
+    footer{background:#171812;color:#ece7dc;padding:48px 0}.foot{display:flex;justify-content:space-between;gap:30px;align-items:center}.foot p{margin:0;color:#bdb9af}.foot nav{display:flex;gap:20px;font-size:.9rem}
+    @media(max-width:900px){.tour-header{padding:20px 24px}.tour-header nav>a:not(.nav-cta){display:none}.tour-hero{min-height:560px}.tour-hero-copy{padding-bottom:62px}.tour-intro-grid,.section-head,.route-grid,.rate-strip,.rate-notes,.form-grid{grid-template-columns:1fr}.rate-main{border-right:0;border-bottom:1px solid var(--tour-line)}.checks{grid-template-columns:repeat(2,minmax(0,1fr))}.submit-row{align-items:flex-start;flex-direction:column}.foot{align-items:flex-start;flex-direction:column}.route-photo{height:280px}}
+    @media(max-width:560px){.tour-header .brand-main{font-size:1.45rem}.tour-hero{min-height:520px}.tour-hero h1{font-size:3.7rem}.tour-hero-meta{gap:16px}.tour-intro,.routes,.rates,.planner,.contact{padding-top:72px;padding-bottom:72px}.planner-form{padding:24px 18px}.checks{grid-template-columns:1fr}.route-photo{height:245px}.contact-actions{flex-direction:column}.contact-actions a{justify-content:center}}
+  </style>
+</head>
+<body>
+<header class="tour-header">
+  <a class="brand" href="/"><span class="brand-main">uma academia</span><span class="brand-sub">KYOTO LOCAL TOURS</span></a>
+  <nav aria-label="Primary"><a href="/">Home</a><a class="active" href="/tours">Tours</a><a href="/ask-don">Ask Don</a><a href="/#about">About</a><a href="#enquiry">Contact</a><a class="nav-cta" href="#enquiry">Plan Your Tour →</a></nav>
+</header>
+<main>
+<section class="tour-hero">
+  <img src="/kyoto/fushimi-inari.jpg" alt="Vermilion torii gates at Fushimi Inari Taisha in Kyoto" />
+  <div class="tour-hero-shade"></div>
+  <div class="wrap tour-hero-copy">
+    <p class="eyebrow light">PRIVATE KYOTO TOURS</p>
+    <h1>Classic Kyoto.<br/>Your way.</h1>
+    <p>Start with a proven route, then shape the day around you.</p>
+    <div class="tour-hero-meta"><span><strong>¥40,000</strong><br/>4 hours</span><span><strong>Private guide</strong><br/>price per guide, not per person</span><span><strong>Flexible</strong><br/>pace, stops and route can change</span></div>
+  </div>
+</section>
+
+<section class="tour-intro">
+  <div class="wrap tour-intro-grid">
+    <div><p class="eyebrow">GUIDED BY DON</p><h2>A real person.<br/>A flexible day.</h2></div>
+    <div class="tour-intro-copy"><p>I am Don Tanaka, a Kyoto-born National Government Licensed Guide Interpreter. I personally handle enquiries and normally guide the tour myself.</p><p>These are not rigid packages. Tell me what you want to see, how fast you like to travel and where you are staying. I will adjust the plan with you.</p><p class="hand-note">Ideas first. Final route together.</p></div>
+  </div>
+</section>
+
+<section class="routes">
+  <div class="wrap">
+    <div class="section-head"><div><p class="eyebrow">SAMPLE ROUTES</p><h2>Four useful ways<br/>to start.</h2></div><p>Each route is a practical example, not a fixed itinerary. We can change stops for your interests, hotel area, weather, crowds and walking pace.</p></div>
+    <div class="route-grid">
+      {routes.map((route)=><article class="route-card"><div class="route-photo"><img src={route.image} alt={route.alt} loading="lazy" decoding="async" /></div><div class="route-copy"><span class="route-number">{route.number}</span><h3>{route.title}</h3><p class="route-time">{route.time}</p><p class="route-line">{route.route}</p><p>{route.text}</p></div></article>)}
+    </div>
+    <p class="route-note">Want Kinkaku-ji, Ryoan-ji, Nishiki Market or somewhere else instead? That is exactly what a private tour is for.</p>
+  </div>
+</section>
+
+<section class="rates">
+  <div class="wrap">
+    <p class="eyebrow">SIMPLE PRICING</p><h2>Book the guide,<br/>not a seat.</h2>
+    <div class="rate-strip"><div class="rate-main"><span class="rate-label">HALF DAY · 4 HOURS</span><strong>¥40,000</strong><span>per guide, not per person</span></div><div class="rate-side"><span class="rate-label">EXTRA TIME</span><strong>¥10,000</strong><span>per additional hour</span></div></div>
+    <div class="rate-notes"><p><strong>Mainly weekends & public holidays.</strong><br/>Weekdays depend on availability.</p><p><strong>Guiding service only.</strong><br/>Transport, meals and admission fees are separate.</p><p><strong>Walking + public transport.</strong><br/>Taxis can be used when useful and are paid directly by guests.</p></div>
+  </div>
+</section>
+
+<section id="enquiry" class="planner">
+  <div class="wrap">
+    <div class="section-head"><div><p class="eyebrow light">PLAN YOUR TOUR</p><h2>What would you<br/>like to do?</h2></div><p>You do not need a finished itinerary. Check a few places and interests, add your date, and I will suggest a practical route.</p></div>
+    <form class="planner-form" action="https://formspree.io/f/mykdbwbl" method="POST">
+      <input type="hidden" name="subject" value="Kyoto Private Tour Enquiry" />
+      <div class="form-grid"><div class="field"><label for="name">Name</label><input id="name" name="name" type="text" required /></div><div class="field"><label for="email">Email</label><input id="email" name="email" type="email" required /></div><div class="field"><label for="date">Preferred date</label><input id="date" name="preferred_date" type="text" placeholder="Example: October 31, 2026" /></div><div class="field"><label for="group">Group size</label><input id="group" name="group_size" type="text" /></div><div class="field"><label for="hotel">Hotel / meeting area</label><input id="hotel" name="hotel_or_meeting_area" type="text" placeholder="Kyoto Station, Gion, hotel name, etc." /></div><div class="field"><label for="route">Sample route</label><select id="route" name="route_interest"><option value="Not sure yet">Not sure yet</option>{routes.map((route)=><option value={route.title}>{route.title}</option>)}</select></div></div>
+      <div class="check-group"><span class="check-title">Places you would like to visit</span><div class="checks">{places.map((place)=><label class="check"><input type="checkbox" name="places[]" value={place} /><span>{place}</span></label>)}</div></div>
+      <div class="check-group"><span class="check-title">What matters to you?</span><div class="checks">{interests.map((interest)=><label class="check"><input type="checkbox" name="interests[]" value={interest} /><span>{interest}</span></label>)}</div></div>
+      <div class="field"><label for="message">Anything else?</label><textarea id="message" name="message" placeholder="Tell me what kind of Kyoto day you want, places you want to avoid, walking concerns, food interests, or anything else."></textarea></div>
+      <div class="submit-row"><p>A short message is enough. Sending this form is an enquiry only and does not confirm a booking.</p><button class="submit" type="submit">Send enquiry →</button></div>
+    </form>
+    <p class="planner-small">Your enquiry is sent directly through the same Formspree contact method used on the existing guide site.</p>
+  </div>
+</section>
+
+<section class="contact"><div class="wrap"><p class="eyebrow">NOT A STANDARD TOUR?</p><h2>Looking for something<br/>more unusual?</h2><p>Izakaya, karaoke, shopping, game centers and other non-tour requests belong in Ask Don.</p><div class="contact-actions"><a class="primary" href="/ask-don">Go to Ask Don →</a><a href="mailto:eltontanaka@gmail.com?subject=Kyoto%20Private%20Guide%20Enquiry">Email Don</a></div></div></section>
+</main>
+<footer><div class="wrap foot"><div><strong>UMA ACADEMIA</strong><p>Private Kyoto Guide — Don Tanaka</p></div><nav><a href="/">Home</a><a href="/tours">Tours</a><a href="/ask-don">Ask Don</a></nav></div></footer>
+</body>
+</html>
