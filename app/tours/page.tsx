@@ -1,22 +1,21 @@
 "use client";
 
 import "./tours.css";
+import "./tours-wide.css";
 import { useMemo } from "react";
 
 const formAction = "https://formspree.io/f/mykdbwbl";
 
 const tourIdeas = [
-  { title: "First-Time Kyoto", time: "4 hours", route: "Kiyomizu-dera → Sannenzaka / Ninenzaka → Yasaka Shrine → Gion", image: "/kyoto/kiyomizu-dera.jpg" },
+  { title: "First-Time Kyoto", time: "4 hours", route: "Kiyomizu-dera → Sannenzaka / Ninenzaka → Yasaka Shrine → Gion", image: "/kyoto-hero.jpg" },
   { title: "Fushimi Inari & Higashiyama", time: "4–6 hours", route: "Fushimi Inari → Sanjusangendo → Kiyomizu-dera / Higashiyama → Gion", image: "/kyoto/fushimi-inari.jpg" },
-  { title: "Arashiyama & Northwest Kyoto", time: "4–6 hours", route: "Arashiyama → Ryoan-ji → Kinkaku-ji", image: "/kyoto/arashiyama.jpg" },
+  { title: "Arashiyama & Northwest Kyoto", time: "4–6 hours", route: "Arashiyama → Ryoan-ji → Kinkaku-ji", image: "/recent-tour-arashiyama-couple.jpg" },
 ];
 
 const places = [
   ["Fushimi Inari", "/kyoto/fushimi-inari.jpg"],
-  ["Kiyomizu-dera", "/kyoto/kiyomizu-dera.jpg"],
-  ["Arashiyama", "/kyoto/arashiyama.jpg"],
-  ["Kinkaku-ji", "/kyoto/kinkakuji.jpg"],
-  ["Gion & Yasaka", "/kyoto/gion-yasaka.jpg"],
+  ["Kiyomizu-dera", "/recent-tour-kiyomizudera-couple.jpg"],
+  ["Arashiyama", "/recent-tour-arashiyama-couple.jpg"],
   ["Nijo Castle", "/kyoto/nijo-castle.jpg"],
 ];
 
@@ -80,13 +79,13 @@ export default function ToursPage() {
       </section>
 
       <section id="arrival" className="arrivalSection">
-        <div className="arrivalInner"><p className="kicker light">ARRIVING IN KYOTO BY SHINKANSEN</p><div className="arrivalIntro"><h2>Your Kyoto tour can start<br/>the moment you arrive.</h2><p>I can meet you at Kyoto Station when your Shinkansen arrives. Leave your luggage for same-day delivery when available, start exploring Kyoto together, and finish the tour at your hotel.</p></div>
+        <div className="arrivalInner"><p className="kicker light">ARRIVING IN KYOTO BY SHINKANSEN</p><div className="arrivalIntro"><h2>Your Kyoto tour can start<br/>the moment you arrive.</h2><p>I can meet you at Kyoto Station when your Shinkansen arrives.<br/>Leave your luggage for same-day delivery when available, start exploring Kyoto together, and finish the tour at your hotel.</p></div>
           <div className="arrivalHero"><img src="/tours/shinkansen.jpg" alt="Shinkansen bullet train"/><div><strong>SHINKANSEN ARRIVAL</strong><span>Meet at Kyoto Station and start your tour from there.</span></div></div>
           <div className="arrivalSteps">
             <article><b>01</b><img src="/tours/shinkansen.jpg" alt="Shinkansen"/><h3>SHINKANSEN</h3><p>Arrive at Kyoto Station by bullet train.</p></article>
             <article><b>02</b><img src="/tours/arrival-greeting.jpg" alt="Don greeting guests beside a Shinkansen at Kyoto Station"/><h3>MEET AT KYOTO STATION</h3><p>I’ll meet you at the Shinkansen area when your train arrives.</p></article>
             <article><b>03</b><img src="/tours/randen-station.jpg" alt="Randen tram in Kyoto"/><h3>START YOUR KYOTO TOUR</h3><p>Explore Kyoto together by public transportation and on foot.</p></article>
-            <article><b>04</b><img src="/kyoto/gion-yasaka.jpg" alt="Kyoto street"/><h3>FINISH AT YOUR HOTEL</h3><p>Finish sightseeing at your hotel and check in.</p></article>
+            <article><b>04</b><img src="/kyoto-hero.jpg" alt="Kyoto street"/><h3>FINISH AT YOUR HOTEL</h3><p>Finish sightseeing at your hotel and check in.</p></article>
           </div>
         </div>
       </section>
@@ -123,7 +122,7 @@ export default function ToursPage() {
             <fieldset><legend>Food preferences</legend>{["No preference","Japanese food","Vegetarian","Halal-friendly","Allergies / restrictions"].map(v => <label key={v}><input type="checkbox" name="food_preferences" value={v}/>{v}</label>)}</fieldset>
             <fieldset><legend>Things to avoid</legend>{["Long walks","Lots of stairs","Crowds","Early starts","Nothing in particular"].map(v => <label key={v}><input type="checkbox" name="avoid" value={v}/>{v}</label>)}</fieldset>
           </div>
-          <div className="textFields"><label>Name<input type="text" name="name" required/></label><label>Email<input type="email" name="email" required/></label><label>Preferred date<input type="text" name="preferred_date" placeholder="e.g. Saturday, October 17" required/></label><label>Group size<input type="text" name="group_size"/></label><label>Where are you visiting from?<input type="text" name="visiting_from" placeholder="United Kingdom, Canada, etc." required/></label><label>Hotel / meeting area<input type="text" name="meeting_area"/></label></div>
+          <div className="textFields"><label>Name<input type="text" name="name" required/></label><label>Email<input type="email" name="email" required/></label><label>Preferred date<input type="date" name="preferred_date" required/></label><label>Group size<select name="group_size" defaultValue=""><option value="" disabled>Select</option>{Array.from({ length: 12 }, (_, i) => i + 1).map(n => <option key={n} value={n}>{n}</option>)}</select></label><label>Where are you visiting from?<input type="text" name="visiting_from" placeholder="United Kingdom, Canada, etc." required/></label><label>Hotel / meeting area<input type="text" name="meeting_area"/></label></div>
           <fieldset className="full"><legend>How did you find me?</legend><div className="compactChoices">{["ChatGPT / another AI","Google Search","Recommendation","Social media","Other"].map(v => <label key={v}><input type="radio" name="discovery_source" value={v}/><span>{v}</span></label>)}</div></fieldset>
           <label className="messageField">Anything else you want to do?<textarea name="message" rows={5} placeholder="Tell me anything important about your group or the kind of day you want."/></label>
           <div className="submitRow"><button type="submit">Send enquiry →</button><p>No advance payment. I normally reply by the next day.</p></div>
