@@ -40,8 +40,11 @@ const routes = [
   },
 ];
 
-const places = ['Kiyomizu-dera / Higashiyama','Fushimi Inari','Gion / Yasaka Shrine','Nijo Castle','Kinkaku-ji / Ryoan-ji','Arashiyama','Nishiki Market','Quiet local areas','Not sure — please suggest'];
-const interests = ['Temples & shrines','History & culture','Traditional streets','Gardens','Food & markets','Tea / matcha','Photography','Family-friendly pace','Senior-friendly pace','Less walking / more breaks'];
+const places = ['Kiyomizu-dera / Higashiyama','Fushimi Inari Shrine','Arashiyama','Kinkakuji','Gion / Yasaka Shrine','Nijo Castle','Nishiki Market','Nara','Osaka','Quiet local areas','Izakaya / evening food','Not sure / Please suggest'];
+const travellers = ['Solo traveller','Couple','Family with children','Senior travellers','Multi-generation family','Students','Business / university visitors','First-time visitors to Japan','Repeat visitors to Japan'];
+const interests = ['Temples and shrines','Traditional streets','Gardens','History and culture','Samurai / castles','Food and markets','Tea / matcha','Sake','Anime / pop culture','Shopping','Photography spots','Quiet local places','Seasonal flowers / autumn leaves','University / academic visit','Business / company visit','Family-friendly activities'];
+const foodPreferences = ['Japanese lunch','Sushi','Ramen','Udon / soba','Kaiseki / traditional meal','Casual local food','Nishiki Market food walk','Matcha sweets','Vegetarian','Vegan','Halal-friendly','No meal needed'];
+const avoid = ['Very crowded places','Too many stairs','Long bus rides','Too much walking','Shopping','Touristy souvenir shops','Early morning','Late evening','Expensive restaurants'];
 ---
 <!doctype html>
 <html lang="en">
@@ -110,14 +113,42 @@ const interests = ['Temples & shrines','History & culture','Traditional streets'
 
 <section id="enquiry" class="planner">
   <div class="wrap">
-    <div class="section-head"><div><p class="eyebrow light">PLAN YOUR TOUR</p><h2>What would you<br/>like to do?</h2></div><p>You do not need a finished itinerary. Check a few places and interests, add your date, and I will suggest a practical route.</p></div>
+    <div class="section-head"><div><p class="eyebrow light">PLAN YOUR TOUR</p><h2>Create your sample<br/>Kyoto day.</h2></div><p>Choose as much or as little as you like. This follows the planner style on the current Uma Academia site, but sends the choices directly with your enquiry.</p></div>
     <form class="planner-form" action="https://formspree.io/f/mykdbwbl" method="POST">
       <input type="hidden" name="subject" value="Kyoto Private Tour Enquiry" />
-      <div class="form-grid"><div class="field"><label for="name">Name</label><input id="name" name="name" type="text" required /></div><div class="field"><label for="email">Email</label><input id="email" name="email" type="email" required /></div><div class="field"><label for="country">Where are you visiting from?</label><input id="country" name="visiting_from" type="text" placeholder="Example: United Kingdom, Canada, United States" required /></div><div class="field"><label for="source">How did you find me?</label><select id="source" name="discovery_source"><option value="">Please choose</option><option>ChatGPT / another AI</option><option>Google Search</option><option>Recommendation from someone</option><option>Social media</option><option>Other</option></select></div><div class="field"><label for="date">Preferred date</label><input id="date" name="preferred_date" type="text" placeholder="Example: October 31, 2026" /></div><div class="field"><label for="group">Group size</label><input id="group" name="group_size" type="text" /></div><div class="field"><label for="hotel">Hotel / meeting area</label><input id="hotel" name="hotel_or_meeting_area" type="text" placeholder="Kyoto Station, Gion, hotel name, etc." /></div><div class="field"><label for="route">Sample route</label><select id="route" name="route_interest"><option value="Not sure yet">Not sure yet</option>{routes.map((route)=><option value={route.title}>{route.title}</option>)}</select></div></div>
+      <div class="form-grid">
+        <div class="field"><label for="name">Name</label><input id="name" name="name" type="text" required /></div>
+        <div class="field"><label for="email">Email</label><input id="email" name="email" type="email" required /></div>
+        <div class="field"><label for="country">Where are you visiting from?</label><input id="country" name="visiting_from" type="text" placeholder="Example: United Kingdom, Canada, United States" required /></div>
+        <div class="field"><label for="source">How did you find me?</label><select id="source" name="discovery_source"><option value="">Please choose</option><option>ChatGPT / another AI</option><option>Google Search</option><option>Recommendation from someone</option><option>Social media</option><option>Other</option></select></div>
+      </div>
+
       <div class="check-group"><span class="check-title">Places you would like to visit</span><div class="checks">{places.map((place)=><label class="check"><input type="checkbox" name="places[]" value={place} /><span>{place}</span></label>)}</div></div>
-      <div class="check-group"><span class="check-title">What matters to you?</span><div class="checks">{interests.map((interest)=><label class="check"><input type="checkbox" name="interests[]" value={interest} /><span>{interest}</span></label>)}</div></div>
-      <div class="field"><label for="message">Anything else?</label><textarea id="message" name="message" placeholder="Tell me what kind of Kyoto day you want, places you want to avoid, walking concerns, food interests, or anything else."></textarea></div>
-      <div class="submit-row"><p>A short message is enough. Sending this form is an enquiry only and does not confirm a booking.</p><button class="submit" type="submit">Send enquiry →</button></div>
+
+      <div class="form-grid">
+        <div class="field"><label for="length">Preferred tour length</label><select id="length" name="tour_length"><option value="">Not sure yet</option><option>Half day / up to 4 hours</option><option>Full day / up to 8 hours</option><option>Other</option></select></div>
+        <div class="field"><label for="start">Starting point</label><select id="start" name="starting_point"><option value="">Not sure yet</option><option>Kyoto Station</option><option>My hotel in Kyoto</option><option>Gion / Higashiyama</option><option>Other</option></select></div>
+        <div class="field"><label for="hotel">Hotel name or nearest station, if known</label><input id="hotel" name="hotel_or_nearest_station" type="text" placeholder="Example: near Kyoto Station, Gion, Osaka hotel, etc." /></div>
+        <div class="field"><label for="guests">Number of guests</label><select id="guests" name="number_of_guests"><option value="">Please choose</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7 or more</option></select></div>
+      </div>
+
+      <div class="check-group"><span class="check-title">Type of travellers</span><div class="checks">{travellers.map((item)=><label class="check"><input type="checkbox" name="traveller_type[]" value={item} /><span>{item}</span></label>)}</div></div>
+
+      <div class="form-grid">
+        <div class="field"><label for="pace">Walking pace</label><select id="pace" name="walking_pace"><option value="">Please choose</option><option>Normal pace</option><option>Slow / relaxed pace</option><option>Many breaks</option><option>As little walking as practical</option></select></div>
+        <div class="field"><label for="season">Travel season</label><select id="season" name="travel_season"><option value="">Please choose</option><option>Spring</option><option>Summer</option><option>Autumn</option><option>Winter</option></select></div>
+        <div class="field"><label for="date">Travel date, if decided</label><input id="date" name="preferred_date" type="text" placeholder="Example: October 12, 2026" /></div>
+        <div class="field"><label for="transport">Transportation preference</label><select id="transport" name="transportation_preference"><option value="">No preference</option><option>Mostly walking + public transport</option><option>Use taxis when helpful</option><option>Less walking if possible</option></select></div>
+      </div>
+
+      <div class="check-group"><span class="check-title">Which sample route feels closest?</span><div class="checks">{routes.map((route)=><label class="check"><input type="radio" name="route_interest" value={route.title} /><span>{route.title}</span></label>)}<label class="check"><input type="radio" name="route_interest" value="Not sure / Please suggest" /><span>Not sure / Please suggest</span></label></div></div>
+
+      <div class="check-group"><span class="check-title">Interests</span><div class="checks">{interests.map((interest)=><label class="check"><input type="checkbox" name="interests[]" value={interest} /><span>{interest}</span></label>)}</div></div>
+      <div class="check-group"><span class="check-title">Food preferences</span><div class="checks">{foodPreferences.map((item)=><label class="check"><input type="checkbox" name="food_preferences[]" value={item} /><span>{item}</span></label>)}</div></div>
+      <div class="check-group"><span class="check-title">Things you would like to avoid</span><div class="checks">{avoid.map((item)=><label class="check"><input type="checkbox" name="things_to_avoid[]" value={item} /><span>{item}</span></label>)}</div></div>
+
+      <div class="field"><label for="message">Other requests</label><textarea id="message" name="message" placeholder="Anything else you would like Don to know?"></textarea></div>
+      <div class="submit-row"><p>A rough idea is enough. Sending this form is an enquiry only and does not confirm a booking.</p><button class="submit" type="submit">Send enquiry →</button></div>
     </form>
     <p class="planner-small">Your enquiry is sent directly through the same Formspree contact method used on the existing guide site.</p>
   </div>
