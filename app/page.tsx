@@ -248,12 +248,41 @@ export default function Page() {
       </section>
 
       <section className="content-section contact-section" id="contact">
-        <div className="section-head compact-head"><p className="section-kicker">Contact</p><h2>Check a weekend date</h2><p className="section-intro">You do not need a finished itinerary before contacting me. A date and rough idea are enough.</p></div>
-        <div className="contact-card"><p className="contact-lead">Send your preferred Saturday, Sunday, or Japanese public-holiday date, group size, meeting area, and the kind of Kyoto experience you want. If you are arriving by Shinkansen, select “Kyoto Station Arrival Tour” and tell me your train or approximate arrival time.</p>
+        <div className="section-head compact-head"><p className="section-kicker">Contact</p><h2>Build your Kyoto day</h2><p className="section-intro">You do not need a finished itinerary. Choose whatever catches your interest and I will suggest a practical route.</p></div>
+        <div className="contact-card"><p className="contact-lead">This is intentionally easy to play with: pick a sample route, places, interests and pace. A rough idea is enough.</p>
           <form action={formAction} method="POST" className="contact-form"><input type="hidden" name="_subject" value="Kyoto Private Guide Enquiry" /><input type="hidden" name="source" value={siteUrl} />
-            <div className="form-grid"><div className="form-field"><label htmlFor="name">Name</label><input id="name" name="name" type="text" autoComplete="name" required /></div><div className="form-field"><label htmlFor="email">Email</label><input id="email" name="email" type="email" autoComplete="email" required /></div><div className="form-field"><label htmlFor="preferred-date">Preferred date</label><input id="preferred-date" name="preferred_date" type="text" placeholder="Saturday, Sunday, or public holiday" required /></div><div className="form-field"><label htmlFor="group-size">Group size</label><input id="group-size" name="group_size" type="text" inputMode="numeric" /></div><div className="form-field"><label htmlFor="route-interest">Route idea</label><select id="route-interest" name="route_interest" defaultValue="Not sure yet"><option>Not sure yet</option>{routes.map((route) => <option key={route.title}>{route.title}</option>)}</select></div><div className="form-field"><label htmlFor="meeting-area">Meeting area / hotel name</label><input id="meeting-area" name="meeting_area" type="text" placeholder="Kyoto Station, hotel name, etc." /></div><div className="form-field"><label htmlFor="tour-length">Preferred length</label><select id="tour-length" name="tour_length" defaultValue="Half day / 4 hours"><option>Half day / 4 hours</option><option>Full day / 8 hours</option><option>Not sure yet</option></select></div></div>
-            <div className="form-field form-field-full"><label htmlFor="interests">Places or interests</label><input id="interests" name="places_or_interests" type="text" placeholder="Gion, Fushimi Inari, history, food, family trip, etc." /></div>
-            <div className="form-field form-field-full"><label htmlFor="message">Message</label><textarea id="message" name="message" rows={4} required placeholder="Please tell me your rough plan, walking pace, Shinkansen arrival time, or any questions." /></div>
+            <div className="form-grid">
+              <div className="form-field"><label htmlFor="name">Name</label><input id="name" name="name" type="text" autoComplete="name" required /></div>
+              <div className="form-field"><label htmlFor="email">Email</label><input id="email" name="email" type="email" autoComplete="email" required /></div>
+              <div className="form-field"><label htmlFor="visiting-from">Where are you visiting from?</label><input id="visiting-from" name="visiting_from" type="text" placeholder="United Kingdom, Canada, United States, etc." required /></div>
+              <div className="form-field"><label htmlFor="discovery-source">How did you find me?</label><select id="discovery-source" name="discovery_source" defaultValue=""><option value="">Please choose</option><option>ChatGPT / another AI</option><option>Google Search</option><option>Recommendation from someone</option><option>Social media</option><option>Other</option></select></div>
+              <div className="form-field"><label htmlFor="preferred-date">Preferred date</label><input id="preferred-date" name="preferred_date" type="text" placeholder="Saturday, Sunday, or public holiday" required /></div>
+              <div className="form-field"><label htmlFor="group-size">Group size</label><input id="group-size" name="group_size" type="text" inputMode="numeric" /></div>
+              <div className="form-field"><label htmlFor="meeting-area">Meeting area / hotel name</label><input id="meeting-area" name="meeting_area" type="text" placeholder="Kyoto Station, hotel name, etc." /></div>
+              <div className="form-field"><label htmlFor="tour-length">Preferred length</label><select id="tour-length" name="tour_length" defaultValue="Half day / 4 hours"><option>Half day / 4 hours</option><option>Full day / 8 hours</option><option>Not sure yet</option></select></div>
+            </div>
+
+            <fieldset className="form-field form-field-full"><legend>Which sample route sounds closest?</legend>
+              <div className="option-list">{routes.map((route) => <label key={route.title}><input type="radio" name="route_interest" value={route.title} /> <span>{route.title}</span></label>)}<label><input type="radio" name="route_interest" value="Not sure yet" defaultChecked /> <span>Not sure yet — please suggest</span></label></div>
+            </fieldset>
+
+            <fieldset className="form-field form-field-full"><legend>Places you would like to visit</legend>
+              <div className="option-list option-list-grid">
+                {['Fushimi Inari','Kiyomizu-dera / Higashiyama','Gion / Yasaka Shrine','Nijo Castle','Kinkaku-ji','Ryoan-ji','Arashiyama','Nishiki Market','Kyoto Station arrival','Quiet local areas','Not sure — please suggest'].map((item) => <label key={item}><input type="checkbox" name="places[]" value={item} /> <span>{item}</span></label>)}
+              </div>
+            </fieldset>
+
+            <fieldset className="form-field form-field-full"><legend>What kind of Kyoto day do you want?</legend>
+              <div className="option-list option-list-grid">
+                {['Classic Kyoto','History & culture','Temples & shrines','Traditional streets','Gardens','Food & markets','Tea / matcha','Photography','Family-friendly','Senior-friendly','Less walking / more breaks','Not sure — Don, please suggest'].map((item) => <label key={item}><input type="checkbox" name="interests[]" value={item} /> <span>{item}</span></label>)}
+              </div>
+            </fieldset>
+
+            <fieldset className="form-field form-field-full"><legend>Walking pace</legend>
+              <div className="option-list"><label><input type="radio" name="walking_pace" value="Comfortable / regular" defaultChecked /> <span>Comfortable / regular</span></label><label><input type="radio" name="walking_pace" value="Easy pace with breaks" /> <span>Easy pace with breaks</span></label><label><input type="radio" name="walking_pace" value="Prefer less walking" /> <span>Prefer less walking</span></label></div>
+            </fieldset>
+
+            <div className="form-field form-field-full"><label htmlFor="message">Anything else?</label><textarea id="message" name="message" rows={4} placeholder="Food interests, places you want to avoid, Shinkansen arrival time, children or senior travellers, or anything else." /></div>
             <div className="contact-actions contact-actions-form"><button className="btn btn-primary" type="submit">Send enquiry</button><a className="btn btn-secondary" href={mailto}>Email directly</a></div>
           </form><p className="contact-direct-note">Sending this form is an enquiry only. It does not create a reservation.</p></div>
       </section>
